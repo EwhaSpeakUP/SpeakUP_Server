@@ -2,16 +2,16 @@ const fs = require('fs');
 const bodyParser = require('body-parser');
 const express = require('express'); // express library import
 const app = express();
+const {pool} = require('~/SpeakUP_Server/config/database'); //database pool가져오기
+
 //const AWS = require('aws-sdk'); // library to control the aws infra
+//AWS.config.region = 'ap-northeast-2';
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extend:true}));
 
 const data = fs.readFileSync('./database.json');
 const conf = JSON.parse(data);
-const mysql = require('mysql');
-
-//AWS.config.region = 'ap-northeast-2';
 
 
 // connected with DB

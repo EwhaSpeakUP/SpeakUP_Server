@@ -1,11 +1,10 @@
-const { transports } = require('winston');
+
 /*  winston.js
     create date: 2020-09-25
     revise date: 2020-09-25
     programmer: Hyeji Kim(1771018)
 */
-
-const winston = require('winston');
+const { transports } = require('winston');
 const env = process.env.NODE_ENV || 'development';
 const logpath = '../log';
 require('winston-daily-rotate-file')
@@ -43,6 +42,7 @@ const logger = winston.createLogger({
 
 });
 
+//외부에서 사용할수있도록
 module.exports = {
     logger: logger
 };

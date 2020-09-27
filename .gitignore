@@ -10,6 +10,10 @@ lerna-debug.log*
 /database.json
 /config/secret_config.json
 
+# temporary file
+/temp
+/src/temp
+
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 

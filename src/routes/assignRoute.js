@@ -3,4 +3,5 @@ module.exports = function(app) {
     
     //app.use('/assign/uploadFile',assign.);
     app.post("/assign/uploadFile", assign.uploadS3.single('file'),assign.uploadFile);
+    app.post("/assign/transmitFile",assign.transmitFile);
 };

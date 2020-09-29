@@ -18,7 +18,7 @@ exports.hwList = async function (req, res){
             return res.json({
                 isSuccess : true,
                 code: 100,
-                message: "과제목록",
+                message: "과제목록 수신에 성공했습니다.",
                 result: {
                     hw_ids : results
                 }
@@ -27,3 +27,28 @@ exports.hwList = async function (req, res){
     });
 };
 
+/**---------- ClassList API ------------ */ 
+//input : Class_id
+//output: 해당 Class에 포함된 과제ID, 과제 이름
+
+exports.classList = function(req,res){
+    var std_num=req.body.std_num;
+  
+    var sql = "SELECT * FROM CLASS WHERE CLASS_ID IN (SELECT CLASS_ID FROM CLASS_REGISTER WHERE ST_ID=?)";
+    
+      pool.query(sql, [std_num], function(err, result){
+                
+        if(err) throw err;
+        else{
+                var result={
+                    isSuccess : true,
+                    code : 100,
+                    message : "수업목록 수신에 성공했습니다.",
+                    result : {classList : result}
+                };
+                res.writeHead(200, {'Content-Type':'application/json/json'});
+                res.end(JSON.stringify(result));
+            }  
+        });
+};
+      

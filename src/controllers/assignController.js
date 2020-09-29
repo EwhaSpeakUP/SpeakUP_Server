@@ -53,46 +53,21 @@ exports.uploadFile = async function ( req, res,err){
 /**---------- 파일 다운로드 ------------ */
 
 
-/**
-const app = express();
-const request = require("request");
-
-
-var mysql = require("mysql");
-
-var connection = mysql.createConnection({
-  host: "ewha-speakupdb.cqsqpsw8azbn.ap-northeast-2.rds.amazonaws.com",
-  user: "admin",
-  password: "12345678",  
-  database: "ewha_speakupdb",
-});
-
-connection.connect();
-  
-app.post("/send_wav",function(req,res){
-
-    var hw_id = 1;
+exports.transmitFile = function(req,res){
+    var hw_id=req.body.hwid;
     var sql = "SELECT ORIGIN_VOICE FROM HOMEWORK WHERE HW_ID=?";
-
-    connection.query(sql, [hw_id], function(err, result){
-                    
-        if(err) throw err;
-        else{
-            var result={
-                isSuccess : true,
-                code : 100,
-                message : "파일 전송에 성공했습니다.",
-                filepath : result
+       pool.query(sql, [hw_id], function(err, result){
+                  
+          if(err) throw err;
+          else{
+                var result={
+                    isSuccess : true,
+                    code : 100,
+                    message : "파일 수신에 성공했습니다.",
+                    result : {filepath : result[0]['ORIGIN_VOICE']}
                 };
                 res.writeHead(200, {'Content-Type':'application/json/json'});
                 res.end(JSON.stringify(result));
             }  
         });
-    })
-
-app.listen(3000, function () {
-  console.log("Example app listening at http://localhost:3000");
-});
-
-
-*/
+};

@@ -8,7 +8,7 @@ lerna-debug.log*
 
 # Database
 /database.json
-/config/secret_config.json
+/config/secret_config.json*
 
 # temporary file
 /temp

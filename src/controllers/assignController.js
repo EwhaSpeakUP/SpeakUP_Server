@@ -51,7 +51,7 @@ exports.uploadAssign = async function (req, res){
 
 exports.transmitFile = function(req,res){
     
-    var hw_id = req.body.hwid;
+    var hw_id = req.params.hwID;
     var sql = "SELECT ORIGIN_VOICE FROM HOMEWORK WHERE HW_ID=?";
        pool.query(sql, [hw_id], function(err, result){
                   

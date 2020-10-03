@@ -8,9 +8,9 @@ const { createBucket } = require('../../config/s3');
 
 exports.hwList = async function (req, res){
     
-    const classId = req.body.class_id;
+    const classId = req.params.classID;
     const assignListParams = [classId];
-
+    
     const assignListQuery = " SELECT HW_ID, HW_NAME FROM HOMEWORK AS H WHERE H.CLASS_ID = ?";
     pool.query(assignListQuery, assignListParams, function(error, results, fields){
         if (error) throw error;
@@ -32,7 +32,7 @@ exports.hwList = async function (req, res){
 //output: 해당 Class에 포함된 과제ID, 과제 이름
 
 exports.classList = function(req,res){
-    var std_num=req.body.std_num;
+    var std_num =  req.params.stdNUM;
   
     var sql = "SELECT * FROM CLASS WHERE CLASS_ID IN (SELECT CLASS_ID FROM CLASS_REGISTER WHERE ST_ID=?)";
     

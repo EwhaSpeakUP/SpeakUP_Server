@@ -1,7 +1,7 @@
 module.exports = function(app) {
     const assign = require("../controllers/assignController");
     
-    //app.use('/assign/uploadFile',assign.);
-    app.post("/assign/uploadFile", assign.uploadS3.single('file'),assign.uploadFile);
+    //app.use('/assign/uploadAssign',assign.);
+    app.post("/assign/:hwID/:stID", assign.uploadS3.single('file'),assign.uploadAssign); // 과제 음성 업로드 (학생)
     app.post("/assign/transmitFile",assign.transmitFile);
 };

@@ -31,10 +31,10 @@ exports.hwList = async function (req, res){
 //input : Class_id
 //output: 해당 Class에 포함된 과제ID, 과제 이름
 
-exports.classList = function(req,res){
+exports.courseList = function(req,res){
     var std_num =  req.params.stdNUM;
   
-    var sql = "SELECT * FROM CLASS WHERE CLASS_ID IN (SELECT CLASS_ID FROM CLASS_REGISTER WHERE ST_ID=?)";
+    var sql = "SELECT * FROM COURSE WHERE COURSE_ID IN (SELECT COURSE_ID FROM COURSE_REGISTER WHERE ST_ID=?)";
     
       pool.query(sql, [std_num], function(err, result){
                 
@@ -44,7 +44,7 @@ exports.classList = function(req,res){
                     isSuccess : true,
                     code : 100,
                     message : "수업목록 수신에 성공했습니다.",
-                    result : {classList : result}
+                    result : {courseList : result}
                 };
                 res.writeHead(200, {'Content-Type':'application/json/json'});
                 res.end(JSON.stringify(result));

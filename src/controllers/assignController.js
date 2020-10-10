@@ -51,17 +51,18 @@ exports.uploadAssign = async function (req, res){
 
 exports.transmitFile = function(req,res){
     
-    var hw_id = req.params.hwID;
-    var sql = "SELECT ORIGIN_VOICE FROM HOMEWORK WHERE HW_ID=?";
-       pool.query(sql, [hw_id], function(err, result){
+    var assign_id = req.params.assignID;
+    var sql = "SELECT ORIGIN_VOICE FROM ASSIGNMENT WHERE ASSIGNMENT_ID=?";
+       pool.query(sql, [assign_id], function(err, result){
                   
           if(err) throw err;
           else{
+                var file_link=result[0]["ORIGIN_VOICE"].split('|');;
                 var result={
                     isSuccess : true,
                     code : 100,
                     message : "파일 수신에 성공했습니다.",
-                    result : {filepath : result[0]['ORIGIN_VOICE']}
+                    result : {filepath : file_link}
                 };
                 res.writeHead(200, {'Content-Type':'application/json/json'});
                 res.end(JSON.stringify(result));

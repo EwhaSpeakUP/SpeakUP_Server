@@ -32,11 +32,11 @@ exports.hwList = async function (req, res){
 //output: 해당 Class에 포함된 과제ID, 과제 이름
 
 exports.courseList = function(req,res){
-    var std_num =  req.params.stdNUM;
+    var st_id =  req.params.stID;
   
     var sql = "SELECT * FROM COURSE WHERE COURSE_ID IN (SELECT COURSE_ID FROM COURSE_REGISTER WHERE ST_ID=?)";
     
-      pool.query(sql, [std_num], function(err, result){
+      pool.query(sql, [st_id], function(err, result){
                 
         if(err) throw err;
         else{

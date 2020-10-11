@@ -76,7 +76,7 @@ exports.assignList = async function (req, res){
 //input : stID
 //output: 해당 stID가 수강하는 과목 목록, 정보
 
-exports.courseList = function(req,res){
+exports.courseList = async function(req,res){
     const connection = await pool.getConnection(function(err, conn){
     if (err) {
         return res.json({

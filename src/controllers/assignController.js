@@ -49,7 +49,7 @@ exports.uploadAssign = async function (req, res){
 /**---------- 파일 다운로드 ------------ */
 
 
-exports.transmitFile = function(req,res){
+exports.transmitFile = async function(req,res){
     const connection = await pool.getConnection(function(err, conn){
         if(err) {
             console.log("here");

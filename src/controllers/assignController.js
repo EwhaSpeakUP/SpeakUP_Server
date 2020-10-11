@@ -25,8 +25,8 @@ exports.uploadS3 = multer({
             const assignID = req.params.hwID;
             cb(null, assignID + "_" + studentID + path.extname(file.originalname))} //filename
         }),
-    fileFilter: function(req, file, cb){
-        var ext = path.extname(file.originalname);
+    fileFilter: function(req, files, cb){
+        var ext = path.extname(files.originalname);
         if (ext !== '.wav' && ext !== '.mp3'){
             return cb('Invalid File Extention : '+ ext + " >> please upload only audio file", null);
         }

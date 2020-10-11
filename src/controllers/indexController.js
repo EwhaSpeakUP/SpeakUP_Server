@@ -72,18 +72,40 @@ exports.assignList = async function (req, res){
     });
 };
 
-/**---------- ClassList API ------------ */ 
-//input : Class_id
-//output: 해당 Class에 포함된 과제ID, 과제 이름
+/**---------- CourseList API ------------ */ 
+//input : stID
+//output: 해당 stID가 수강하는 과목 목록, 정보
 
-exports.courseList = function(req,res){
+exports.courseList = async function(req,res){
+    const connection = await pool.getConnection(function(err, conn){
+    if (err) {
+        return res.json({
+            isSuccess : false,
+            code: 200,
+             message: "DB 서버 연결에 실패했습니다"
+        });
+    }
     var st_id =  req.params.stID;
-  
     var sql = "SELECT * FROM COURSE WHERE COURSE_ID IN (SELECT COURSE_ID FROM COURSE_REGISTER WHERE ST_ID=?)";
     
-      pool.query(sql, [st_id], function(err, result){
+    conn.query(sql, [st_id], function(err, result){
                 
-        if(err) throw err;
+        if(err){
+            conn.release();
+            return res.json({
+                isSuccess : false,
+                code: 201,
+                message: "DB 질의시 문제가 발생했습니다."
+            });
+        }
+        if (rows.length < 1) {
+            conn.release();
+            return res.json({
+                isSuccess : false,
+                code: 202,
+                message: "수강하는 과목이 없습니다."
+            });
+        }
         else{
                 var result={
                     isSuccess : true,
@@ -95,5 +117,6 @@ exports.courseList = function(req,res){
                 res.end(JSON.stringify(result));
             }  
         });
+    });
 };
       

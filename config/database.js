@@ -4,7 +4,7 @@ const mysql = require("mysql");
 const secret_config = require("./secret_config");
 
 // 데이터베이스 풀 생성
-const pool = mysql.createPool({
+let pool = mysql.createPool({
 	"host": secret_config.DB.host,
 	"user": secret_config.DB.user,
 	"password" : secret_config.DB.password ,

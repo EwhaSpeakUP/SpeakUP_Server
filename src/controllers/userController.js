@@ -74,7 +74,7 @@ exports.signUp = async function(req, res){
                 message: "성공"
             });
         }
-    }
+    });
 
 }
 

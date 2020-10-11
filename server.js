@@ -16,7 +16,7 @@ app.post('/imginsert',multer({
         var ext = path.extname(file.originalname)
         if (ext !== '.png' && ext !== '.jpg' && ext !== '.gif' && ext !== '.jpeg') 
                     {
-            return callback(res.end('Only images are allowed'), null)
+            return callback(res.end('이미지만 입력가능합니다.'), null)
         }
         callback(null, true)
     }

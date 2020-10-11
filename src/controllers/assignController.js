@@ -57,8 +57,8 @@ exports.transmitFile = async function(req,res){
                 isSuccess : false,
                 code: 200,
                 message: "DB 서버 연결에 실패했습니다"
-                });
-            }
+            });
+        }
         var assign_id = req.params.assignID;
         var sql = "SELECT ORIGIN_VOICE FROM ASSIGNMENT WHERE ASSIGNMENT_ID=?";
         conn.query(sql, [assign_id], function(err, result){
@@ -71,7 +71,7 @@ exports.transmitFile = async function(req,res){
                 message: "DB 질의시 문제가 발생했습니다."
             });
         }
-        if (rows.length < 1) {
+        if (result.length < 1) {
             conn.release();
             return res.json({
                 isSuccess : false,

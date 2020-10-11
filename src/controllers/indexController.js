@@ -98,7 +98,7 @@ exports.courseList = async function(req,res){
                 message: "DB 질의시 문제가 발생했습니다."
             });
         }
-        if (rows.length < 1) {
+        if (result.length < 1) {
             conn.release();
             return res.json({
                 isSuccess : false,

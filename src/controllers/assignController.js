@@ -49,22 +49,47 @@ exports.uploadAssign = async function (req, res){
 /**---------- 파일 다운로드 ------------ */
 
 
-exports.transmitFile = function(req,res){
-    
-    var hw_id = req.params.hwID;
-    var sql = "SELECT ORIGIN_VOICE FROM HOMEWORK WHERE HW_ID=?";
-       pool.query(sql, [hw_id], function(err, result){
+exports.transmitFile = async function(req,res){
+    const connection = await pool.getConnection(function(err, conn){
+        if(err) {
+            console.log("here");
+            return res.json({
+                isSuccess : false,
+                code: 200,
+                message: "DB 서버 연결에 실패했습니다"
+                });
+            }
+        var assign_id = req.params.assignID;
+        var sql = "SELECT ORIGIN_VOICE FROM ASSIGNMENT WHERE ASSIGNMENT_ID=?";
+        conn.query(sql, [assign_id], function(err, result){
                   
-          if(err) throw err;
+        if(err){
+            conn.release();
+            return res.json({
+                isSuccess : false,
+                code: 201,
+                message: "DB 질의시 문제가 발생했습니다."
+            });
+        }
+        if (rows.length < 1) {
+            conn.release();
+            return res.json({
+                isSuccess : false,
+                code: 202,
+                message: "해당하는 과제가 없습니다."
+            });
+        }
           else{
+                var file_link=result[0]["ORIGIN_VOICE"].split('|');;
                 var result={
                     isSuccess : true,
                     code : 100,
                     message : "파일 수신에 성공했습니다.",
-                    result : {filepath : result[0]['ORIGIN_VOICE']}
+                    result : {filepath : file_link}
                 };
                 res.writeHead(200, {'Content-Type':'application/json/json'});
                 res.end(JSON.stringify(result));
             }  
         });
+    });
 };

@@ -1,11 +1,13 @@
 const {pool} = require('../../config/database');
 const jwt = require('jsonwebtoken');
 const jwtsecret = require('../../config/secret_config').jwtsecret;
+const crypto = require('crypto');
 
 /**---------- 회원가입 API ------------ */ 
 exports.signUp = async function(req, res){
     const {id, password, st_id} = req.body;
-    
+    encoded_password = crypto.createHash('sha512').update(password).digest('base64');
+
     if (!id){
         return res.json({
             isSuccess: false,
@@ -96,9 +98,9 @@ exports.signUp = async function(req, res){
                             message: "중복되는 ID입니다."
                         });
                     }
-    
+                    
                     const addIDquery = 'insert into users(ID, pass, student_number) values (?, ?, ?)';
-                    conn.query(addIDquery, [id, password, st_id], function(err, rows){
+                    conn.query(addIDquery, [id, encoded_password, st_id], function(err, rows){
                         if(err){
                             return res.json({
                                 isSuccess: false,

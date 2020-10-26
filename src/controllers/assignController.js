@@ -9,7 +9,8 @@ const router = require('express').Router();
 
 
 const s3 = require('../../config/s3'); //s3
-
+const jwt = require("jsonwebtoken");
+const auth = require("../../auth");
 
 
 
@@ -93,3 +94,5 @@ exports.transmitFile = async function(req,res){
         });
     });
 };
+
+

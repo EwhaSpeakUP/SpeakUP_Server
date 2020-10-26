@@ -25,7 +25,7 @@ module.exports = function() {
   //require("../src/app/routes/musicRoute")(app);
   require("../src/routes/assignRoute")(app);
   require("../src/routes/indexRoute")(app);
-  //require("../src/routes/userRoute")(app);
+  require("../src/routes/userRoute")(app);
   /* Web */
   // require('../src/web/routes/indexRoute')(app);
 

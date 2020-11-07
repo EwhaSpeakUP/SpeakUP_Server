@@ -137,12 +137,11 @@ exports.signIn = async function(req, res){
                 });
             }
 
-            var tokenKey = "fintech";
                     jwt.sign(
                       {
                         userId: rows[0].USER_ID,
                       },
-                      tokenKey,
+                      jwtsecret,
                       {
                         expiresIn: "10d",
                         issuer: "speakup_server.admin",

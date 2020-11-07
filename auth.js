@@ -1,5 +1,4 @@
 const jwt = require("jsonwebtoken");
-var tokenKey = "fintech";
 const authMiddleware = (req, res, next) => {
   const token = req.headers["ourtoken"] || req.query.token;
   console.error("사용자가 전송한 토큰:",token);
@@ -7,12 +6,12 @@ const authMiddleware = (req, res, next) => {
     return res.status(403).json({
       server: "우리서버",
       success: false,
-      message: "not logged in",
+      message: "로그인되지 않은 상태입니다.",
     });
   }
 
   const p = new Promise((resolve, reject) => {
-    jwt.verify(token, tokenKey, (err, decoded) => {
+    jwt.verify(token, jwtsecret, (err, decoded) => {
       if (err) reject(err);
       resolve(decoded);
     });

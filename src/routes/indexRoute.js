@@ -1,9 +1,10 @@
 
 module.exports = function(app){
     const index = require('../controllers/indexController');
+    const auth = require("../../auth");
 
 
-    app.get("/index/courseList/:stID",index.courseList);
+    app.get("/index/courseList/:stID", auth, index.courseList);
     app.get('/index/:courseId/assignList',index.assignList);  
 
 

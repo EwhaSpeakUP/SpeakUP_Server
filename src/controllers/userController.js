@@ -46,7 +46,7 @@ exports.signUp = async function(req, res){
                 message: "DB 서버 연결에 실패했습니다."
             });
         }
-        const checkSTIDquery = 'select * from STUDENT where ST_ID = ?';
+        const checkSTIDquery = 'select * from STUDENT where STD_NUM = ?';
         var checkSTID = conn.query(checkSTIDquery, [st_id], function(err,rows){
             if(err){
                 conn.release();
@@ -64,7 +64,7 @@ exports.signUp = async function(req, res){
                     message: "존재하지 않는 학번입니다."
                 });
             }
-            const checkSTquery = 'select * from users where student_number = ?';
+            const checkSTquery = 'select * from users where STD_NUM = ?';
             conn.query(checkSTquery, [st_id], function(err,rows){
                 if(err){
                     conn.release();
@@ -82,7 +82,7 @@ exports.signUp = async function(req, res){
                     });
                 }
     
-                const checkIDquery = 'select * from users where ID = ?';
+                const checkIDquery = 'select * from users where USER_ID = ?';
                 conn.query(checkIDquery, [id], function(err, rows){
                     if(err){
                         return res.json({
@@ -99,7 +99,7 @@ exports.signUp = async function(req, res){
                         });
                     }
                     
-                    const addIDquery = 'insert into users(ID, pass, student_number) values (?, ?, ?)';
+                    const addIDquery = 'insert into users(USER_ID, USER_PW, STD_NUM) values (?, ?, ?)';
                     conn.query(addIDquery, [id, encoded_password, st_id], function(err, rows){
                         if(err){
                             return res.json({

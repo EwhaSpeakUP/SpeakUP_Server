@@ -1,49 +1,64 @@
 const { pool } = require("../../config/database");
 const { logger } = require("../../config/winston");
 
-const multer = require('multer');
-const multerS3 =require('multer-s3');
-const path = require('path');
 const { callbackify } = require("util");
 const router = require('express').Router();
 
-
-const s3 = require('../../config/s3'); //s3
+const S3 = require('../../config/s3'); //s3
 const jwt = require("jsonwebtoken");
-const auth = require("../../auth");
-
-
+const {jwtsecret} = require('./config/secret_config')
+const PythonShell = require('python-shell');
 
 /**---------- 과제 업로드 API ------------ */ 
 
-//middleware for file uploading
-exports.uploadS3 = multer({ 
-    storage: multerS3({
-        s3: s3,
-        bucket: 'ewhaspeakupsource1/hw_assign', // 버켓이름 + 폴더 path
-        key: function(req, file, cb){
-            const studentID = req.params.stID;
-            const assignID = req.params.hwID;
-            cb(null, assignID + "_" + studentID + path.extname(file.originalname))} //filename
-        }),
-    fileFilter: function(req, files, cb){
-        var ext = path.extname(files.originalname);
-        if (ext !== '.wav' && ext !== '.mp3'){
-            return cb('Invalid File Extention : '+ ext + " >> please upload only audio file", null);
-        }
-        cb(null, true);
-    },
-    acl : 'public-read-write'
-});
-
 //after middleware function
 exports.uploadAssign = async function (req, res){ 
+    //학생정보 저장
+    var jwt_token = req.headers.access_token; //헤더에 입력된 토큰
+    var student_ID = jwt.decode(jwt_token, jwtsecret).STD_NUM;
+    var there_was_error = false;
+    
+    for (var i=0 ; i < req.body.file.length ; i++){
+        //body에 저장된 base64 처리 후, bytestring으로 변환
+        var wav_bytestring= new Buffer.from(req.body.file[i], 'base64');
+        
+        
+        //python으로 보낸다. >> 추가해야함
+        
 
-    return res.json({
-        isSuccess: true,
-        code: 100,
-        message: "과제 업로드에 성공했습니다."
-    });
+        //S3에 각 음성파일 저장
+        var param = {
+            'Bucket': 'ewhaspeakupsource1/hw_assign',
+            'Key' : req.params.assignID + '_' + student_ID + '_'+ (i+1) + '.wav', // 과제id_student_id로 저장
+            'ACL' : 'public-read',
+            'Body': wav_bytestring,// wav bytestring
+            'ContentType': 'audio/wav'
+        }
+        
+        S3.upload(param,(err, data)=>{
+            if(err) {
+                console.log(err);
+                there_was_error = true;
+                console.log(there_was_error);
+                return res.json({
+                    isSuccess: false,
+                    code: 100,
+                    message: "업로드 중 문제가 발생했습니다."
+                });
+                
+            }
+            console.log(data);
+            
+        });
+    }
+    if (there_was_error == false){
+        return res.json({
+            isSuccess: true,
+            code: 200,
+            message: "과제 업로드에 성공했습니다."
+        });
+    }
+
 };
 
 

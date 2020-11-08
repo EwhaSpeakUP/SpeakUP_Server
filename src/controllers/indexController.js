@@ -12,15 +12,15 @@ const jwtsecret = require('../../config/secret_config').jwtsecret;
 exports.assignList = async function (req, res){
     const connection = await pool.getConnection(function(err, conn){
         if (err) {
-            console.log("here");
             return res.json({
                 isSuccess : false,
-                code: 200,
+                code: 301,
                 message: "DB 서버 연결에 실패했습니다"
             });
         }
         var jwt_token=req.headers.access_token;
         var student_info = jwt.decode(jwt_token, jwtsecret) 
+        
         var studentId=student_info.STD_NUM;
         const courseId = req.params.courseId;
 
@@ -30,7 +30,7 @@ exports.assignList = async function (req, res){
                 conn.release();
                 return res.json({
                     isSuccess : false,
-                    code: 201,
+                    code: 302,
                     message: "DB 질의시 문제가 발생했습니다."
                 });
             }
@@ -38,7 +38,7 @@ exports.assignList = async function (req, res){
                 conn.release();
                 return res.json({
                     isSuccess : false,
-                    code: 202,
+                    code: 401,
                     message: "해당 수업을 수강하지 않습니다."
                 });
             }
@@ -48,14 +48,14 @@ exports.assignList = async function (req, res){
                 if(err){
                     return res.json({
                         isSuccess : false,
-                        code: 201,
+                        code: 302,
                         message: "DB 질의시 문제가 발생했습니다."
                     });
                 }
                 if (rows.length >= 1){
                     return res.json({
                         isSuccess : true,
-                        code: 100,
+                        code: 200,
                         message: "과제목록 수신에 성공했습니다.",
                         result: {
                             courses : rows
@@ -64,7 +64,7 @@ exports.assignList = async function (req, res){
                 } else{
                     return res.json({
                         isSuccess : true,
-                        code: 101,
+                        code: 201,
                         message: "과제목록이 비어있습니다."
                     });
                 }

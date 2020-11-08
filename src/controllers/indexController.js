@@ -14,7 +14,7 @@ exports.assignList = async function (req, res){
             return res.json({
                 isSuccess : false,
                 code: 200,
-                message: "DB 서버 연결에 실패했습니다"
+                message: "1DB 서버 연결에 실패했습니다"
             });
         }
         const token = req.body.token;

@@ -15,6 +15,8 @@ const s3 = require('../../config/s3'); //s3
 
 /**---------- 과제 업로드 API ------------ */ 
 
+
+
 //middleware for file uploading
 exports.uploadS3 = multer({ 
     storage: multerS3({
@@ -35,8 +37,12 @@ exports.uploadS3 = multer({
     acl : 'public-read-write'
 });
 
-//after middleware function
+//function
 exports.uploadAssign = async function (req, res){ 
+    
+    //base64 처리 후, bytestring으로 변환
+
+    //python으로
 
     return res.json({
         isSuccess: true,

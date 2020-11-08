@@ -226,3 +226,156 @@ SyntaxError: Unexpected token '<<'
     at module.exports (/home/ec2-user/SpeakUP_Server/src/routes/indexRoute.js:3:19)
     at module.exports (/home/ec2-user/SpeakUP_Server/config/express.js:27:38)
     at Object.<anonymous> (/home/ec2-user/SpeakUP_Server/app.js:5:1)
+2020-11-08 12:48:22 info undefined - API Server Start At Port 5000
+events.js:291
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EADDRINUSE: address already in use :::5000
+    at Server.setupListenHandle [as _listen2] (net.js:1317:16)
+    at listenInCluster (net.js:1365:12)
+    at Server.listen (net.js:1451:7)
+    at Function.listen (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/application.js:618:24)
+    at Object.<anonymous> (/home/ec2-user/SpeakUP_Server/app.js:5:11)
+    at Module._compile (internal/modules/cjs/loader.js:1085:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1114:10)
+    at Module.load (internal/modules/cjs/loader.js:950:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:791:14)
+    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (net.js:1344:8)
+    at processTicksAndRejections (internal/process/task_queues.js:80:21) {
+  code: 'EADDRINUSE',
+  errno: -98,
+  syscall: 'listen',
+  address: '::',
+  port: 5000
+}
+2020-11-08 12:49:10 info undefined - API Server Start At Port 5000
+events.js:291
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EADDRINUSE: address already in use :::5000
+    at Server.setupListenHandle [as _listen2] (net.js:1317:16)
+    at listenInCluster (net.js:1365:12)
+    at Server.listen (net.js:1451:7)
+    at Function.listen (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/application.js:618:24)
+    at Object.<anonymous> (/home/ec2-user/SpeakUP_Server/app.js:5:11)
+    at Module._compile (internal/modules/cjs/loader.js:1085:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1114:10)
+    at Module.load (internal/modules/cjs/loader.js:950:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:791:14)
+    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (net.js:1344:8)
+    at processTicksAndRejections (internal/process/task_queues.js:80:21) {
+  code: 'EADDRINUSE',
+  errno: -98,
+  syscall: 'listen',
+  address: '::',
+  port: 5000
+}
+2020-11-08 12:49:48 info undefined - API Server Start At Port 5000
+events.js:291
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EADDRINUSE: address already in use :::5000
+    at Server.setupListenHandle [as _listen2] (net.js:1317:16)
+    at listenInCluster (net.js:1365:12)
+    at Server.listen (net.js:1451:7)
+    at Function.listen (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/application.js:618:24)
+    at Object.<anonymous> (/home/ec2-user/SpeakUP_Server/app.js:5:11)
+    at Module._compile (internal/modules/cjs/loader.js:1085:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1114:10)
+    at Module.load (internal/modules/cjs/loader.js:950:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:791:14)
+    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (net.js:1344:8)
+    at processTicksAndRejections (internal/process/task_queues.js:80:21) {
+  code: 'EADDRINUSE',
+  errno: -98,
+  syscall: 'listen',
+  address: '::',
+  port: 5000
+}
+2020-11-08 12:50:26 info undefined - API Server Start At Port 5000
+events.js:291
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EADDRINUSE: address already in use :::5000
+    at Server.setupListenHandle [as _listen2] (net.js:1317:16)
+    at listenInCluster (net.js:1365:12)
+    at Server.listen (net.js:1451:7)
+    at Function.listen (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/application.js:618:24)
+    at Object.<anonymous> (/home/ec2-user/SpeakUP_Server/app.js:5:11)
+    at Module._compile (internal/modules/cjs/loader.js:1085:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1114:10)
+    at Module.load (internal/modules/cjs/loader.js:950:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:791:14)
+    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (net.js:1344:8)
+    at processTicksAndRejections (internal/process/task_queues.js:80:21) {
+  code: 'EADDRINUSE',
+  errno: -98,
+  syscall: 'listen',
+  address: '::',
+  port: 5000
+}
+2020-11-08 12:50:36 info undefined - API Server Start At Port 5000
+events.js:291
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EADDRINUSE: address already in use :::5000
+    at Server.setupListenHandle [as _listen2] (net.js:1317:16)
+    at listenInCluster (net.js:1365:12)
+    at Server.listen (net.js:1451:7)
+    at Function.listen (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/application.js:618:24)
+    at Object.<anonymous> (/home/ec2-user/SpeakUP_Server/app.js:5:11)
+    at Module._compile (internal/modules/cjs/loader.js:1085:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1114:10)
+    at Module.load (internal/modules/cjs/loader.js:950:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:791:14)
+    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (net.js:1344:8)
+    at processTicksAndRejections (internal/process/task_queues.js:80:21) {
+  code: 'EADDRINUSE',
+  errno: -98,
+  syscall: 'listen',
+  address: '::',
+  port: 5000
+}
+2020-11-08 12:51:19 info undefined - API Server Start At Port 5000
+2020-11-08 12:52:39 info undefined - API Server Start At Port 5000
+internal/modules/cjs/loader.js:905
+  throw err;
+  ^
+
+Error: Cannot find module '../../temp1'
+Require stack:
+- /home/ec2-user/SpeakUP_Server/src/routes/assignRoute.js
+- /home/ec2-user/SpeakUP_Server/config/express.js
+- /home/ec2-user/SpeakUP_Server/app.js
+    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:902:15)
+    at Function.Module._load (internal/modules/cjs/loader.js:747:27)
+    at Module.require (internal/modules/cjs/loader.js:974:19)
+    at require (internal/modules/cjs/helpers.js:88:18)
+    at module.exports (/home/ec2-user/SpeakUP_Server/src/routes/assignRoute.js:3:20)
+    at module.exports (/home/ec2-user/SpeakUP_Server/config/express.js:26:39)
+    at Object.<anonymous> (/home/ec2-user/SpeakUP_Server/app.js:5:1)
+    at Module._compile (internal/modules/cjs/loader.js:1085:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1114:10)
+    at Module.load (internal/modules/cjs/loader.js:950:32) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/home/ec2-user/SpeakUP_Server/src/routes/assignRoute.js',
+    '/home/ec2-user/SpeakUP_Server/config/express.js',
+    '/home/ec2-user/SpeakUP_Server/app.js'
+  ]
+}

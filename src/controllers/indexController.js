@@ -1,3 +1,4 @@
+const jwt = require("jsonwebtoken");
 const { pool } = require('../../config/database');
 const { createBucket } = require('../../config/s3');
 const jwtsecret = require('../../config/secret_config').jwtsecret;
@@ -17,8 +18,9 @@ exports.assignList = async function (req, res){
                 message: "DB 서버 연결에 실패했습니다"
             });
         }
-        const token = req.body.token;
-        const studentId = "1771014"; // 임시 변수 값. jwt 값으로 알아내야함.
+        var jwt_token=req.headers.access_token;
+        var student_info = jwt.decode(jwt_token, jwtsecret) 
+        var studentId=student_info.STD_NUM;
         const courseId = req.params.courseId;
 
         const checkRegisterQuery = "SELECT * FROM COURSE_REGISTER WHERE ST_ID = ? AND COURSE_ID = ?";
@@ -85,10 +87,12 @@ exports.courseList = async function(req,res){
              message: "DB 서버 연결에 실패했습니다"
         });
     }
-    var st_id =  req.params.stID;
+    var jwt_token=req.headers.access_token;
+    var student_info = jwt.decode(jwt_token, jwtsecret) 
+    var studentId = student_info.STD_NUM;
     var sql = "SELECT * FROM COURSE WHERE COURSE_ID IN (SELECT COURSE_ID FROM COURSE_REGISTER WHERE ST_ID=?)";
     
-    conn.query(sql, [st_id], function(err, result){
+    conn.query(sql, [studentId], function(err, result){
                 
         if(err){
             conn.release();

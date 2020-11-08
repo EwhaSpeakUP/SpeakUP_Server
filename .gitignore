@@ -13,6 +13,8 @@ config/secret_config.json
 # temporary file
 /temp
 /src/temp
+temp1.js
+temp2.js
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json

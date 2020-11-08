@@ -152,7 +152,7 @@ exports.signIn = async function(req, res){
     }
     const connection = await pool.getConnection(function(err, conn){
         if (err){
-            conn.release();
+            //conn.release();
             return res.json({
                 isSuccess: false,
                 code: 200,
@@ -182,6 +182,7 @@ exports.signIn = async function(req, res){
             }
 
             if(rows[0].USER_PW != encoded_password){
+                console.log(rows[0].USER_PW + '  '+ encoded_password);
                 conn.release();
                 return res.json({
                     isSuccess: false,

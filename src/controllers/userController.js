@@ -1,88 +1,143 @@
 const {pool} = require('../../config/database');
 const jwt = require('jsonwebtoken');
 const auth = require("../../auth");
+const crypto = require('crypto');
+const { type } = require('os');
 const jwtsecret = require('../../config/secret_config').jwtsecret;
-exports.test = async function (req, res){
-    
-    const connection = await pool.getConnection(function (err,conn){
-        if (err) return res.send(400);
-        const sql = 'select * from STUDENT'
-        conn.query(sql, [] ,function(err,rows){
-            if(err){
-                conn.release();
-                return res.send(400, 'Couldnt get a connection');
-            }
-            res.send(rows);
-            conn.release();
-        });
-
-    });
-
-}
 /**---------- 회원가입 API ------------ */ 
 exports.signUp = async function(req, res){
     const {id, password, st_id} = req.body;
+    encoded_password = crypto.createHash('sha512').update(password).digest('base64');
+
     if (!id){
         return res.json({
             isSuccess: false,
             code: 300,
-            message: "ID를 입력해주세요."
+            message: "아이디를 입력해주세요."
         });
     }
     if (!password){
         return res.json({
             isSuccess: false,
             code: 301,
-            message: "PASSWORD를 입력해주세요."
+            message: "비밀번호를 입력해주세요."
         });
     }
+    if (!st_id){
+        return res.json({
+            isSuccess: false,
+            code: 302,
+            message: "학번을 입력해주세요."
+        });
+    }
+    else if (st_id.length != 7){
+        return res.json({
+            isSuccess: false,
+            code: 303,
+            message: "학번을 올바르게 입력해주세요(7자)."
+        });
+    }
+
     const connection = await pool.getConnection(function(err, conn){
         if(err){
-            conn.release();
+            //conn.release();
+            console.log(err);
             return res.json({
                 isSuccess: false,
                 code: 200,
                 message: "DB 서버 연결에 실패했습니다."
             });
         }
-
-        const checkSTquery = 'select * from users where student_number = ?';
-        const checkSTrows = conn.query(checkSTquery, [st_id], function(err,rows){
+        const checkSTIDquery = 'select * from STUDENT where ST_ID = ?';
+        var checkSTID = conn.query(checkSTIDquery, [st_id], function(err,rows){
             if(err){
-                conn.release();
+                console.log(err);
                 return res.json({
                     isSuccess: false,
                     code: 200,
                     message: "DB 서버 연결에 실패했습니다."
                 });
             }
-            return rows;
+            if (rows.length <= 0){
+                conn.release();
+                return res.json({
+                    isSuccess: false,
+                    code: 304,
+                    message: "존재하지 않는 학번입니다."
+                });
+            }
+            const checkSTquery = 'select * from USERS where STD_NUM = ?';
+            conn.query(checkSTquery, [st_id], function(err,rows){
+                if(err){
+                    console.log(err);
+                    return res.json({
+                        isSuccess: false,
+                        code: 200,
+                        message: "DB 서버 연결에 실패했습니다."
+                    });
+                }
+                if (rows.length > 0){
+                    return res.json({
+                        isSuccess: false,
+                        code: 305,
+                        message: "해당 학번에 계정이 이미 존재합니다."
+                    });
+                }
+    
+                const checkIDquery = 'select * from USERS where USER_ID = ?';
+                conn.query(checkIDquery, [id], function(err, rows){
+                    if(err){
+                        console.log(err);
+                        return res.json({
+                            isSuccess: false,
+                            code: 200,
+                            message: "DB 서버 연결에 실패했습니다."
+                        });
+                    }
+                    if(rows.length > 0){
+                        return res.json({
+                            isSuccess: false,
+                            code: 306,
+                            message: "중복되는 ID입니다."
+                        });
+                    }
+                    
+                    const addIDquery = 'insert into USERS(USER_ID, USER_PW, STD_NUM) values (?, ?, ?)';
+                    conn.query(addIDquery, [id, encoded_password, st_id], function(err, rows){
+                        if(err){
+                            console.log(err);
+                            return res.json({
+                                isSuccess: false,
+                                code: 200,
+                                message: "DB 서버 연결에 실패했습니다."
+                            });
+                        }
+                        
+                        return res.json({
+                            isSuccess: true,
+                            code: 100,
+                            message: "회원가입에 성공했습니다."
+                        });
+    
+                    })
+                    
+                })
+            });
         });
-        if(checkSTrows.length > 0){
-            if (rows[0].ID == id)
-            conn.release();
-            return res.json({
-                isSuccess: false,
-                code: 200,
-                message: "이미 존재하는 ID입니다."
-            });
-        }
-        else{
-            conn.release();
-            return res.json({
-                isSuccess: false,
-                code: 200,
-                message: "성공"
-            });
-        }
+        
+        
     });
-
 }
+    
+
+
+
 
 
 /**---------- 로그인 API ------------ */ 
 exports.signIn = async function(req, res){
     const {id, password} = req.body;
+    encoded_password = crypto.createHash('sha512').update(password).digest('base64');
     if (!id){
         return res.json({
             isSuccess: false,
@@ -123,65 +178,41 @@ exports.signIn = async function(req, res){
                 conn.release();
                 return res.json({
                     isSuccess: false,
-                    code: 200,
+                    code: 300,
                     message: "아이디가 존재하지 않습니다."
                 });
             }
 
-            if(rows[0].USER_PW !== password){
+            if(rows[0].USER_PW != encoded_password){
                 conn.release();
                 return res.json({
                     isSuccess: false,
-                    code: 200,
+                    code: 301,
                     message: "비밀번호가 올바르지 않습니다."
                 });
             }
 
-            var tokenKey = "fintech";
                     jwt.sign(
                       {
-                        userId: rows[0].USER_ID,
+                        STD_NUM: rows[0].STD_NUM,
                       },
-                      tokenKey,
+                      jwtsecret,
                       {
                         expiresIn: "10d",
                         issuer: "speakup_server.admin",
                         subject: "user.login.info",
                       },
                       function (err, token) {
-                        console.log("로그인 성공", token);
                         res.json({
                             isSuccess: true,
                             code: 100,
-                            result: { jwt: token },
-                            message: "로그인 성공"
+                            message: "로그인에 성공했습니다.",
+                            result: { access_token: token }
                         });
                       }
                     );
             
-            /*
-            let token = await jwt.sign(
-                {
-                index: rows[0].user_index,
-                id: id,
-                password: password,
-                st_id : rows[0].st_id
-                },
-                jwtsecret,
-                {
-                    expiresIn:"10d",
-                    subject: "userinfo"
-                }
-            ); 
             
-            res.json({
-                isSuccess: true,
-                code: 100,
-                result: { jwt: token },
-                message: "로그인 성공"
-            });
-            */
-
             
             conn.release();
         });

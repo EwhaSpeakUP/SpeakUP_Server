@@ -136,3 +136,93 @@ Emitted 'error' event on Server instance at:
 2020-11-01 11:43:18 info undefined - API Server Start At Port 5000
 2020-11-01 11:46:16 info undefined - API Server Start At Port 5000
 2020-11-03 14:11:17 info undefined - API Server Start At Port 5000
+/home/ec2-user/SpeakUP_Server/src/controllers/indexController.js:1
+<<<<<<< HEAD
+^^
+
+SyntaxError: Unexpected token '<<'
+    at wrapSafe (internal/modules/cjs/loader.js:1001:16)
+    at Module._compile (internal/modules/cjs/loader.js:1049:27)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1114:10)
+    at Module.load (internal/modules/cjs/loader.js:950:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:791:14)
+    at Module.require (internal/modules/cjs/loader.js:974:19)
+    at require (internal/modules/cjs/helpers.js:88:18)
+    at module.exports (/home/ec2-user/SpeakUP_Server/src/routes/indexRoute.js:3:19)
+    at module.exports (/home/ec2-user/SpeakUP_Server/config/express.js:27:38)
+    at Object.<anonymous> (/home/ec2-user/SpeakUP_Server/app.js:5:1)
+/home/ec2-user/SpeakUP_Server/src/controllers/indexController.js:1
+<<<<<<< HEAD
+^^
+
+SyntaxError: Unexpected token '<<'
+    at wrapSafe (internal/modules/cjs/loader.js:1001:16)
+    at Module._compile (internal/modules/cjs/loader.js:1049:27)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1114:10)
+    at Module.load (internal/modules/cjs/loader.js:950:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:791:14)
+    at Module.require (internal/modules/cjs/loader.js:974:19)
+    at require (internal/modules/cjs/helpers.js:88:18)
+    at module.exports (/home/ec2-user/SpeakUP_Server/src/routes/indexRoute.js:3:19)
+    at module.exports (/home/ec2-user/SpeakUP_Server/config/express.js:27:38)
+    at Object.<anonymous> (/home/ec2-user/SpeakUP_Server/app.js:5:1)
+/home/ec2-user/SpeakUP_Server/src/controllers/indexController.js:1
+<<<<<<< HEAD
+^^
+
+SyntaxError: Unexpected token '<<'
+    at wrapSafe (internal/modules/cjs/loader.js:1001:16)
+    at Module._compile (internal/modules/cjs/loader.js:1049:27)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1114:10)
+    at Module.load (internal/modules/cjs/loader.js:950:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:791:14)
+    at Module.require (internal/modules/cjs/loader.js:974:19)
+    at require (internal/modules/cjs/helpers.js:88:18)
+    at module.exports (/home/ec2-user/SpeakUP_Server/src/routes/indexRoute.js:3:19)
+    at module.exports (/home/ec2-user/SpeakUP_Server/config/express.js:27:38)
+    at Object.<anonymous> (/home/ec2-user/SpeakUP_Server/app.js:5:1)
+/home/ec2-user/SpeakUP_Server/src/controllers/indexController.js:1
+<<<<<<< HEAD
+^^
+
+SyntaxError: Unexpected token '<<'
+    at wrapSafe (internal/modules/cjs/loader.js:1001:16)
+    at Module._compile (internal/modules/cjs/loader.js:1049:27)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1114:10)
+    at Module.load (internal/modules/cjs/loader.js:950:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:791:14)
+    at Module.require (internal/modules/cjs/loader.js:974:19)
+    at require (internal/modules/cjs/helpers.js:88:18)
+    at module.exports (/home/ec2-user/SpeakUP_Server/src/routes/indexRoute.js:3:19)
+    at module.exports (/home/ec2-user/SpeakUP_Server/config/express.js:27:38)
+    at Object.<anonymous> (/home/ec2-user/SpeakUP_Server/app.js:5:1)
+/home/ec2-user/SpeakUP_Server/src/controllers/indexController.js:1
+<<<<<<< HEAD
+^^
+
+SyntaxError: Unexpected token '<<'
+    at wrapSafe (internal/modules/cjs/loader.js:1001:16)
+    at Module._compile (internal/modules/cjs/loader.js:1049:27)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1114:10)
+    at Module.load (internal/modules/cjs/loader.js:950:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:791:14)
+    at Module.require (internal/modules/cjs/loader.js:974:19)
+    at require (internal/modules/cjs/helpers.js:88:18)
+    at module.exports (/home/ec2-user/SpeakUP_Server/src/routes/indexRoute.js:3:19)
+    at module.exports (/home/ec2-user/SpeakUP_Server/config/express.js:27:38)
+    at Object.<anonymous> (/home/ec2-user/SpeakUP_Server/app.js:5:1)
+/home/ec2-user/SpeakUP_Server/src/controllers/indexController.js:1
+<<<<<<< HEAD
+^^
+
+SyntaxError: Unexpected token '<<'
+    at wrapSafe (internal/modules/cjs/loader.js:1001:16)
+    at Module._compile (internal/modules/cjs/loader.js:1049:27)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1114:10)
+    at Module.load (internal/modules/cjs/loader.js:950:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:791:14)
+    at Module.require (internal/modules/cjs/loader.js:974:19)
+    at require (internal/modules/cjs/helpers.js:88:18)
+    at module.exports (/home/ec2-user/SpeakUP_Server/src/routes/indexRoute.js:3:19)
+    at module.exports (/home/ec2-user/SpeakUP_Server/config/express.js:27:38)
+    at Object.<anonymous> (/home/ec2-user/SpeakUP_Server/app.js:5:1)

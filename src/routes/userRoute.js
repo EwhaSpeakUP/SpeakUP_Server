@@ -3,6 +3,7 @@ module.exports = function(app){
     
     //app.route("/join").post(user.signUp);
     app.post("/login", user.signIn);
-    app.get("/test",user.test);
+    app.post("/user", user.signUp);
+
 }
 

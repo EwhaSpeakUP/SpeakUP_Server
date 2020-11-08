@@ -9,7 +9,8 @@ const router = require('express').Router();
 
 
 const s3 = require('../../config/s3'); //s3
-
+const jwt = require("jsonwebtoken");
+const auth = require("../../auth");
 
 
 
@@ -57,8 +58,8 @@ exports.transmitFile = async function(req,res){
                 isSuccess : false,
                 code: 200,
                 message: "DB 서버 연결에 실패했습니다"
-                });
-            }
+            });
+        }
         var assign_id = req.params.assignID;
         var sql = "SELECT ORIGIN_VOICE FROM ASSIGNMENT WHERE ASSIGNMENT_ID=?";
         conn.query(sql, [assign_id], function(err, result){
@@ -93,3 +94,5 @@ exports.transmitFile = async function(req,res){
         });
     });
 };
+
+

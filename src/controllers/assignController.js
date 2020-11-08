@@ -6,8 +6,8 @@ const router = require('express').Router();
 
 const S3 = require('../../config/s3'); //s3
 const jwt = require("jsonwebtoken");
-const {jwtsecret} = require('./config/secret_config')
-const PythonShell = require('python-shell');
+const {jwtsecret} = require('../../config/secret_config')
+//const PythonShell = require('python-shell');
 
 /**---------- 과제 업로드 API ------------ */ 
 

@@ -3,7 +3,7 @@ module.exports = function(app) {
     const auth = require("../../auth");
 
     app.post("/assign/:hwID", auth, assign.uploadS3.array('file'),assign.uploadAssign); // 통역 음성 업로드 (학생)
-    app.get("/assign/:assignID",auth, assign.transmitFile); // 연사 음성 학생에게 전송
+    app.get("/assign/:assignID", assign.transmitFile); // 연사 음성 학생에게 전송
 
 
 };

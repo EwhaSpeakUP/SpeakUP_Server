@@ -1,8 +1,8 @@
 const {pool} = require('../../config/database');
 const jwt = require('jsonwebtoken');
-const jwtsecret = require('../../config/secret_config').jwtsecret;
+const auth = require("../../auth");
 const crypto = require('crypto');
-
+const jwtsecret = require('../../config/secret_config').jwtsecret;
 /**---------- 회원가입 API ------------ */ 
 exports.signUp = async function(req, res){
     const {id, password, st_id} = req.body;
@@ -36,7 +36,7 @@ exports.signUp = async function(req, res){
             message: "학번을 올바르게 입력해주세요(7자)."
         });
     }
-    
+
     const connection = await pool.getConnection(function(err, conn){
         if(err){
             conn.release();
@@ -124,23 +124,26 @@ exports.signUp = async function(req, res){
         
     });
 }
+    
 
 
-/**---------- 로그인 API ------------ 
+
+/**---------- 로그인 API ------------ */ 
 exports.signIn = async function(req, res){
     const {id, password} = req.body;
+    encoded_password = crypto.createHash('sha512').update(password).digest('base64');
     if (!id){
         return res.json({
             isSuccess: false,
             code: 300,
-            message: "ID를 입력해주세요."
+            message: "아이디를 입력해주세요."
         });
     }
     if (!password){
         return res.json({
             isSuccess: false,
             code: 301,
-            message: "PASSWORD를 입력해주세요."
+            message: "비밀번호를 입력해주세요."
         });
     }
     const connection = await pool.getConnection(function(err, conn){
@@ -153,7 +156,7 @@ exports.signIn = async function(req, res){
             });
         }
 
-        const userinfoquery = 'select user_index,ID, pass, st_id from users where ID =?'
+        const userinfoquery = 'select USER_INDEX,USER_ID, USER_PW, STD_NUM from USERS where USER_ID =?'
         const userinfoparams = [id];
         conn.query(userinfoquery, userinfoparams, function(err, rows){
             if(err){
@@ -169,40 +172,42 @@ exports.signIn = async function(req, res){
                 conn.release();
                 return res.json({
                     isSuccess: false,
-                    code: 200,
-                    message: "ID가 존재하지 않습니다."
+                    code: 300,
+                    message: "아이디가 존재하지 않습니다."
                 });
             }
 
-            if(rows[0].pass !== password){
+            if(rows[0].USER_PW != encoded_password){
                 conn.release();
                 return res.json({
                     isSuccess: false,
-                    code: 200,
-                    message: "Password가 올바르지 않습니다."
+                    code: 301,
+                    message: "비밀번호가 올바르지 않습니다."
                 });
             }
 
-            let token = await jwt.sign(
-                {
-                index: rows[0].user_index,
-                id: id,
-                password: password,
-                st_id : rows[0].st_id
-                },
-                jwtsecret,
-                {
-                    expiresIn:"10d",
-                    subject: "userinfo"
-                }
-            ); 
+                    jwt.sign(
+                      {
+                        STD_NUM: rows[0].STD_NUM,
+                      },
+                      jwtsecret,
+                      {
+                        expiresIn: "10d",
+                        issuer: "speakup_server.admin",
+                        subject: "user.login.info",
+                      },
+                      function (err, token) {
+                        res.json({
+                            isSuccess: true,
+                            code: 100,
+                            message: "로그인에 성공했습니다.",
+                            result: { access_token: token }
+                        });
+                      }
+                    );
             
-            res.json({
-                isSuccess: true,
-                code: 100,
-                result: { jwt: token },
-                message: "로그인 성공"
-            });
+            
+            
             conn.release();
         });
         
@@ -210,4 +215,4 @@ exports.signIn = async function(req, res){
     })
     
     
-;}*/ 
+;}

@@ -1,6 +1,7 @@
 const {pool} = require('../../config/database');
 const jwt = require('jsonwebtoken');
 const auth = require("../../auth");
+const crypto = require('crypto');
 const jwtsecret = require('../../config/secret_config').jwtsecret;
 exports.test = async function (req, res){
     
@@ -83,6 +84,7 @@ exports.signUp = async function(req, res){
 /**---------- 로그인 API ------------ */ 
 exports.signIn = async function(req, res){
     const {id, password} = req.body;
+    encoded_password = crypto.createHash('sha512').update(password).digest('base64');
     if (!id){
         return res.json({
             isSuccess: false,
@@ -123,7 +125,7 @@ exports.signIn = async function(req, res){
                 conn.release();
                 return res.json({
                     isSuccess: false,
-                    code: 200,
+                    code: 300,
                     message: "아이디가 존재하지 않습니다."
                 });
             }
@@ -132,14 +134,14 @@ exports.signIn = async function(req, res){
                 conn.release();
                 return res.json({
                     isSuccess: false,
-                    code: 200,
+                    code: 301,
                     message: "비밀번호가 올바르지 않습니다."
                 });
             }
 
                     jwt.sign(
                       {
-                        userId: rows[0].USER_ID,
+                        STD_NUM: rows[0].STD_NUM,
                       },
                       jwtsecret,
                       {
@@ -148,39 +150,16 @@ exports.signIn = async function(req, res){
                         subject: "user.login.info",
                       },
                       function (err, token) {
-                        console.log("로그인 성공", token);
                         res.json({
                             isSuccess: true,
                             code: 100,
-                            result: { jwt: token },
-                            message: "로그인 성공"
+                            message: "로그인에 성공했습니다.",
+                            result: { access_token: token }
                         });
                       }
                     );
             
-            /*
-            let token = await jwt.sign(
-                {
-                index: rows[0].user_index,
-                id: id,
-                password: password,
-                st_id : rows[0].st_id
-                },
-                jwtsecret,
-                {
-                    expiresIn:"10d",
-                    subject: "userinfo"
-                }
-            ); 
             
-            res.json({
-                isSuccess: true,
-                code: 100,
-                result: { jwt: token },
-                message: "로그인 성공"
-            });
-            */
-
             
             conn.release();
         });

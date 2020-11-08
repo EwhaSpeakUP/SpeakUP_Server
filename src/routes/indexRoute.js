@@ -4,8 +4,8 @@ module.exports = function(app){
     const auth = require("../../auth");
 
 
-    app.get("/index/courseList/:stID", auth, index.courseList);
-    app.get('/index/:courseId/assignList',index.assignList);  
+    app.get("/index/courseList", auth, index.courseList);
+    app.get('/index/:courseId/assignList',auth, index.assignList);  
 
 
 };

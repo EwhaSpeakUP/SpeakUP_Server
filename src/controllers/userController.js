@@ -1,5 +1,6 @@
 const {pool} = require('../../config/database');
 const jwt = require('jsonwebtoken');
+const auth = require("../../auth");
 const jwtsecret = require('../../config/secret_config').jwtsecret;
 exports.test = async function (req, res){
     
@@ -71,7 +72,7 @@ exports.signUp = async function(req, res){
             return res.json({
                 isSuccess: false,
                 code: 200,
-                message: "성공"
+                message: "회원가입에 성공했습니다."
             });
         }
     });
@@ -86,14 +87,14 @@ exports.signIn = async function(req, res){
         return res.json({
             isSuccess: false,
             code: 300,
-            message: "ID를 입력해주세요."
+            message: "아이디를 입력해주세요."
         });
     }
     if (!password){
         return res.json({
             isSuccess: false,
             code: 301,
-            message: "PASSWORD를 입력해주세요."
+            message: "비밀번호를 입력해주세요."
         });
     }
     const connection = await pool.getConnection(function(err, conn){
@@ -106,7 +107,7 @@ exports.signIn = async function(req, res){
             });
         }
 
-        const userinfoquery = 'select user_index,ID, pass, st_id from users where ID =?'
+        const userinfoquery = 'select USER_INDEX,USER_ID, USER_PW, STD_NUM from USERS where USER_ID =?'
         const userinfoparams = [id];
         conn.query(userinfoquery, userinfoparams, function(err, rows){
             if(err){
@@ -123,19 +124,42 @@ exports.signIn = async function(req, res){
                 return res.json({
                     isSuccess: false,
                     code: 200,
-                    message: "ID가 존재하지 않습니다."
+                    message: "아이디가 존재하지 않습니다."
                 });
             }
 
-            if(rows[0].pass !== password){
+            if(rows[0].USER_PW !== password){
                 conn.release();
                 return res.json({
                     isSuccess: false,
                     code: 200,
-                    message: "Password가 올바르지 않습니다."
+                    message: "비밀번호가 올바르지 않습니다."
                 });
             }
 
+            var tokenKey = "fintech";
+                    jwt.sign(
+                      {
+                        userId: rows[0].USER_ID,
+                      },
+                      tokenKey,
+                      {
+                        expiresIn: "10d",
+                        issuer: "speakup_server.admin",
+                        subject: "user.login.info",
+                      },
+                      function (err, token) {
+                        console.log("로그인 성공", token);
+                        res.json({
+                            isSuccess: true,
+                            code: 100,
+                            result: { jwt: token },
+                            message: "로그인 성공"
+                        });
+                      }
+                    );
+            
+            /*
             let token = await jwt.sign(
                 {
                 index: rows[0].user_index,
@@ -156,6 +180,9 @@ exports.signIn = async function(req, res){
                 result: { jwt: token },
                 message: "로그인 성공"
             });
+            */
+
+            
             conn.release();
         });
         

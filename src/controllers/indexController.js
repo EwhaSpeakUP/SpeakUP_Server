@@ -39,7 +39,7 @@ exports.assignList = async function (req, res){
                     message: "해당 수업을 수강하지 않습니다."
                 });
             }
-            const assignListQuery = "SELECT COURSE_ID, ASSIGNMENT_NAME, DUE_DATE, SUBMIT_CHECK FROM ASSIGNMENT AS A, SUBMIT_ASSIGNMENT AS SA WHERE SA.ASSIGNMENT_ID = A.ASSIGNMENT_ID AND (A.COURSE_ID = ? AND SA.ST_ID = ?);"; //순서 중요 **
+            const assignListQuery = "SELECT COURSE_ID, A.ASSIGNMENT_ID, ASSIGNMENT_NAME, DUE_DATE, SUBMIT_CHECK FROM ASSIGNMENT AS A, SUBMIT_ASSIGNMENT AS SA WHERE SA.ASSIGNMENT_ID = A.ASSIGNMENT_ID AND (A.COURSE_ID = ? AND SA.ST_ID = ?);"; //순서 중요 **
             const assignListParams = [courseId, studentId]; // 순서 중요**
             conn.query(assignListQuery, assignListParams, function(err, rows){
                 if(err){

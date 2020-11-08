@@ -1,11 +1,7 @@
 {
   "dependencies": {
-<<<<<<< HEAD
-    "aws-sdk": "^2.783.0",
-=======
     "auth": "0.0.9",
     "aws-sdk": "^2.761.0",
->>>>>>> 03727d1f169c498bd729b26dbb445318f3d8c894
     "body-parser": "^1.19.0",
     "compression": "^1.7.4",
     "cors": "^2.8.5",

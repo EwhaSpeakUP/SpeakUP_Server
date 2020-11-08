@@ -2,6 +2,7 @@ const {pool} = require('../../config/database');
 const jwt = require('jsonwebtoken');
 const auth = require("../../auth");
 const crypto = require('crypto');
+const { type } = require('os');
 const jwtsecret = require('../../config/secret_config').jwtsecret;
 /**---------- 회원가입 API ------------ */ 
 exports.signUp = async function(req, res){
@@ -39,17 +40,18 @@ exports.signUp = async function(req, res){
 
     const connection = await pool.getConnection(function(err, conn){
         if(err){
-            conn.release();
+            //conn.release();
+            console.log(err);
             return res.json({
                 isSuccess: false,
                 code: 200,
                 message: "DB 서버 연결에 실패했습니다."
             });
         }
-        const checkSTIDquery = 'select * from STUDENT where STD_NUM = ?';
+        const checkSTIDquery = 'select * from STUDENT where ST_ID = ?';
         var checkSTID = conn.query(checkSTIDquery, [st_id], function(err,rows){
             if(err){
-                conn.release();
+                console.log(err);
                 return res.json({
                     isSuccess: false,
                     code: 200,
@@ -64,10 +66,10 @@ exports.signUp = async function(req, res){
                     message: "존재하지 않는 학번입니다."
                 });
             }
-            const checkSTquery = 'select * from users where STD_NUM = ?';
+            const checkSTquery = 'select * from USERS where STD_NUM = ?';
             conn.query(checkSTquery, [st_id], function(err,rows){
                 if(err){
-                    conn.release();
+                    console.log(err);
                     return res.json({
                         isSuccess: false,
                         code: 200,
@@ -82,9 +84,10 @@ exports.signUp = async function(req, res){
                     });
                 }
     
-                const checkIDquery = 'select * from users where USER_ID = ?';
+                const checkIDquery = 'select * from USERS where USER_ID = ?';
                 conn.query(checkIDquery, [id], function(err, rows){
                     if(err){
+                        console.log(err);
                         return res.json({
                             isSuccess: false,
                             code: 200,
@@ -99,9 +102,10 @@ exports.signUp = async function(req, res){
                         });
                     }
                     
-                    const addIDquery = 'insert into users(USER_ID, USER_PW, STD_NUM) values (?, ?, ?)';
+                    const addIDquery = 'insert into USERS(USER_ID, USER_PW, STD_NUM) values (?, ?, ?)';
                     conn.query(addIDquery, [id, encoded_password, st_id], function(err, rows){
                         if(err){
+                            console.log(err);
                             return res.json({
                                 isSuccess: false,
                                 code: 200,
@@ -125,6 +129,8 @@ exports.signUp = async function(req, res){
     });
 }
     
+
+
 
 
 

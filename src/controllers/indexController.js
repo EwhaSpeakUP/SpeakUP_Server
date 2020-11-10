@@ -14,7 +14,7 @@ exports.assignList = async function (req, res){
         if (err) {
             return res.json({
                 isSuccess : false,
-                code: 301,
+                code: 200,
                 message: "DB 서버 연결에 실패했습니다"
             });
         }
@@ -30,7 +30,7 @@ exports.assignList = async function (req, res){
                 conn.release();
                 return res.json({
                     isSuccess : false,
-                    code: 302,
+                    code: 201,
                     message: "DB 질의시 문제가 발생했습니다."
                 });
             }
@@ -38,7 +38,7 @@ exports.assignList = async function (req, res){
                 conn.release();
                 return res.json({
                     isSuccess : false,
-                    code: 401,
+                    code: 202,
                     message: "해당 수업을 수강하지 않습니다."
                 });
             }
@@ -48,14 +48,14 @@ exports.assignList = async function (req, res){
                 if(err){
                     return res.json({
                         isSuccess : false,
-                        code: 302,
+                        code: 201,
                         message: "DB 질의시 문제가 발생했습니다."
                     });
                 }
                 if (rows.length >= 1){
                     return res.json({
                         isSuccess : true,
-                        code: 200,
+                        code: 100,
                         message: "과제목록 수신에 성공했습니다.",
                         result: {
                             courses : rows
@@ -64,7 +64,7 @@ exports.assignList = async function (req, res){
                 } else{
                     return res.json({
                         isSuccess : true,
-                        code: 201,
+                        code: 101,
                         message: "과제목록이 비어있습니다."
                     });
                 }

@@ -5,7 +5,7 @@ module.exports = function(app){
 
 
     app.get("/course", auth, index.courseList);
-    app.get("/assignList/:courseID",auth, index.assignList);  
+    app.get("/assign/:courseId",auth, index.assignList);  
 
 
 };

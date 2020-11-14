@@ -18,7 +18,7 @@ exports.uploadAssign = async function (req, res){
     var student_ID = jwt.decode(jwt_token, jwtsecret).STD_NUM;
     var there_was_error = false;
     
-    for (var i=0 ; i < req.body.file.length ; i++){
+    for (var i=0 ; i < req.body.files.length ; i++){
         //body에 저장된 base64 처리 후, bytestring으로 변환
         var wav_bytestring= new Buffer.from(req.body.file[i], 'base64');
         
@@ -68,7 +68,7 @@ exports.uploadAssign = async function (req, res){
 exports.transmitFile = async function(req,res){
     const connection = await pool.getConnection(function(err, conn){
         if(err) {
-            console.log("here");
+            console.log(err);
             return res.json({
                 isSuccess : false,
                 code: 200,
@@ -80,6 +80,7 @@ exports.transmitFile = async function(req,res){
         conn.query(sql, [assign_id], function(err, result){
                   
         if(err){
+            console.log(err);
             conn.release();
             return res.json({
                 isSuccess : false,

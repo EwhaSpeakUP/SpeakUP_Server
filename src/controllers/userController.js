@@ -6,6 +6,7 @@ const { type } = require('os');
 const jwtsecret = require('../../config/secret_config').jwtsecret;
 /**---------- 회원가입 API ------------ */ 
 exports.signUp = async function(req, res){
+    console.log("회원가입API");
     const {id, password, st_id} = req.body;
     encoded_password = crypto.createHash('sha512').update(password).digest('base64');
 
@@ -136,6 +137,7 @@ exports.signUp = async function(req, res){
 
 /**---------- 로그인 API ------------ */ 
 exports.signIn = async function(req, res){
+    console.log("로그인 API");
     const {id, password} = req.body;
     encoded_password = crypto.createHash('sha512').update(password).digest('base64');
     if (!id){
@@ -154,18 +156,20 @@ exports.signIn = async function(req, res){
     }
     const connection = await pool.getConnection(function(err, conn){
         if (err){
-            //conn.release();
+            console.log(err);//TransportOptions.//conn.release();
             return res.json({
                 isSuccess: false,
                 code: 200,
                 message: "DB 서버 연결에 실패했습니다."
             });
+            
         }
 
         const userinfoquery = 'select USER_INDEX,USER_ID, USER_PW, STD_NUM from USERS where USER_ID =?'
         const userinfoparams = [id];
         conn.query(userinfoquery, userinfoparams, function(err, rows){
             if(err){
+                console.log(err);
                 conn.release();
                 return res.json({
                     isSuccess: false,
@@ -204,6 +208,9 @@ exports.signIn = async function(req, res){
                         subject: "user.login.info",
                       },
                       function (err, token) {
+                        if(err){
+                            console.log(err);
+                        }
                         res.json({
                             isSuccess: true,
                             code: 100,

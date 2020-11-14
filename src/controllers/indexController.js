@@ -12,6 +12,7 @@ const jwtsecret = require('../../config/secret_config').jwtsecret;
 exports.assignList = async function (req, res){
     const connection = await pool.getConnection(function(err, conn){
         if (err) {
+            console.log(err);
             return res.json({
                 isSuccess : false,
                 code: 200,
@@ -27,6 +28,7 @@ exports.assignList = async function (req, res){
         const checkRegisterQuery = "SELECT * FROM COURSE_REGISTER WHERE ST_ID = ? AND COURSE_ID = ?";
         conn.query(checkRegisterQuery, [studentId, courseId], (err, rows) => {
             if(err){
+                console.log(err);
                 conn.release();
                 return res.json({
                     isSuccess : false,
@@ -46,6 +48,7 @@ exports.assignList = async function (req, res){
             const assignListParams = [courseId, studentId]; // 순서 중요**
             conn.query(assignListQuery, assignListParams, function(err, rows){
                 if(err){
+                    console.log(err);
                     return res.json({
                         isSuccess : false,
                         code: 201,

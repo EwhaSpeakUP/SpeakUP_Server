@@ -435,3 +435,549 @@ Require stack:
     '/home/ec2-user/SpeakUP_Server/app.js'
   ]
 }
+2020-11-08 13:35:24 info undefined - API Server Start At Port 5000
+(node:26111) UnhandledPromiseRejectionWarning: TypeError [ERR_INVALID_ARG_TYPE]: The "data" argument must be of type string or an instance of Buffer, TypedArray, or DataView. Received undefined
+    at Hash.update (internal/crypto/hash.js:84:11)
+    at exports.signIn (/home/ec2-user/SpeakUP_Server/src/controllers/userController.js:140:52)
+    at Layer.handle [as handle_request] (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/layer.js:95:5)
+    at /home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/index.js:275:10)
+    at cors (/home/ec2-user/SpeakUP_Server/node_modules/cors/lib/index.js:188:7)
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:26111) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 1)
+(node:26111) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+(node:26111) UnhandledPromiseRejectionWarning: TypeError [ERR_INVALID_ARG_TYPE]: The "data" argument must be of type string or an instance of Buffer, TypedArray, or DataView. Received undefined
+    at Hash.update (internal/crypto/hash.js:84:11)
+    at exports.signIn (/home/ec2-user/SpeakUP_Server/src/controllers/userController.js:140:52)
+    at Layer.handle [as handle_request] (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/layer.js:95:5)
+    at /home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/index.js:275:10)
+    at cors (/home/ec2-user/SpeakUP_Server/node_modules/cors/lib/index.js:188:7)
+(node:26111) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 2)
+사용자가 전송한 토큰: undefined
+2020-11-09 03:37:40 info undefined - API Server Start At Port 5000
+2020-11-09 03:40:08 info undefined - API Server Start At Port 5000
+2020-11-09 03:41:57 info undefined - API Server Start At Port 5000
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDQ4OTMzMjQsImV4cCI6MTYwNTc1NzMyNCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.YTqsw1HIIjoOQ02rHdJQmxOfYrFMi8Y8jnBmYOKEhJY
+2020-11-09 03:43:54 info undefined - API Server Start At Port 5000
+(node:28681) UnhandledPromiseRejectionWarning: TypeError [ERR_INVALID_ARG_TYPE]: The "data" argument must be of type string or an instance of Buffer, TypedArray, or DataView. Received undefined
+    at Hash.update (internal/crypto/hash.js:84:11)
+    at exports.signIn (/home/ec2-user/SpeakUP_Server/src/controllers/userController.js:140:52)
+    at Layer.handle [as handle_request] (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/layer.js:95:5)
+    at /home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/index.js:275:10)
+    at cors (/home/ec2-user/SpeakUP_Server/node_modules/cors/lib/index.js:188:7)
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:28681) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 1)
+(node:28681) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+(node:28681) UnhandledPromiseRejectionWarning: TypeError [ERR_INVALID_ARG_TYPE]: The "data" argument must be of type string or an instance of Buffer, TypedArray, or DataView. Received undefined
+    at Hash.update (internal/crypto/hash.js:84:11)
+    at exports.signIn (/home/ec2-user/SpeakUP_Server/src/controllers/userController.js:140:52)
+    at Layer.handle [as handle_request] (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/layer.js:95:5)
+    at /home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/index.js:275:10)
+    at cors (/home/ec2-user/SpeakUP_Server/node_modules/cors/lib/index.js:188:7)
+(node:28681) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 2)
+사용자가 전송한 토큰: undefined
+(node:28681) UnhandledPromiseRejectionWarning: TypeError [ERR_INVALID_ARG_TYPE]: The "data" argument must be of type string or an instance of Buffer, TypedArray, or DataView. Received undefined
+    at Hash.update (internal/crypto/hash.js:84:11)
+    at exports.signIn (/home/ec2-user/SpeakUP_Server/src/controllers/userController.js:140:52)
+    at Layer.handle [as handle_request] (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/layer.js:95:5)
+    at /home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/index.js:275:10)
+    at cors (/home/ec2-user/SpeakUP_Server/node_modules/cors/lib/index.js:188:7)
+(node:28681) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 3)
+사용자가 전송한 토큰: undefined
+사용자가 전송한 토큰: undefined
+사용자가 전송한 토큰: undefined
+(node:28681) UnhandledPromiseRejectionWarning: TypeError [ERR_INVALID_ARG_TYPE]: The "data" argument must be of type string or an instance of Buffer, TypedArray, or DataView. Received undefined
+    at Hash.update (internal/crypto/hash.js:84:11)
+    at exports.signIn (/home/ec2-user/SpeakUP_Server/src/controllers/userController.js:140:52)
+    at Layer.handle [as handle_request] (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/layer.js:95:5)
+    at /home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/index.js:275:10)
+    at cors (/home/ec2-user/SpeakUP_Server/node_modules/cors/lib/index.js:188:7)
+(node:28681) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 4)
+(node:28681) UnhandledPromiseRejectionWarning: TypeError [ERR_INVALID_ARG_TYPE]: The "data" argument must be of type string or an instance of Buffer, TypedArray, or DataView. Received undefined
+    at Hash.update (internal/crypto/hash.js:84:11)
+    at exports.signIn (/home/ec2-user/SpeakUP_Server/src/controllers/userController.js:140:52)
+    at Layer.handle [as handle_request] (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/layer.js:95:5)
+    at /home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/index.js:275:10)
+    at cors (/home/ec2-user/SpeakUP_Server/node_modules/cors/lib/index.js:188:7)
+(node:28681) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 5)
+사용자가 전송한 토큰: undefined
+(node:28681) UnhandledPromiseRejectionWarning: TypeError [ERR_INVALID_ARG_TYPE]: The "data" argument must be of type string or an instance of Buffer, TypedArray, or DataView. Received undefined
+    at Hash.update (internal/crypto/hash.js:84:11)
+    at exports.signIn (/home/ec2-user/SpeakUP_Server/src/controllers/userController.js:140:52)
+    at Layer.handle [as handle_request] (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/layer.js:95:5)
+    at /home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/index.js:275:10)
+    at cors (/home/ec2-user/SpeakUP_Server/node_modules/cors/lib/index.js:188:7)
+(node:28681) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 6)
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDQ5NzU4MDQsImV4cCI6MTYwNTgzOTgwNCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.2ubrgiHXP-P-Ruo6RSIRrgBE5Hpf95yxQfRoFChuRXo
+2020-11-10 02:37:26 info undefined - API Server Start At Port 5000
+events.js:291
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EADDRINUSE: address already in use :::5000
+    at Server.setupListenHandle [as _listen2] (net.js:1317:16)
+    at listenInCluster (net.js:1365:12)
+    at Server.listen (net.js:1451:7)
+    at Function.listen (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/application.js:618:24)
+    at Object.<anonymous> (/home/ec2-user/SpeakUP_Server/app.js:5:11)
+    at Module._compile (internal/modules/cjs/loader.js:1085:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1114:10)
+    at Module.load (internal/modules/cjs/loader.js:950:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:791:14)
+    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (net.js:1344:8)
+    at processTicksAndRejections (internal/process/task_queues.js:80:21) {
+  code: 'EADDRINUSE',
+  errno: -98,
+  syscall: 'listen',
+  address: '::',
+  port: 5000
+}
+2020-11-10 02:37:50 info undefined - API Server Start At Port 5000
+events.js:291
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EADDRINUSE: address already in use :::5000
+    at Server.setupListenHandle [as _listen2] (net.js:1317:16)
+    at listenInCluster (net.js:1365:12)
+    at Server.listen (net.js:1451:7)
+    at Function.listen (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/application.js:618:24)
+    at Object.<anonymous> (/home/ec2-user/SpeakUP_Server/app.js:5:11)
+    at Module._compile (internal/modules/cjs/loader.js:1085:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1114:10)
+    at Module.load (internal/modules/cjs/loader.js:950:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:791:14)
+    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (net.js:1344:8)
+    at processTicksAndRejections (internal/process/task_queues.js:80:21) {
+  code: 'EADDRINUSE',
+  errno: -98,
+  syscall: 'listen',
+  address: '::',
+  port: 5000
+}
+2020-11-10 02:38:02 info undefined - API Server Start At Port 5000
+events.js:291
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EADDRINUSE: address already in use :::5000
+    at Server.setupListenHandle [as _listen2] (net.js:1317:16)
+    at listenInCluster (net.js:1365:12)
+    at Server.listen (net.js:1451:7)
+    at Function.listen (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/application.js:618:24)
+    at Object.<anonymous> (/home/ec2-user/SpeakUP_Server/app.js:5:11)
+    at Module._compile (internal/modules/cjs/loader.js:1085:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1114:10)
+    at Module.load (internal/modules/cjs/loader.js:950:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:791:14)
+    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (net.js:1344:8)
+    at processTicksAndRejections (internal/process/task_queues.js:80:21) {
+  code: 'EADDRINUSE',
+  errno: -98,
+  syscall: 'listen',
+  address: '::',
+  port: 5000
+}
+2020-11-10 02:38:10 info undefined - API Server Start At Port 5000
+events.js:291
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EADDRINUSE: address already in use :::5000
+    at Server.setupListenHandle [as _listen2] (net.js:1317:16)
+    at listenInCluster (net.js:1365:12)
+    at Server.listen (net.js:1451:7)
+    at Function.listen (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/application.js:618:24)
+    at Object.<anonymous> (/home/ec2-user/SpeakUP_Server/app.js:5:11)
+    at Module._compile (internal/modules/cjs/loader.js:1085:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1114:10)
+    at Module.load (internal/modules/cjs/loader.js:950:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:791:14)
+    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (net.js:1344:8)
+    at processTicksAndRejections (internal/process/task_queues.js:80:21) {
+  code: 'EADDRINUSE',
+  errno: -98,
+  syscall: 'listen',
+  address: '::',
+  port: 5000
+}
+2020-11-10 02:38:38 info undefined - API Server Start At Port 5000
+events.js:291
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EADDRINUSE: address already in use :::5000
+    at Server.setupListenHandle [as _listen2] (net.js:1317:16)
+    at listenInCluster (net.js:1365:12)
+    at Server.listen (net.js:1451:7)
+    at Function.listen (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/application.js:618:24)
+    at Object.<anonymous> (/home/ec2-user/SpeakUP_Server/app.js:5:11)
+    at Module._compile (internal/modules/cjs/loader.js:1085:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1114:10)
+    at Module.load (internal/modules/cjs/loader.js:950:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:791:14)
+    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (net.js:1344:8)
+    at processTicksAndRejections (internal/process/task_queues.js:80:21) {
+  code: 'EADDRINUSE',
+  errno: -98,
+  syscall: 'listen',
+  address: '::',
+  port: 5000
+}
+2020-11-10 02:40:33 info undefined - API Server Start At Port 5000
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDQ5NzU4MDQsImV4cCI6MTYwNTgzOTgwNCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.2ubrgiHXP-P-Ruo6RSIRrgBE5Hpf95yxQfRoFChuRXo
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDQ5NzU4MDQsImV4cCI6MTYwNTgzOTgwNCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.2ubrgiHXP-P-Ruo6RSIRrgBE5Hpf95yxQfRoFChuRXo
+사용자가 전송한 토큰: undefined
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDQ5ODI2MTEsImV4cCI6MTYwNTg0NjYxMSwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.SBnMoesMqgwVkECjKHEYRRx1OHMhVgtkC9WIN4JPnV0
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDQ5ODI2MTEsImV4cCI6MTYwNTg0NjYxMSwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.SBnMoesMqgwVkECjKHEYRRx1OHMhVgtkC9WIN4JPnV0
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDQ5ODI2MTEsImV4cCI6MTYwNTg0NjYxMSwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.SBnMoesMqgwVkECjKHEYRRx1OHMhVgtkC9WIN4JPnV0
+사용자가 전송한 토큰: undefined
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDQ5ODI2MzQsImV4cCI6MTYwNTg0NjYzNCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.15kmgb1PSKXk4CIikIQZzWdp5vilE4m9ppjZugqmvYM
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDQ5ODI2MzQsImV4cCI6MTYwNTg0NjYzNCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.15kmgb1PSKXk4CIikIQZzWdp5vilE4m9ppjZugqmvYM
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDQ5ODI2MzQsImV4cCI6MTYwNTg0NjYzNCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.15kmgb1PSKXk4CIikIQZzWdp5vilE4m9ppjZugqmvYM
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDQ5ODI2MzQsImV4cCI6MTYwNTg0NjYzNCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.15kmgb1PSKXk4CIikIQZzWdp5vilE4m9ppjZugqmvYM
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDQ5ODI2MTEsImV4cCI6MTYwNTg0NjYxMSwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.SBnMoesMqgwVkECjKHEYRRx1OHMhVgtkC9WIN4JPnV0
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDQ5ODI2MTEsImV4cCI6MTYwNTg0NjYxMSwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.SBnMoesMqgwVkECjKHEYRRx1OHMhVgtkC9WIN4JPnV0
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDQ5ODI2MzQsImV4cCI6MTYwNTg0NjYzNCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.15kmgb1PSKXk4CIikIQZzWdp5vilE4m9ppjZugqmvYM
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDQ5ODI2MzQsImV4cCI6MTYwNTg0NjYzNCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.15kmgb1PSKXk4CIikIQZzWdp5vilE4m9ppjZugqmvYM
+2020-11-10 04:48:07 info undefined - API Server Start At Port 5000
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDQ5ODI2MzQsImV4cCI6MTYwNTg0NjYzNCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.15kmgb1PSKXk4CIikIQZzWdp5vilE4m9ppjZugqmvYM
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDQ5ODI2MzQsImV4cCI6MTYwNTg0NjYzNCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.15kmgb1PSKXk4CIikIQZzWdp5vilE4m9ppjZugqmvYM
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDQ5ODI2MzQsImV4cCI6MTYwNTg0NjYzNCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.15kmgb1PSKXk4CIikIQZzWdp5vilE4m9ppjZugqmvYM
+2020-11-10 04:51:55 info undefined - API Server Start At Port 5000
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDQ5ODM4NDgsImV4cCI6MTYwNTg0Nzg0OCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.uwqX-zFytQuLefVvwiU9TMrKika2xOYGHM5YVk_GSc4
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDQ5ODM4NDgsImV4cCI6MTYwNTg0Nzg0OCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.uwqX-zFytQuLefVvwiU9TMrKika2xOYGHM5YVk_GSc4
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUwMDI0ODAsImV4cCI6MTYwNTg2NjQ4MCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.dWAhWtDoSwtdfWJFihSJIvaVLq9vZN8hl8PY_NPoWk4
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUwMDI0ODAsImV4cCI6MTYwNTg2NjQ4MCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.dWAhWtDoSwtdfWJFihSJIvaVLq9vZN8hl8PY_NPoWk4
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUwMDI0ODAsImV4cCI6MTYwNTg2NjQ4MCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.dWAhWtDoSwtdfWJFihSJIvaVLq9vZN8hl8PY_NPoWk4
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDQ5ODI2MzQsImV4cCI6MTYwNTg0NjYzNCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.15kmgb1PSKXk4CIikIQZzWdp5vilE4m9ppjZugqmvYM
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDQ5ODI2MzQsImV4cCI6MTYwNTg0NjYzNCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.15kmgb1PSKXk4CIikIQZzWdp5vilE4m9ppjZugqmvYM
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDQ5ODI2MzQsImV4cCI6MTYwNTg0NjYzNCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.15kmgb1PSKXk4CIikIQZzWdp5vilE4m9ppjZugqmvYM
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE0LCJpYXQiOjE2MDUwMDM3NzUsImV4cCI6MTYwNTg2Nzc3NSwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.oAzzPVo44PbHvDw_dPz_OInPOcO0X39VYbbdcHjHGOs
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE0LCJpYXQiOjE2MDUwMDM3NzUsImV4cCI6MTYwNTg2Nzc3NSwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.oAzzPVo44PbHvDw_dPz_OInPOcO0X39VYbbdcHjHGOs
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE0LCJpYXQiOjE2MDUwMDM3NzUsImV4cCI6MTYwNTg2Nzc3NSwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.oAzzPVo44PbHvDw_dPz_OInPOcO0X39VYbbdcHjHGOs
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE0LCJpYXQiOjE2MDUwMDM3NzUsImV4cCI6MTYwNTg2Nzc3NSwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.oAzzPVo44PbHvDw_dPz_OInPOcO0X39VYbbdcHjHGOs
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE0LCJpYXQiOjE2MDUwMDM3NzUsImV4cCI6MTYwNTg2Nzc3NSwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.oAzzPVo44PbHvDw_dPz_OInPOcO0X39VYbbdcHjHGOs
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE0LCJpYXQiOjE2MDUwMDM3NzUsImV4cCI6MTYwNTg2Nzc3NSwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.oAzzPVo44PbHvDw_dPz_OInPOcO0X39VYbbdcHjHGOs
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE0LCJpYXQiOjE2MDUwMDM3NzUsImV4cCI6MTYwNTg2Nzc3NSwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.oAzzPVo44PbHvDw_dPz_OInPOcO0X39VYbbdcHjHGOs
+2020-11-10 10:30:54 info undefined - API Server Start At Port 5000
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUwMDQyNzUsImV4cCI6MTYwNTg2ODI3NSwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.zj0ASc5UdmPwaV_QNuBXAIyvHBcGX4IH6LjCkr6f6BU
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUwMDQyNzUsImV4cCI6MTYwNTg2ODI3NSwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.zj0ASc5UdmPwaV_QNuBXAIyvHBcGX4IH6LjCkr6f6BU
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUwMDQyNzUsImV4cCI6MTYwNTg2ODI3NSwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.zj0ASc5UdmPwaV_QNuBXAIyvHBcGX4IH6LjCkr6f6BU
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUwMDQyNzUsImV4cCI6MTYwNTg2ODI3NSwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.zj0ASc5UdmPwaV_QNuBXAIyvHBcGX4IH6LjCkr6f6BU
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDQ5ODI2MzQsImV4cCI6MTYwNTg0NjYzNCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.15kmgb1PSKXk4CIikIQZzWdp5vilE4m9ppjZugqmvYM
+2020-11-13 05:46:30 info undefined - API Server Start At Port 5000
+events.js:291
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EADDRINUSE: address already in use :::5000
+    at Server.setupListenHandle [as _listen2] (net.js:1317:16)
+    at listenInCluster (net.js:1365:12)
+    at Server.listen (net.js:1451:7)
+    at Function.listen (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/application.js:618:24)
+    at Object.<anonymous> (/home/ec2-user/SpeakUP_Server/app.js:5:11)
+    at Module._compile (internal/modules/cjs/loader.js:1085:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1114:10)
+    at Module.load (internal/modules/cjs/loader.js:950:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:791:14)
+    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (net.js:1344:8)
+    at processTicksAndRejections (internal/process/task_queues.js:80:21) {
+  code: 'EADDRINUSE',
+  errno: -98,
+  syscall: 'listen',
+  address: '::',
+  port: 5000
+}
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDQ5ODI2MzQsImV4cCI6MTYwNTg0NjYzNCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.15kmgb1PSKXk4CIikIQZzWdp5vilE4m9ppjZugqmvYM
+2020-11-13 07:05:14 info undefined - API Server Start At Port 5000
+events.js:291
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EADDRINUSE: address already in use :::5000
+    at Server.setupListenHandle [as _listen2] (net.js:1317:16)
+    at listenInCluster (net.js:1365:12)
+    at Server.listen (net.js:1451:7)
+    at Function.listen (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/application.js:618:24)
+    at Object.<anonymous> (/home/ec2-user/SpeakUP_Server/app.js:5:11)
+    at Module._compile (internal/modules/cjs/loader.js:1085:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1114:10)
+    at Module.load (internal/modules/cjs/loader.js:950:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:791:14)
+    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (net.js:1344:8)
+    at processTicksAndRejections (internal/process/task_queues.js:80:21) {
+  code: 'EADDRINUSE',
+  errno: -98,
+  syscall: 'listen',
+  address: '::',
+  port: 5000
+}
+2020-11-13 07:06:04 info undefined - API Server Start At Port 5000
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE0LCJpYXQiOjE2MDUyNTExNzQsImV4cCI6MTYwNjExNTE3NCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.SX1N7lsdKgpUJ3O8XoJu-P_V5_-Id3SGeqWMZySK7wo
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUyNTA3MDUsImV4cCI6MTYwNjExNDcwNSwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.j89My9zK4smuh6ySAYE_pAXIvYgXDQxOs8DTNYjc1N8
+사용자가 전송한 토큰: undefined
+사용자가 전송한 토큰: undefined
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUyNTA3MDUsImV4cCI6MTYwNjExNDcwNSwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.j89My9zK4smuh6ySAYE_pAXIvYgXDQxOs8DTNYjc1N8
+(node:13250) UnhandledPromiseRejectionWarning: TypeError: Cannot read property 'length' of undefined
+    at exports.uploadAssign (/home/ec2-user/SpeakUP_Server/src/controllers/assignController.js:21:38)
+    at Layer.handle [as handle_request] (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/route.js:137:13)
+    at /home/ec2-user/SpeakUP_Server/auth.js:32:5
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:13250) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 1)
+(node:13250) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+사용자가 전송한 토큰: undefined
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUyNTA3MDUsImV4cCI6MTYwNjExNDcwNSwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.j89My9zK4smuh6ySAYE_pAXIvYgXDQxOs8DTNYjc1N8
+(node:13250) UnhandledPromiseRejectionWarning: TypeError: Cannot read property 'length' of undefined
+    at exports.uploadAssign (/home/ec2-user/SpeakUP_Server/src/controllers/assignController.js:21:38)
+    at Layer.handle [as handle_request] (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/route.js:137:13)
+    at /home/ec2-user/SpeakUP_Server/auth.js:32:5
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+(node:13250) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 2)
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUyNzI2NDAsImV4cCI6MTYwNjEzNjY0MCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.tH1BxZ0tXUxTVtjRl1Z-X4hpmQBhhdhO0xdgeW_A08Q
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUyNzI3MjEsImV4cCI6MTYwNjEzNjcyMSwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.w2IR6PDhT_EGby0P83UT9KXhw2zUmq0IM03VIgbbGAY
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUyNzI3NDQsImV4cCI6MTYwNjEzNjc0NCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.rIYGyO2ANAyyhtFl0Y2cFOq6KlRwIGhxGYLzalz2D7w
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUyNTA3MDUsImV4cCI6MTYwNjExNDcwNSwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.j89My9zK4smuh6ySAYE_pAXIvYgXDQxOs8DTNYjc1N8
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUyNTA3MDUsImV4cCI6MTYwNjExNDcwNSwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.j89My9zK4smuh6ySAYE_pAXIvYgXDQxOs8DTNYjc1N8
+(node:13250) UnhandledPromiseRejectionWarning: TypeError: Cannot read property 'length' of undefined
+    at exports.uploadAssign (/home/ec2-user/SpeakUP_Server/src/controllers/assignController.js:21:38)
+    at Layer.handle [as handle_request] (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/route.js:137:13)
+    at /home/ec2-user/SpeakUP_Server/auth.js:32:5
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+(node:13250) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 3)
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUyNTA3MDUsImV4cCI6MTYwNjExNDcwNSwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.j89My9zK4smuh6ySAYE_pAXIvYgXDQxOs8DTNYjc1N8
+2020-11-13 13:19:27 info undefined - API Server Start At Port 5000
+사용자가 전송한 토큰: undefined
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUyNzM2MTgsImV4cCI6MTYwNjEzNzYxOCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.35hRZEXc0ejjrSbMVEOPiJbJ7mMWgXhPD5hiqBTKtK0
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUyNzM2MTgsImV4cCI6MTYwNjEzNzYxOCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.35hRZEXc0ejjrSbMVEOPiJbJ7mMWgXhPD5hiqBTKtK0
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUyNzM2MTgsImV4cCI6MTYwNjEzNzYxOCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.35hRZEXc0ejjrSbMVEOPiJbJ7mMWgXhPD5hiqBTKtK0
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUyNzM2MTgsImV4cCI6MTYwNjEzNzYxOCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.35hRZEXc0ejjrSbMVEOPiJbJ7mMWgXhPD5hiqBTKtK0
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUyNzM2MTgsImV4cCI6MTYwNjEzNzYxOCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.35hRZEXc0ejjrSbMVEOPiJbJ7mMWgXhPD5hiqBTKtK0
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUyNzM3ODMsImV4cCI6MTYwNjEzNzc4MywiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.T8lrhkSdxqAMIhttjjpowZ1xBSpibR_22tFIUKcIMbc
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE0LCJpYXQiOjE2MDUyNzM4NjQsImV4cCI6MTYwNjEzNzg2NCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ._nQtMCEMLexQG1pryL0w0AY0ec6xjxYxFhiHaT0foQM
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE0LCJpYXQiOjE2MDUyNzM4NjQsImV4cCI6MTYwNjEzNzg2NCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ._nQtMCEMLexQG1pryL0w0AY0ec6xjxYxFhiHaT0foQM
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE0LCJpYXQiOjE2MDUyNzM4NjQsImV4cCI6MTYwNjEzNzg2NCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ._nQtMCEMLexQG1pryL0w0AY0ec6xjxYxFhiHaT0foQM
+2020-11-13 13:31:38 info undefined - API Server Start At Port 5000
+2020-11-13 13:34:42 info undefined - API Server Start At Port 5000
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE0LCJpYXQiOjE2MDUyNzQ0OTIsImV4cCI6MTYwNjEzODQ5MiwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.IyvaFRa9fwDtaG0Xh3ZL9V-MJSV4iL8Zdu_xTbPSUYw
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDQ5ODI2MzQsImV4cCI6MTYwNTg0NjYzNCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.15kmgb1PSKXk4CIikIQZzWdp5vilE4m9ppjZugqmvYM
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUyNzQ3MzAsImV4cCI6MTYwNjEzODczMCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.CRcgI8cq8urlFsogIBMPh0s5K2SPfDu4GkFU5NU1KAc
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUyNzQ3MzAsImV4cCI6MTYwNjEzODczMCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.CRcgI8cq8urlFsogIBMPh0s5K2SPfDu4GkFU5NU1KAc
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUyNTA3MDUsImV4cCI6MTYwNjExNDcwNSwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.j89My9zK4smuh6ySAYE_pAXIvYgXDQxOs8DTNYjc1N8
+(node:14423) UnhandledPromiseRejectionWarning: TypeError: Cannot read property 'length' of undefined
+    at exports.uploadAssign (/home/ec2-user/SpeakUP_Server/src/controllers/assignController.js:21:38)
+    at Layer.handle [as handle_request] (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/route.js:137:13)
+    at /home/ec2-user/SpeakUP_Server/auth.js:32:5
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:14423) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 1)
+(node:14423) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUyNTA3MDUsImV4cCI6MTYwNjExNDcwNSwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.j89My9zK4smuh6ySAYE_pAXIvYgXDQxOs8DTNYjc1N8
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUyNTA3MDUsImV4cCI6MTYwNjExNDcwNSwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.j89My9zK4smuh6ySAYE_pAXIvYgXDQxOs8DTNYjc1N8
+(node:14423) UnhandledPromiseRejectionWarning: TypeError: Cannot read property 'length' of undefined
+    at exports.uploadAssign (/home/ec2-user/SpeakUP_Server/src/controllers/assignController.js:21:38)
+    at Layer.handle [as handle_request] (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/route.js:137:13)
+    at /home/ec2-user/SpeakUP_Server/auth.js:32:5
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+(node:14423) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 2)
+사용자가 전송한 토큰: undefined
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUyNTA3MDUsImV4cCI6MTYwNjExNDcwNSwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.j89My9zK4smuh6ySAYE_pAXIvYgXDQxOs8DTNYjc1N8
+(node:14423) UnhandledPromiseRejectionWarning: TypeError: Cannot read property 'length' of undefined
+    at exports.uploadAssign (/home/ec2-user/SpeakUP_Server/src/controllers/assignController.js:21:38)
+    at Layer.handle [as handle_request] (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/route.js:137:13)
+    at /home/ec2-user/SpeakUP_Server/auth.js:32:5
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+(node:14423) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 3)
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUzMTgzODUsImV4cCI6MTYwNjE4MjM4NSwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.zfrrjJLeJaslGbTraUr7TVadxWbWG_X7GDML-kddnRo
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUzMTgzODUsImV4cCI6MTYwNjE4MjM4NSwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.zfrrjJLeJaslGbTraUr7TVadxWbWG_X7GDML-kddnRo
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUzMTg0NjQsImV4cCI6MTYwNjE4MjQ2NCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.VUUa_PJNeogtWLSgUaQBm-HkS0m9jTYSJH3-ve9478k
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUzMTg0NjQsImV4cCI6MTYwNjE4MjQ2NCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.VUUa_PJNeogtWLSgUaQBm-HkS0m9jTYSJH3-ve9478k
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUzMTg5MzksImV4cCI6MTYwNjE4MjkzOSwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.HMBy-yoTeQ8KTf-yTrl2w99naMZinJ7bBps77U3HViY
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUzMTg5MzksImV4cCI6MTYwNjE4MjkzOSwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.HMBy-yoTeQ8KTf-yTrl2w99naMZinJ7bBps77U3HViY
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDQ5ODI2MzQsImV4cCI6MTYwNTg0NjYzNCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.15kmgb1PSKXk4CIikIQZzWdp5vilE4m9ppjZugqmvYM
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUyNTA3MDUsImV4cCI6MTYwNjExNDcwNSwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.j89My9zK4smuh6ySAYE_pAXIvYgXDQxOs8DTNYjc1N8
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUyNTA3MDUsImV4cCI6MTYwNjExNDcwNSwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.j89My9zK4smuh6ySAYE_pAXIvYgXDQxOs8DTNYjc1N8
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUyNTA3MDUsImV4cCI6MTYwNjExNDcwNSwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.j89My9zK4smuh6ySAYE_pAXIvYgXDQxOs8DTNYjc1N8
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUyNTA3MDUsImV4cCI6MTYwNjExNDcwNSwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.j89My9zK4smuh6ySAYE_pAXIvYgXDQxOs8DTNYjc1N8
+2020-11-14 02:02:18 info undefined - API Server Start At Port 5000
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUyNTA3MDUsImV4cCI6MTYwNjExNDcwNSwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.j89My9zK4smuh6ySAYE_pAXIvYgXDQxOs8DTNYjc1N8
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDQ5ODI2MzQsImV4cCI6MTYwNTg0NjYzNCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.15kmgb1PSKXk4CIikIQZzWdp5vilE4m9ppjZugqmvYM
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDQ5ODI2MzQsImV4cCI6MTYwNTg0NjYzNCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.15kmgb1PSKXk4CIikIQZzWdp5vilE4m9ppjZugqmvYM
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUzMTg5MzksImV4cCI6MTYwNjE4MjkzOSwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.HMBy-yoTeQ8KTf-yTrl2w99naMZinJ7bBps77U3HViY
+(node:16483) UnhandledPromiseRejectionWarning: TypeError: Cannot read property 'length' of undefined
+    at exports.uploadAssign (/home/ec2-user/SpeakUP_Server/src/controllers/assignController.js:21:38)
+    at Layer.handle [as handle_request] (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/route.js:137:13)
+    at /home/ec2-user/SpeakUP_Server/auth.js:32:5
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:16483) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 1)
+(node:16483) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUzMjIzNTAsImV4cCI6MTYwNjE4NjM1MCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.3MjF8TJxDGF9OMy2pfnHBnD32g-wCS8FpiL_ETVgE8o
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUzMjIzNTAsImV4cCI6MTYwNjE4NjM1MCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.3MjF8TJxDGF9OMy2pfnHBnD32g-wCS8FpiL_ETVgE8o
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDQ5ODI2MzQsImV4cCI6MTYwNTg0NjYzNCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.15kmgb1PSKXk4CIikIQZzWdp5vilE4m9ppjZugqmvYM
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDQ5ODI2MzQsImV4cCI6MTYwNTg0NjYzNCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.15kmgb1PSKXk4CIikIQZzWdp5vilE4m9ppjZugqmvYM
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDQ5ODI2MzQsImV4cCI6MTYwNTg0NjYzNCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.15kmgb1PSKXk4CIikIQZzWdp5vilE4m9ppjZugqmvYM
+2020-11-14 02:59:57 info undefined - API Server Start At Port 5000
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDQ5ODI2MzQsImV4cCI6MTYwNTg0NjYzNCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.15kmgb1PSKXk4CIikIQZzWdp5vilE4m9ppjZugqmvYM
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUyNTA3MDUsImV4cCI6MTYwNjExNDcwNSwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.j89My9zK4smuh6ySAYE_pAXIvYgXDQxOs8DTNYjc1N8
+(node:16667) UnhandledPromiseRejectionWarning: TypeError: Cannot read property 'length' of undefined
+    at exports.uploadAssign (/home/ec2-user/SpeakUP_Server/src/controllers/assignController.js:21:38)
+    at Layer.handle [as handle_request] (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/route.js:137:13)
+    at /home/ec2-user/SpeakUP_Server/auth.js:32:5
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:16667) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 1)
+(node:16667) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUzMjI4MTksImV4cCI6MTYwNjE4NjgxOSwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.f096wdiOIew5qCZBfI2NUW4d95i_NkadliVeAKHi4Ac
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUzMjI4MTksImV4cCI6MTYwNjE4NjgxOSwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.f096wdiOIew5qCZBfI2NUW4d95i_NkadliVeAKHi4Ac
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUyNTA3MDUsImV4cCI6MTYwNjExNDcwNSwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.j89My9zK4smuh6ySAYE_pAXIvYgXDQxOs8DTNYjc1N8
+(node:16667) UnhandledPromiseRejectionWarning: TypeError: Cannot read property 'length' of undefined
+    at exports.uploadAssign (/home/ec2-user/SpeakUP_Server/src/controllers/assignController.js:21:38)
+    at Layer.handle [as handle_request] (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/router/route.js:137:13)
+    at /home/ec2-user/SpeakUP_Server/auth.js:32:5
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+(node:16667) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 2)
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUzMjYyODMsImV4cCI6MTYwNjE5MDI4MywiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.M12c0oRIbmgNdyx5L6rWH2rESQfQc6-AhF-nTe1UEL0
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUzMjYyODMsImV4cCI6MTYwNjE5MDI4MywiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.M12c0oRIbmgNdyx5L6rWH2rESQfQc6-AhF-nTe1UEL0
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUyNTA3MDUsImV4cCI6MTYwNjExNDcwNSwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.j89My9zK4smuh6ySAYE_pAXIvYgXDQxOs8DTNYjc1N8
+2020-11-14 04:04:26 info undefined - API Server Start At Port 5000
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUyNTA3MDUsImV4cCI6MTYwNjExNDcwNSwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.j89My9zK4smuh6ySAYE_pAXIvYgXDQxOs8DTNYjc1N8
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUzMjY3MjgsImV4cCI6MTYwNjE5MDcyOCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.eDFiSep-yDMTsKjdPsZGrn2nFivBjRkOd691R_cuKcM
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUzMjY3MjgsImV4cCI6MTYwNjE5MDcyOCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.eDFiSep-yDMTsKjdPsZGrn2nFivBjRkOd691R_cuKcM
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUzMjY4NjAsImV4cCI6MTYwNjE5MDg2MCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.B_yHE5kdB_zUO1vd1y6lcEHh11xIyXTbcjDKqv_nXPQ
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUzMjY4NjAsImV4cCI6MTYwNjE5MDg2MCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.B_yHE5kdB_zUO1vd1y6lcEHh11xIyXTbcjDKqv_nXPQ
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUyNTA3MDUsImV4cCI6MTYwNjExNDcwNSwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.j89My9zK4smuh6ySAYE_pAXIvYgXDQxOs8DTNYjc1N8
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDQ5ODI2MzQsImV4cCI6MTYwNTg0NjYzNCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.15kmgb1PSKXk4CIikIQZzWdp5vilE4m9ppjZugqmvYM
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUyNTA3MDUsImV4cCI6MTYwNjExNDcwNSwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.j89My9zK4smuh6ySAYE_pAXIvYgXDQxOs8DTNYjc1N8
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUyNTA3MDUsImV4cCI6MTYwNjExNDcwNSwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.j89My9zK4smuh6ySAYE_pAXIvYgXDQxOs8DTNYjc1N8
+2020-11-14 04:15:35 info undefined - API Server Start At Port 5000
+events.js:291
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EADDRINUSE: address already in use :::5000
+    at Server.setupListenHandle [as _listen2] (net.js:1317:16)
+    at listenInCluster (net.js:1365:12)
+    at Server.listen (net.js:1451:7)
+    at Function.listen (/home/ec2-user/SpeakUP_Server/node_modules/express/lib/application.js:618:24)
+    at Object.<anonymous> (/home/ec2-user/SpeakUP_Server/app.js:5:11)
+    at Module._compile (internal/modules/cjs/loader.js:1085:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1114:10)
+    at Module.load (internal/modules/cjs/loader.js:950:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:791:14)
+    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (net.js:1344:8)
+    at processTicksAndRejections (internal/process/task_queues.js:80:21) {
+  code: 'EADDRINUSE',
+  errno: -98,
+  syscall: 'listen',
+  address: '::',
+  port: 5000
+}
+2020-11-14 04:15:42 info undefined - API Server Start At Port 5000
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUyNTA3MDUsImV4cCI6MTYwNjExNDcwNSwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.j89My9zK4smuh6ySAYE_pAXIvYgXDQxOs8DTNYjc1N8
+회원가입API err
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUzMjc0MDksImV4cCI6MTYwNjE5MTQwOSwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.fQ6JtV9Nbl6xmlMVKgTWTJUT8ME37hRi3PTm310fZwo
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUzMjc0MDksImV4cCI6MTYwNjE5MTQwOSwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.fQ6JtV9Nbl6xmlMVKgTWTJUT8ME37hRi3PTm310fZwo
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUzMjc0MDksImV4cCI6MTYwNjE5MTQwOSwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.fQ6JtV9Nbl6xmlMVKgTWTJUT8ME37hRi3PTm310fZwo
+회원가입API err
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUzMjc0OTQsImV4cCI6MTYwNjE5MTQ5NCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.-1aek6oUVZIAWyX-om3I91CtvQ8xfIWP8zSiZgPwieU
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUzMjc0OTQsImV4cCI6MTYwNjE5MTQ5NCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.-1aek6oUVZIAWyX-om3I91CtvQ8xfIWP8zSiZgPwieU
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUzMjc0OTQsImV4cCI6MTYwNjE5MTQ5NCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.-1aek6oUVZIAWyX-om3I91CtvQ8xfIWP8zSiZgPwieU
+회원가입API err
+회원가입API err
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUzMjc2ODYsImV4cCI6MTYwNjE5MTY4NiwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ._3fQTQ3jqMvCT10jMaqlxL0RM4pwaZSiCUHgynxKAS8
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUzMjc2ODYsImV4cCI6MTYwNjE5MTY4NiwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ._3fQTQ3jqMvCT10jMaqlxL0RM4pwaZSiCUHgynxKAS8
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUzMjc2ODYsImV4cCI6MTYwNjE5MTY4NiwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ._3fQTQ3jqMvCT10jMaqlxL0RM4pwaZSiCUHgynxKAS8
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDQ5ODI2MzQsImV4cCI6MTYwNTg0NjYzNCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.15kmgb1PSKXk4CIikIQZzWdp5vilE4m9ppjZugqmvYM
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUyNTA3MDUsImV4cCI6MTYwNjExNDcwNSwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.j89My9zK4smuh6ySAYE_pAXIvYgXDQxOs8DTNYjc1N8
+2020-11-14 04:22:32 info undefined - API Server Start At Port 5000
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDQ5ODI2MzQsImV4cCI6MTYwNTg0NjYzNCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.15kmgb1PSKXk4CIikIQZzWdp5vilE4m9ppjZugqmvYM
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUzMjc2ODYsImV4cCI6MTYwNjE5MTY4NiwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ._3fQTQ3jqMvCT10jMaqlxL0RM4pwaZSiCUHgynxKAS8
+로그인 API
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUzMjc5MzQsImV4cCI6MTYwNjE5MTkzNCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.VE343oEjhzzizhCmU5PqJksn1mIs9CppF-nnLbsQej4
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUzMjc5MzQsImV4cCI6MTYwNjE5MTkzNCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.VE343oEjhzzizhCmU5PqJksn1mIs9CppF-nnLbsQej4
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUzMjc5MzQsImV4cCI6MTYwNjE5MTkzNCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.VE343oEjhzzizhCmU5PqJksn1mIs9CppF-nnLbsQej4
+로그인 API
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUzMjc5NzQsImV4cCI6MTYwNjE5MTk3NCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.RU-sj-eGAhkuzXxlwWjCmpH2ICJPxshLxm2r9Vo44tM
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUzMjc5NzQsImV4cCI6MTYwNjE5MTk3NCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.RU-sj-eGAhkuzXxlwWjCmpH2ICJPxshLxm2r9Vo44tM
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDQ5ODI2MzQsImV4cCI6MTYwNTg0NjYzNCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.15kmgb1PSKXk4CIikIQZzWdp5vilE4m9ppjZugqmvYM
+로그인 API
+로그인 API
+2020-11-14 04:32:39 info undefined - API Server Start At Port 5000
+로그인 API
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUzMjg0MzEsImV4cCI6MTYwNjE5MjQzMSwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.hgmGHWwrhRnhqjvFphqo4piwnlFOAxBzG3DeOPwxyDw
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUzMjg0MzEsImV4cCI6MTYwNjE5MjQzMSwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.hgmGHWwrhRnhqjvFphqo4piwnlFOAxBzG3DeOPwxyDw
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUzMjg0MzEsImV4cCI6MTYwNjE5MjQzMSwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.hgmGHWwrhRnhqjvFphqo4piwnlFOAxBzG3DeOPwxyDw
+로그인 API
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUzMjg2MjcsImV4cCI6MTYwNjE5MjYyNywiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.QO4d-RdpU1znz23_T15zYp3V0HKJevCbolW2OKR98zI
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUzMjg2MjcsImV4cCI6MTYwNjE5MjYyNywiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.QO4d-RdpU1znz23_T15zYp3V0HKJevCbolW2OKR98zI
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUzMjg2MjcsImV4cCI6MTYwNjE5MjYyNywiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.QO4d-RdpU1znz23_T15zYp3V0HKJevCbolW2OKR98zI
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUzMjg2MjcsImV4cCI6MTYwNjE5MjYyNywiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.QO4d-RdpU1znz23_T15zYp3V0HKJevCbolW2OKR98zI
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDUyNTA3MDUsImV4cCI6MTYwNjExNDcwNSwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.j89My9zK4smuh6ySAYE_pAXIvYgXDQxOs8DTNYjc1N8
+로그인 API
+로그인 API

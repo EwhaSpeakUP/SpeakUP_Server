@@ -7,6 +7,9 @@ const router = require('express').Router();
 const S3 = require('../../config/s3'); //s3
 const jwt = require("jsonwebtoken");
 const {jwtsecret} = require('../../config/secret_config')
+const fs = require('fs');
+const AWS = require('aws-sdk');
+const BUCKET_NAME='ewhaspeakupsource1';
 //const PythonShell = require('python-shell');
 
 /**---------- 과제 업로드 API ------------ */ 
@@ -62,7 +65,7 @@ exports.uploadAssign = async function (req, res){
 };
 
 
-/**---------- 파일 다운로드 ------------ */
+/**---------- 연사 음성 파일 다운로드 ------------ */
 
 
 exports.transmitFile = async function(req,res){
@@ -112,3 +115,71 @@ exports.transmitFile = async function(req,res){
 };
 
 
+
+
+/**---------- 전사 파일 보기 ------------ */
+exports.viewResult = async function(req,res){
+    const connection = await pool.getConnection(function(err, conn){
+    if (err) {
+        conn.release();
+        return res.json({
+            isSuccess : false,
+            code: 200,
+             message: "DB 서버 연결에 실패했습니다"
+        });
+    }
+    var assign_id=req.params.assignID;
+    var sql = "SELECT TRANSCRIPT FROM SUBMIT_ASSIGNMENT WHERE ASSIGNMENT_ID=?";
+    
+    conn.query(sql, [assign_id], function(err, result){       
+        if(err){
+            conn.release();
+            return res.json({
+                isSuccess : false,
+                code: 201,
+                message: "DB 질의시 문제가 발생했습니다."
+            });
+        }
+        if (result==null) {
+            console.log("1");
+            /*
+            const downloadFile=(fileName)=>{
+                const params={
+                    Bucket:BUCKET_NAME,
+                    Key : 'ex.json'
+                };
+                S3.getObject(params, function(err, data){
+                    if(err) throw err;
+                    fs.writeFileSync(fileName, data.Body.toString());
+                });
+            };
+            downloadFile('./result2.json');*/
+
+            
+            /*
+            fs.readFile( "./result.json", 'utf8', function (err, data) { // json 파일 위치 지정
+                var model_result = JSON.parse(data);
+                console.log(model_result);
+                res.render('./view.ejs', {model_result});
+            });
+            */
+
+
+        }
+        else{
+            console.log("2");
+            console.log(result);
+                var result={
+                    isSuccess : true,
+                    code : 100,
+                    message : "파일 수신에 성공했습니다.",
+                    result : {html : result}
+                };
+                console.log(result);
+                res.writeHead(200, {'Content-Type':'application/json/json'});
+                res.end(JSON.stringify(result));
+            }  
+        });
+    });
+};
+      

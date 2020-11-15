@@ -1,6 +1,5 @@
 module.exports = function(app) {
-    //const assign = require("../controllers/assignController");
-    const assign = require("../../temp1");
+    const assign = require("../controllers/assignController");
     const auth = require("../../auth");
 
     app.post("/assign/:assignID", auth, assign.uploadAssign); // 통역 음성 업로드 (학생)

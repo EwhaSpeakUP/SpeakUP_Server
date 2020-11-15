@@ -6,10 +6,20 @@ const router = require('express').Router();
 
 const S3 = require('../../config/s3'); //s3
 const jwt = require("jsonwebtoken");
-const {jwtsecret} = require('./config/secret_config')
+const {jwtsecret} = require('../../config/secret_config')
 const PythonShell = require('python-shell');
+const fs = require('fs');
+const { stringify } = require("querystring");
+/**전사결과 API */
+
+// S3에 html파일 없다 (전사파일이 없다)
+//              s3에 저장되 json파일을 가지고 전사파일을 만든다.
+//              s3저장 async
+// HTML파일을 RES로 보낸다.
 
 /**---------- 과제 업로드 API ------------ */ 
+
+
 
 //after middleware function
 exports.uploadAssign = async function (req, res){ 
@@ -17,48 +27,83 @@ exports.uploadAssign = async function (req, res){
     var jwt_token = req.headers.access_token; //헤더에 입력된 토큰
     var student_ID = jwt.decode(jwt_token, jwtsecret).STD_NUM;
     var there_was_error = false;
-    
-    for (var i=0 ; i < req.body.file.length ; i++){
-        //body에 저장된 base64 처리 후, bytestring으로 변환
-        var wav_bytestring= new Buffer.from(req.body.file[i], 'base64');
-        
-        
-        //python으로 보낸다. >> 추가해야함
-        
-
-        //S3에 각 음성파일 저장
-        var param = {
-            'Bucket': 'ewhaspeakupsource1/hw_assign',
-            'Key' : req.params.assignID + '_' + student_ID + '_'+ (i+1) + '.wav', // 과제id_student_id로 저장
-            'ACL' : 'public-read',
-            'Body': wav_bytestring,// wav bytestring
-            'ContentType': 'audio/wav'
+    pool.getConnection((err, conn)=> {
+        if(err){
+            console.log(err);
+            return res.json({
+                isSuccess: false,
+                code: 300,
+                message: "DB 서버 연결에 실패했습니다."
+            });
         }
-        
-        S3.upload(param,(err, data)=>{
-            if(err) {
-                console.log(err);
-                there_was_error = true;
-                console.log(there_was_error);
-                return res.json({
-                    isSuccess: false,
-                    code: 100,
-                    message: "업로드 중 문제가 발생했습니다."
-                });
+        else{
+            for (var i=0 ; i < req.body.files.length ; i++){
+                var voice_index = i+1;
+                var audio_bytestring= new Buffer.from(req.body.files[i], 'base64');
+                console.log("Start Python", + voice_index);
+                fs.writeFileSync('src\\Transcription\\audio_file'+ String(voice_index)+'.mp3', audio_bytestring);
                 
+                var options = {
+                    mode: 'text',
+                    pythonPath: 'C:\\Users\\Maeg\\Anaconda3\\python.exe',
+                    pythonOptions: ['-u'],
+                    scriptPath: './src/Transcription',
+                    args: [req.params.assignID, student_ID, voice_index]
+                  };
+                
+                PythonShell.PythonShell.run('Transcription.py',options, function(err, result){
+                    if(err){
+                        console.log(err);
+                    }
+                    console.log("Transcript::"+ result);
+                })
+        
+                //S3에 각 음성파일 저장
+                bucketname = 'ewhaspeakupsource1';
+                voiceFilePath = 'hw_assign/'+req.params.assignID+'/'+student_ID+ '/' + "voice_"+(i+1)+".wav";
+                var S3Params = {
+                    'Bucket': bucketname,
+                    'Key' : voiceFilePath,
+                    'ACL' : 'public-read',
+                    'Body': audio_bytestring,
+                    'ContentType': 'audio/wav'
+                }
+        
+                           
+                S3.upload(S3Params, (err, data)=>{
+                    if(err) {
+                        console.log(err);
+                        there_was_error = true;
+                        console.log(there_was_error);
+                        return res.json({
+                            isSuccess: false,
+                            code: 100,
+                            message: "버킷 저장 중 문제가 발생했습니다."
+                        });   
+                    }     
+                });
+                url = "https://"+bucketname+".s3.ap-northeast-2.amazonaws.com/" + voiceFilePath;
+                addVoiceUrlQuery = 'UPDATE SUBMIT_ASSIGNMENT SET SUBMIT_VOICE = CONCAT(SUBMIT_VOICE,"|?") WHERE ST_ID=? AND ASSIGNMENT_ID = ?';
+                addVoiceUrlQueryParams = [url,student_ID, req.params.assignID];
+                conn.query(addVoiceUrlQuery, addVoiceUrlQueryParams, (err, result)=>{
+                    if(err){
+                        console.log(err);
+                        return res.json({
+                            isSuccess: false,
+                            code: 301,
+                            message: "DB 질의시 문제가 발생했습니다."
+                        });
+                    }
+                });
             }
-            console.log(data);
-            
-        });
-    }
-    if (there_was_error == false){
+        }
         return res.json({
             isSuccess: true,
             code: 200,
             message: "과제 업로드에 성공했습니다."
         });
-    }
-
+        
+    });
 };
 
 

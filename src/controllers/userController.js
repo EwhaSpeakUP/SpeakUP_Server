@@ -4,6 +4,8 @@ const auth = require("../../auth");
 const crypto = require('crypto');
 const { type } = require('os');
 const jwtsecret = require('../../config/secret_config').jwtsecret;
+
+
 /**---------- 회원가입 API ------------ */ 
 exports.signUp = async function(req, res){
     const {id, password, st_id} = req.body;
@@ -130,10 +132,6 @@ exports.signUp = async function(req, res){
 }
     
 
-
-
-
-
 /**---------- 로그인 API ------------ */ 
 exports.signIn = async function(req, res){
     const {id, password} = req.body;
@@ -178,7 +176,7 @@ exports.signIn = async function(req, res){
                 conn.release();
                 return res.json({
                     isSuccess: false,
-                    code: 300,
+                    code: 302,
                     message: "아이디가 존재하지 않습니다."
                 });
             }
@@ -188,7 +186,7 @@ exports.signIn = async function(req, res){
                 conn.release();
                 return res.json({
                     isSuccess: false,
-                    code: 301,
+                    code: 303,
                     message: "비밀번호가 올바르지 않습니다."
                 });
             }
@@ -210,16 +208,9 @@ exports.signIn = async function(req, res){
                             message: "로그인에 성공했습니다.",
                             result: { access_token: token }
                         });
-                      }
-                    );
-            
-            
-            
+                    }
+                );
             conn.release();
         });
-        
-
-    })
-    
-    
+    })   
 ;}

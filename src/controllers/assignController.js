@@ -7,9 +7,11 @@ const router = require('express').Router();
 const S3 = require('../../config/s3'); //s3
 const jwt = require("jsonwebtoken");
 const {jwtsecret} = require('../../config/secret_config')
-const fs = require('fs');
 const AWS = require('aws-sdk');
 const BUCKET_NAME='ewhaspeakupsource1';
+const fs = require("fs");
+
+
 //const PythonShell = require('python-shell');
 
 /**---------- 과제 업로드 API ------------ */ 
@@ -99,7 +101,7 @@ exports.transmitFile = async function(req,res){
             });
         }
           else{
-                var file_link=result[0]["ORIGIN_VOICE"].split('|');;
+                var file_link=result[0]["ORIGIN_VOICE"].split('|');
                 var result={
                     isSuccess : true,
                     code : 100,
@@ -117,68 +119,132 @@ exports.transmitFile = async function(req,res){
 
 
 /**---------- 전사 파일 보기 ------------ */
+
 exports.viewResult = async function(req,res){
-    const connection = await pool.getConnection(function(err, conn){
-    if (err) {
-        conn.release();
-        return res.json({
-            isSuccess : false,
-            code: 200,
-             message: "DB 서버 연결에 실패했습니다"
-        });
-    }
+
     var assign_id=req.params.assignID;
-    var sql = "SELECT TRANSCRIPT FROM SUBMIT_ASSIGNMENT WHERE ASSIGNMENT_ID=?";
-    
-    conn.query(sql, [assign_id], function(err, result){       
-        if(err){
-            conn.release();
-            return res.json({
-                isSuccess : false,
-                code: 201,
-                message: "DB 질의시 문제가 발생했습니다."
-            });
-        }
-        if (result==null) {
-            console.log("1");
-            /*
-            const downloadFile=(fileName)=>{
-                const params={
-                    Bucket:BUCKET_NAME,
-                    Key : 'ex.json'
-                };
-                S3.getObject(params, function(err, data){
-                    if(err) throw err;
-                    fs.writeFileSync(fileName, data.Body.toString());
+    var jwt_token = req.headers.access_token; 
+    var student_id = jwt.decode(jwt_token, jwtsecret).STD_NUM;
+
+    var sql = "SELECT TRANSCRIPT FROM SUBMIT_ASSIGNMENT WHERE ASSIGNMENT_ID=? AND ST_ID = ?";
+
+    const connection = await pool.getConnection(function(err, conn){
+        conn.query(sql, [assign_id, student_id], function(err, result){       
+            if(err){
+                conn.release();
+                return res.json({
+                    isSuccess : false,
+                    code: 200,
+                    message: "DB 서버 연결에 실패했습니다."
                 });
-            };
-            downloadFile('./result2.json');*/
-
+            }
+            if(result==null){  
+                var html_arr=[]; 
+                var len;
+                var sta_arr=[0,0,0,0,0,0,0];
+                //동기를 위한 readJSON 함수 정의
+                function readJSON(callback){
+                    fs.readFile( './JSON1.json', 'utf8', function (err, data) {
+                        var result = "<html><head><title>결과</title></head><body>"
+                        var model_result = JSON.parse(data);
+                        var item = model_result["결과"];
+                        var sta_json = model_result["통계결과"];
             
-            /*
-            fs.readFile( "./result.json", 'utf8', function (err, data) { // json 파일 위치 지정
-                var model_result = JSON.parse(data);
-                console.log(model_result);
-                res.render('./view.ejs', {model_result});
-            });
-            */
+                        sta_arr[0]+=parseInt(sta_json["음"]); sta_arr[1]+=parseInt(sta_json["그"]); sta_arr[2]+=parseInt(sta_json["어"]); sta_arr[3]+=parseInt(sta_json["총 개수"]);
+                        sta_arr[4]+=parseInt(sta_json["발화시간"]); sta_arr[5]+=parseInt(sta_json["침묵시간"]); sta_arr[6]+=parseInt(sta_json["통역개시지연시간"]); 
+                        for(var j=0; j<item.length; j++){
+                            if (item[j]["tag"]=="0000") {result+="<font size=1 color=blue>"; result+=item[j]["result"]; result+=" </font>";}
+                            else if (item[j]["tag"]=="1000") {result+="<font size=3 color=black>"; result+=item[j]["result"]; result+=" </font>";}
+                            else if (item[j]["tag"]=="1001") {result+="<font size=3 color=red>"; result+=item[j]["result"]; result+=" </font>";}
+                        }
+                        result+="</body></html>";
+                        
+                        if(err) return callback(err);
+                        callback(null, result);
+                    });
+                }
+            
+                function mk_html(callback){
+                   
+                    
+                    for (var i=0; i<len; i++){   //num:JSON 파일 갯수 -->JOSN 파일 돌때마다
+                        readJSON(function(err, result){
+                            html_arr.push(result); 
+                            callback(null, html_arr, sta_arr);
+                        })
+                    }
+                }   
+            
+                var json_arr=[];
+                var num=0;
+                var dir=assign_id+'/'+student_id+'/';
+                var params = { 
+                    Bucket: BUCKET_NAME,
+                    Delimiter: '',
+                    Prefix: 'hw_assign/'+dir 
+                }
+                
+                //S3에서 파일 목록 읽어오기
+                S3.listObjects(params, function (err, data) {
+                    if(err)throw err;
+            
+                    len = data.Contents.length;
+                    for(var i=0; i<len; i++){
+                        var str=data.Contents[i].Key;
+                        var c = str.replace('hw_assign/'+dir , '');
+                        if(c.startsWith('JSON')){
+                            json_arr.push(c);
+                            num=num+1;
+                            //console.log('s3://ewhaspeakupsource1/hw_assign/'+dir+c);
+                            //var param = {Bucket:BUCKET_NAME, Key : 'hw_assign/'+dir+c};
+                            //var file = require('fs').createWriteStream(c);
+                            //S3.getObject(param).createReadStream().pipe(file); //json 파일 저장
+                        }
+                    }
 
-
-        }
-        else{
-            console.log("2");
-            console.log(result);
+                });
+            
+                mk_html(function (err, html_arr, sta_arr){
+                    var sql = "UPDATE SUBMIT_ASSIGNMENT SET TRANSCRIPT = ? WHERE ASSIGNMENT_ID = ? AND ST_ID = ?";
+                    conn.query(sql, [html_arr.join('$$$$'), assign_id,student_id], function(err, rows){
+                        //console.log(result);
+                        if(err){
+                            console.log(err);
+                            return res.json({
+                                isSuccess : false,
+                                code: 201,
+                                message: "DB 질의시 문제가 발생했습니다."
+                            });
+                        }                           
+                    });
+                        
+                    var sql = "UPDATE SUBMIT_ASSIGNMENT SET STATISTICS = ? WHERE ASSIGNMENT_ID = ? AND ST_ID = ?";
+                    conn.query(sql, [sta_arr.join(','),assign_id, student_id], function(err, rows){
+                        
+                        if(err){
+                            console.log(err);
+                            return res.json({
+                                isSuccess : false,
+                                code: 201,
+                                message: "DB 질의시 문제가 발생했습니다."
+                            });
+                        }          
+                    });
+                });
+            }
+            else{
                 var result={
                     isSuccess : true,
                     code : 100,
                     message : "파일 수신에 성공했습니다.",
-                    result : {html : result}
+                    result : {html : "["+result[0]["TRANSCRIPT"].split('$$$')+"]", statistics : "["+result[0]["STATISTICS"]+"]" }
                 };
-                console.log(result);
                 res.writeHead(200, {'Content-Type':'application/json/json'});
                 res.end(JSON.stringify(result));
-            }  
+            }
+
         });
     });
-};
-      
+           
+    
+}

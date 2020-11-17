@@ -12,8 +12,6 @@ const BUCKET_NAME='ewhaspeakupsource1';
 const fs = require("fs");
 
 
-//const PythonShell = require('python-shell');
-
 /**---------- 과제 업로드 API ------------ */ 
 
 //after middleware function
@@ -118,7 +116,7 @@ exports.transmitFile = async function(req,res){
 
 
 
-/**---------- 전사 파일 보기 ------------ */
+/**---------- 전사 및 통계 결과 확인 ------------ */
 
 exports.viewResult = async function(req,res){
 
@@ -138,10 +136,11 @@ exports.viewResult = async function(req,res){
                     message: "DB 서버 연결에 실패했습니다."
                 });
             }
-            if(result==null){  
+            if(JSON.stringify(result[0].TRANSCRIPT)=='null'){ 
                 var html_arr=[]; 
                 var len;
                 var sta_arr=[0,0,0,0,0,0,0];
+
                 //동기를 위한 readJSON 함수 정의
                 function readJSON(callback){
                     fs.readFile( './JSON1.json', 'utf8', function (err, data) {
@@ -165,9 +164,7 @@ exports.viewResult = async function(req,res){
                 }
             
                 function mk_html(callback){
-                   
-                    
-                    for (var i=0; i<len; i++){   //num:JSON 파일 갯수 -->JOSN 파일 돌때마다
+                   for (var i=0; i<len; i++){   //num:JSON 파일 갯수 -->JOSN 파일 돌때마다
                         readJSON(function(err, result){
                             html_arr.push(result); 
                             callback(null, html_arr, sta_arr);
@@ -231,6 +228,7 @@ exports.viewResult = async function(req,res){
                         }          
                     });
                 });
+                
             }
             else{
                 var result={
@@ -241,6 +239,7 @@ exports.viewResult = async function(req,res){
                 };
                 res.writeHead(200, {'Content-Type':'application/json/json'});
                 res.end(JSON.stringify(result));
+                
             }
 
         });

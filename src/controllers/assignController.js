@@ -12,6 +12,7 @@ const BUCKET_NAME='ewhaspeakupsource1';
 const fs = require("fs");
 
 
+
 /**---------- 과제 업로드 API ------------ */ 
 
 //after middleware function
@@ -118,13 +119,43 @@ exports.transmitFile = async function(req,res){
 
 /**---------- 전사 및 통계 결과 확인 ------------ */
 
+
 exports.viewResult = async function(req,res){
 
     var assign_id=req.params.assignID;
     var jwt_token = req.headers.access_token; 
     var student_id = jwt.decode(jwt_token, jwtsecret).STD_NUM;
+    var BUCKET_NAME = 'ewhaspeakupsource1';
+    var sql = "SELECT TRANSCRIPT, STATISTICS FROM SUBMIT_ASSIGNMENT WHERE ASSIGNMENT_ID=? AND ST_ID = ?";
 
-    var sql = "SELECT TRANSCRIPT FROM SUBMIT_ASSIGNMENT WHERE ASSIGNMENT_ID=? AND ST_ID = ?";
+    /**전사 파일 API */
+//S3에서 파일 목록 읽어오기
+function getJSONnum(params, dir){
+    const promise = new Promise((resolve, reject)=>{
+        S3.listObjects(params, function (err, data) {
+            
+            if(err) reject(err);
+            var num = 0;
+            var json_arr=[];
+            var len = data.Contents.length;
+            for(var i=0; i<len; i++){
+                var str=data.Contents[i].Key;
+                var c = str.replace('hw_assign/'+dir , '');
+                if(c.startsWith('JSON')){
+                    json_arr.push(c);
+                    num=num+1;
+                    console.log('s3://ewhaspeakupsource1/hw_assign/'+dir+c);
+                    var param = {Bucket:BUCKET_NAME, Key : 'hw_assign/'+dir+c};
+                    var file = require('fs').createWriteStream(c);
+                    S3.getObject(param).createReadStream().pipe(file); //json 파일 저장
+                }
+            }
+            resolve([num, json_arr]);
+        });
+    })
+    return promise;
+}
+
 
     const connection = await pool.getConnection(function(err, conn){
         conn.query(sql, [assign_id, student_id], function(err, result){       
@@ -136,14 +167,14 @@ exports.viewResult = async function(req,res){
                     message: "DB 서버 연결에 실패했습니다."
                 });
             }
+            //전사파일이 없을 경우에는 전사파일 생성
             if(JSON.stringify(result[0].TRANSCRIPT)=='null'){ 
                 var html_arr=[]; 
-                var len;
                 var sta_arr=[0,0,0,0,0,0,0];
 
                 //동기를 위한 readJSON 함수 정의
-                function readJSON(callback){
-                    fs.readFile( './JSON1.json', 'utf8', function (err, data) {
+                function readJSON(json, callback){
+                    fs.readFile( json, 'utf8', function (err, data) {
                         var result = "<html><head><title>결과</title></head><body>"
                         var model_result = JSON.parse(data);
                         var item = model_result["결과"];
@@ -157,22 +188,27 @@ exports.viewResult = async function(req,res){
                             else if (item[j]["tag"]=="1001") {result+="<font size=3 color=red>"; result+=item[j]["result"]; result+=" </font>";}
                         }
                         result+="</body></html>";
-                        
+                        console.log(result);
                         if(err) return callback(err);
                         callback(null, result);
                     });
                 }
             
-                function mk_html(callback){
-                   for (var i=0; i<len; i++){   //num:JSON 파일 갯수 -->JOSN 파일 돌때마다
-                        readJSON(function(err, result){
+                
+                function mk_html(num, json_arr, callback){
+                    console.log("hu");
+                    console.log(num);
+                    console.log(json_arr);
+                    console.log("num:",num);
+                    for (var i=0; i<num; i++){   //num:JSON 파일 갯수 -->JOSN 파일 돌때마다
+                        readJSON(json_arr[i], function(err, result){
                             html_arr.push(result); 
                             callback(null, html_arr, sta_arr);
                         })
                     }
                 }   
             
-                var json_arr=[];
+                
                 var num=0;
                 var dir=assign_id+'/'+student_id+'/';
                 var params = { 
@@ -181,55 +217,56 @@ exports.viewResult = async function(req,res){
                     Prefix: 'hw_assign/'+dir 
                 }
                 
-                //S3에서 파일 목록 읽어오기
-                S3.listObjects(params, function (err, data) {
-                    if(err)throw err;
-            
-                    len = data.Contents.length;
-                    for(var i=0; i<len; i++){
-                        var str=data.Contents[i].Key;
-                        var c = str.replace('hw_assign/'+dir , '');
-                        if(c.startsWith('JSON')){
-                            json_arr.push(c);
-                            num=num+1;
-                            //console.log('s3://ewhaspeakupsource1/hw_assign/'+dir+c);
-                            //var param = {Bucket:BUCKET_NAME, Key : 'hw_assign/'+dir+c};
-                            //var file = require('fs').createWriteStream(c);
-                            //S3.getObject(param).createReadStream().pipe(file); //json 파일 저장
-                        }
-                    }
+                // S3에서 JSON파일의 개수를 알아낸다
+                getJSONnum(params,dir)
+                .then(([num, json_arr])=>{
+                    mk_html(num,json_arr, function (err, html_arr, sta_arr){
+                        console.log(html_arr.join('$$$$'));
+                    
+                        /** DB에 전사파일 정보 저장 */
+                        var sql = "UPDATE SUBMIT_ASSIGNMENT SET TRANSCRIPT = ? WHERE ASSIGNMENT_ID = ? AND ST_ID = ?";
+                        conn.query(sql, [html_arr.join('$$$$'), assign_id,student_id], function(err, rows){
+                            //console.log(result);
+                            if(err){
+                                console.log(err);
+                                return res.json({
+                                    isSuccess : false,
+                                    code: 201,
+                                    message: "DB 질의시 문제가 발생했습니다."
+                                });
+                            }                           
+                        });
+                        /** DB에 통계 정보 저장 */
+                        var sql = "UPDATE SUBMIT_ASSIGNMENT SET STATISTICS = ? WHERE ASSIGNMENT_ID = ? AND ST_ID = ?";
+                        conn.query(sql, [sta_arr.join(','),assign_id, student_id], function(err, rows){
+                            
+                            if(err){
+                                console.log(err);
+                                conn.release();
+                                return res.json({
+                                    isSuccess : false,
+                                    code: 201,
+                                    message: "DB 질의시 문제가 발생했습니다."
+                                });
+                            }          
+                        });
 
-                });
-            
-                mk_html(function (err, html_arr, sta_arr){
-                    var sql = "UPDATE SUBMIT_ASSIGNMENT SET TRANSCRIPT = ? WHERE ASSIGNMENT_ID = ? AND ST_ID = ?";
-                    conn.query(sql, [html_arr.join('$$$$'), assign_id,student_id], function(err, rows){
-                        //console.log(result);
-                        if(err){
-                            console.log(err);
-                            return res.json({
-                                isSuccess : false,
-                                code: 201,
-                                message: "DB 질의시 문제가 발생했습니다."
-                            });
-                        }                           
-                    });
+                        var result={
+                            isSuccess : true,
+                            code : 100,
+                            message : "파일 수신에 성공했습니다.",
+                            result : {html : "["+html_arr.join(',')+"]", statistics : "["+sta_arr.join(',')+"]" }
+                        };
+                        res.writeHead(200, {'Content-Type':'application/json/json'});
+                        res.end(JSON.stringify(result));
+                        conn.release();
                         
-                    var sql = "UPDATE SUBMIT_ASSIGNMENT SET STATISTICS = ? WHERE ASSIGNMENT_ID = ? AND ST_ID = ?";
-                    conn.query(sql, [sta_arr.join(','),assign_id, student_id], function(err, rows){
                         
-                        if(err){
-                            console.log(err);
-                            return res.json({
-                                isSuccess : false,
-                                code: 201,
-                                message: "DB 질의시 문제가 발생했습니다."
-                            });
-                        }          
                     });
                 });
                 
             }
+            /** DB에 전사파일이 있는 경우에는 바로 송신*/
             else{
                 var result={
                     isSuccess : true,
@@ -239,7 +276,7 @@ exports.viewResult = async function(req,res){
                 };
                 res.writeHead(200, {'Content-Type':'application/json/json'});
                 res.end(JSON.stringify(result));
-                
+                conn.release();
             }
 
         });

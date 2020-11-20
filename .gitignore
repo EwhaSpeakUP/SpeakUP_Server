@@ -13,13 +13,10 @@ config/secret_config.json
 # temporary file
 /temp
 /src/temp
-<<<<<<< HEAD
 temp*.py
 temp1.js
-=======
 temp1.js
 temp2.js
->>>>>>> 4b392f31b5056fad80e81643205ecdf2412a37c5
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json

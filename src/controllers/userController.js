@@ -61,25 +61,6 @@ exports.signUp = async function(req, res){
                     message: "DB 서버 연결에 실패했습니다."
                 });
             }
-<<<<<<< HEAD
-            return rows;
-        });
-        if(checkSTrows.length > 0){
-            if (rows[0].ID == id)
-            conn.release();
-            return res.json({
-                isSuccess: false,
-                code: 200,
-                message: "이미 존재하는 ID입니다."
-            });
-        }
-        else{
-            conn.release();
-            return res.json({
-                isSuccess: false,
-                code: 200,
-                message: "회원가입에 성공했습니다."
-=======
             if (rows.length <= 0){
                 conn.release();
                 return res.json({
@@ -144,7 +125,6 @@ exports.signUp = async function(req, res){
                     })
                     
                 })
->>>>>>> 311f6831264c4e9fd4cbc212a2e52571c453f790
             });
         });
         

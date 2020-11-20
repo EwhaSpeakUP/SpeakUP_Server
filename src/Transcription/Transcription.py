@@ -2,6 +2,7 @@ from pydub import AudioSegment
 from pydub.silence import detect_silence
 from pydub.silence import detect_nonsilent
 from keras.models import load_model
+import ffprobe
 
 import matplotlib.pyplot as plt
 import numpy as np

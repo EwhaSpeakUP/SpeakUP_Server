@@ -3,11 +3,10 @@
 const secret_config = require('./secret_config');
 const AWS = require('aws-sdk');
 //const multerS3 = require('multer-s3');  //multer middle ware 
-
-const s3 = new AWS.S3({
-    accessKeyId : secret_config.S3.AWS_ACCESS_KEY_ID,
-    secretAccessKey : secret_config.S3.AWS_SECRET_ACCESS_KEY,
-    region : secret_config.S3.AWS_REGION
-});
+AWS.config.update({
+    accessKeyId: secret_config.S3.AWS_ACCESS_KEY_ID,
+    secretAccessKey: secret_config.S3.AWS_SECRET_ACCESS_KEY,
+    region : secret_config.S3.AWS_REGION});
+const s3 = new AWS.S3();
 
 module.exports = s3;

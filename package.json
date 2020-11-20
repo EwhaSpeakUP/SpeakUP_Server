@@ -1,12 +1,13 @@
 {
   "dependencies": {
-    "auth": "0.0.9",
+    "auth": "^0.0.1",
     "aws-sdk": "^2.761.0",
     "body-parser": "^1.19.0",
     "compression": "^1.7.4",
     "cors": "^2.8.5",
     "crypto": "^1.0.1",
     "express": "^4.17.1",
+    "ffprobe": "^1.1.2",
     "fs": "0.0.1-security",
     "jquery": "^3.5.1",
     "jsonwebtoken": "^8.5.1",
@@ -19,5 +20,6 @@
     "python-shell": "^2.0.2",
     "winston": "^3.3.3",
     "winston-daily-rotate-file": "^4.5.0"
-  }
+  },
+  "name": "SpeakUP_Server"
 }

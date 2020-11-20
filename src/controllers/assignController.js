@@ -18,19 +18,6 @@ const { stringify } = require("querystring");
 // HTML파일을 RES로 보낸다.
 
 //after middleware function
-exports.uploadAssign = async function (req, res){ 
-    //학생정보 저장
-    var jwt_token = req.headers.access_token; //헤더에 입력된 토큰
-    var student_ID = jwt.decode(jwt_token, jwtsecret).STD_NUM;
-    var there_was_error = false;
-    
-    for (var i=0 ; i < req.body.files.length ; i++){
-        //body에 저장된 base64 처리 후, bytestring으로 변환
-        var wav_bytestring= new Buffer.from(req.body.file[i], 'base64');
-        
-        
-        //python으로 보낸다. >> 추가해야함
-        
 
 function uploadS3(S3params, addVoiceUrlQueryParams,conn, res){
     const promise = new Promise((resolve, reject) => {
@@ -84,11 +71,12 @@ exports.uploadAssign = async function (req, res){
             for (var i=0 ; i < req.body.files.length ; i++){
                 var voice_index = i+1;
                 var audio_bytestring= new Buffer.from(req.body.files[i], 'base64');
-                fs.writeFileSync('src\\Transcription\\audio_file'+ String(voice_index)+'.mp3', audio_bytestring);
+                console.log("save the file");
+                fs.writeFileSync('./src/Transcription/audio_file'+ String(voice_index)+'.mp3', audio_bytestring);
                 
                 var options = {
                     mode: 'text',
-                    pythonPath: 'C:\\Users\\Maeg\\Anaconda3\\python.exe',
+                    pythonPath: '/bin/python3',
                     pythonOptions: ['-u'],
                     scriptPath: './src/Transcription',
                     args: [req.params.assignID, student_ID, voice_index]
@@ -228,8 +216,9 @@ function getJSONnum(params, dir){
                     message: "DB 서버 연결에 실패했습니다."
                 });
             }
+            
             //전사파일이 없을 경우에는 전사파일 생성
-            if(JSON.stringify(result[0].TRANSCRIPT)=='null'){ 
+            if(JSON.stringify(result[0].TRANSCRIPT)=='null' | result[0].TRANSCRIPTION ==''){ 
                 var html_arr=[]; 
                 var sta_arr=[0,0,0,0,0,0,0];
 
@@ -305,6 +294,7 @@ function getJSONnum(params, dir){
                                 });
                             }      
                         });
+
                         if(chk_num==num){
                             var result={
                                 isSuccess : true,
@@ -331,4 +321,4 @@ function getJSONnum(params, dir){
             }
         });
     });
-}
+};

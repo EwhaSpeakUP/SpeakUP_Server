@@ -2,7 +2,10 @@ const {pool} = require('../../config/database');
 const jwt = require('jsonwebtoken');
 const auth = require("../../auth");
 const crypto = require('crypto');
+const { type } = require('os');
 const jwtsecret = require('../../config/secret_config').jwtsecret;
+
+
 /**---------- 회원가입 API ------------ */ 
 exports.signUp = async function(req, res){
     const {id, password, st_id} = req.body;
@@ -39,7 +42,8 @@ exports.signUp = async function(req, res){
 
     const connection = await pool.getConnection(function(err, conn){
         if(err){
-            conn.release();
+            //conn.release();
+            console.log(err);
             return res.json({
                 isSuccess: false,
                 code: 200,
@@ -49,7 +53,7 @@ exports.signUp = async function(req, res){
         const checkSTIDquery = 'select * from STUDENT where ST_ID = ?';
         var checkSTID = conn.query(checkSTIDquery, [st_id], function(err,rows){
             if(err){
-                conn.release();
+                console.log(err);
                 return res.json({
                     isSuccess: false,
                     code: 200,
@@ -83,10 +87,10 @@ exports.signUp = async function(req, res){
                     message: "존재하지 않는 학번입니다."
                 });
             }
-            const checkSTquery = 'select * from users where student_number = ?';
+            const checkSTquery = 'select * from USERS where STD_NUM = ?';
             conn.query(checkSTquery, [st_id], function(err,rows){
                 if(err){
-                    conn.release();
+                    console.log(err);
                     return res.json({
                         isSuccess: false,
                         code: 200,
@@ -101,9 +105,10 @@ exports.signUp = async function(req, res){
                     });
                 }
     
-                const checkIDquery = 'select * from users where ID = ?';
+                const checkIDquery = 'select * from USERS where USER_ID = ?';
                 conn.query(checkIDquery, [id], function(err, rows){
                     if(err){
+                        console.log(err);
                         return res.json({
                             isSuccess: false,
                             code: 200,
@@ -118,9 +123,10 @@ exports.signUp = async function(req, res){
                         });
                     }
                     
-                    const addIDquery = 'insert into users(ID, pass, student_number) values (?, ?, ?)';
+                    const addIDquery = 'insert into USERS(USER_ID, USER_PW, STD_NUM) values (?, ?, ?)';
                     conn.query(addIDquery, [id, encoded_password, st_id], function(err, rows){
                         if(err){
+                            console.log(err);
                             return res.json({
                                 isSuccess: false,
                                 code: 200,
@@ -146,8 +152,6 @@ exports.signUp = async function(req, res){
 }
     
 
-
-
 /**---------- 로그인 API ------------ */ 
 exports.signIn = async function(req, res){
     const {id, password} = req.body;
@@ -168,7 +172,7 @@ exports.signIn = async function(req, res){
     }
     const connection = await pool.getConnection(function(err, conn){
         if (err){
-            conn.release();
+            //conn.release();
             return res.json({
                 isSuccess: false,
                 code: 200,
@@ -192,16 +196,17 @@ exports.signIn = async function(req, res){
                 conn.release();
                 return res.json({
                     isSuccess: false,
-                    code: 300,
+                    code: 302,
                     message: "아이디가 존재하지 않습니다."
                 });
             }
 
             if(rows[0].USER_PW != encoded_password){
+                console.log(rows[0].USER_PW + '  '+ encoded_password);
                 conn.release();
                 return res.json({
                     isSuccess: false,
-                    code: 301,
+                    code: 303,
                     message: "비밀번호가 올바르지 않습니다."
                 });
             }
@@ -223,16 +228,9 @@ exports.signIn = async function(req, res){
                             message: "로그인에 성공했습니다.",
                             result: { access_token: token }
                         });
-                      }
-                    );
-            
-            
-            
+                    }
+                );
             conn.release();
         });
-        
-
-    })
-    
-    
+    })   
 ;}

@@ -2,8 +2,8 @@ module.exports = function(app) {
     const assign = require("../controllers/assignController");
     const auth = require("../../auth");
 
-    app.post("/assign/:hwID", auth, assign.uploadS3.array('file'),assign.uploadAssign); // 통역 음성 업로드 (학생)
+    app.post("/assign/:assignID", auth, assign.uploadAssign); // 통역 음성 업로드 (학생)
     app.get("/assign/:assignID", assign.transmitFile); // 연사 음성 학생에게 전송
-
+    app.get("/assign/:assignID/result", auth, assign.viewResult); // 전사 결과 학생에게 전송
 
 };

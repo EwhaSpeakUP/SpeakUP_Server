@@ -1,3 +1,4 @@
+
 const jwt = require("jsonwebtoken");
 const { pool } = require('../../config/database');
 const { createBucket } = require('../../config/s3');
@@ -11,7 +12,6 @@ const jwtsecret = require('../../config/secret_config').jwtsecret;
 exports.assignList = async function (req, res){
     const connection = await pool.getConnection(function(err, conn){
         if (err) {
-            console.log("here");
             return res.json({
                 isSuccess : false,
                 code: 200,
@@ -20,6 +20,7 @@ exports.assignList = async function (req, res){
         }
         var jwt_token=req.headers.access_token;
         var student_info = jwt.decode(jwt_token, jwtsecret) 
+        
         var studentId=student_info.STD_NUM;
         const courseId = req.params.courseId;
 

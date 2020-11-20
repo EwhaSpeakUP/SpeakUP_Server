@@ -19,7 +19,38 @@ const { stringify } = require("querystring");
 
 /**---------- 과제 업로드 API ------------ */ 
 
-
+function uploadS3(S3params, addVoiceUrlQueryParams,conn, res){
+    const promise = new Promise((resolve, reject) => {
+        S3.upload(S3params, (err, data)=>{
+            if(err) {
+                console.log(err);
+                there_was_error = true;
+                console.log(there_was_error);
+                reject();
+                return res.json({
+                    isSuccess: false,
+                    code: 100,
+                    message: "버킷 저장 중 문제가 발생했습니다."
+                });   
+            }     
+        });
+        addVoiceUrlQuery = 'UPDATE SUBMIT_ASSIGNMENT SET SUBMIT_VOICE = CONCAT(SUBMIT_VOICE,"|?") WHERE ST_ID=? AND ASSIGNMENT_ID = ?';
+        
+        conn.query(addVoiceUrlQuery, addVoiceUrlQueryParams, (err, result)=>{
+            if(err){
+                console.log(err);
+                reject();
+                return res.json({
+                    isSuccess: false,
+                    code: 301,
+                    message: "DB 질의시 문제가 발생했습니다."
+                });
+            }
+        });
+        resolve();
+    });
+    return promise;
+}
 
 //after middleware function
 exports.uploadAssign = async function (req, res){ 
@@ -40,7 +71,6 @@ exports.uploadAssign = async function (req, res){
             for (var i=0 ; i < req.body.files.length ; i++){
                 var voice_index = i+1;
                 var audio_bytestring= new Buffer.from(req.body.files[i], 'base64');
-                console.log("Start Python", + voice_index);
                 fs.writeFileSync('src\\Transcription\\audio_file'+ String(voice_index)+'.mp3', audio_bytestring);
                 
                 var options = {
@@ -57,10 +87,11 @@ exports.uploadAssign = async function (req, res){
                     }
                     console.log("Transcript::"+ result);
                 })
-        
+                
                 //S3에 각 음성파일 저장
-                bucketname = 'ewhaspeakupsource1';
-                voiceFilePath = 'hw_assign/'+req.params.assignID+'/'+student_ID+ '/' + "voice_"+(i+1)+".wav";
+                var bucketname = 'ewhaspeakupsource1';
+                var voiceFilePath = 'hw_assign/'+req.params.assignID+'/'+student_ID+ '/' + "voice_"+(i+1)+".wav";
+                var url = "https://"+bucketname+".s3.ap-northeast-2.amazonaws.com/" + voiceFilePath;
                 var S3Params = {
                     'Bucket': bucketname,
                     'Key' : voiceFilePath,
@@ -68,33 +99,8 @@ exports.uploadAssign = async function (req, res){
                     'Body': audio_bytestring,
                     'ContentType': 'audio/wav'
                 }
-        
-                           
-                S3.upload(S3Params, (err, data)=>{
-                    if(err) {
-                        console.log(err);
-                        there_was_error = true;
-                        console.log(there_was_error);
-                        return res.json({
-                            isSuccess: false,
-                            code: 100,
-                            message: "버킷 저장 중 문제가 발생했습니다."
-                        });   
-                    }     
-                });
-                url = "https://"+bucketname+".s3.ap-northeast-2.amazonaws.com/" + voiceFilePath;
-                addVoiceUrlQuery = 'UPDATE SUBMIT_ASSIGNMENT SET SUBMIT_VOICE = CONCAT(SUBMIT_VOICE,"|?") WHERE ST_ID=? AND ASSIGNMENT_ID = ?';
-                addVoiceUrlQueryParams = [url,student_ID, req.params.assignID];
-                conn.query(addVoiceUrlQuery, addVoiceUrlQueryParams, (err, result)=>{
-                    if(err){
-                        console.log(err);
-                        return res.json({
-                            isSuccess: false,
-                            code: 301,
-                            message: "DB 질의시 문제가 발생했습니다."
-                        });
-                    }
-                });
+                var addVoiceUrlQueryParams = [url, student_ID, req.params.assignID];
+                uploadS3(S3Params, addVoiceUrlQueryParams, conn,res);
             }
         }
         return res.json({
@@ -154,5 +160,3 @@ exports.transmitFile = async function(req,res){
         });
     });
 };
-
-

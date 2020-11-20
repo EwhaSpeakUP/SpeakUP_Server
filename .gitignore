@@ -17,6 +17,7 @@ temp*.py
 temp1.js
 temp1.js
 temp2.js
+*.mp3
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json

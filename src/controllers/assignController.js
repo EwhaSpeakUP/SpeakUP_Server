@@ -52,7 +52,7 @@ function uploadS3(S3params, addVoiceUrlQueryParams,conn, res){
     return promise;
 }
 
-//after middleware function
+//function
 exports.uploadAssign = async function (req, res){ 
     //학생정보 저장
     var jwt_token = req.headers.access_token; //헤더에 입력된 토큰

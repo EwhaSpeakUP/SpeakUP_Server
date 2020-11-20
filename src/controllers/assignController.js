@@ -142,10 +142,10 @@ function getJSONnum(params, dir){
                 if(c.startsWith('JSON')){
                     json_arr.push(c);
                     num=num+1;
-                    console.log('s3://ewhaspeakupsource1/hw_assign/'+dir+c);
-                    var param = {Bucket:BUCKET_NAME, Key : 'hw_assign/'+dir+c};
-                    var file = require('fs').createWriteStream(c);
-                    S3.getObject(param).createReadStream().pipe(file); //json 파일 저장
+                    //console.log('s3://ewhaspeakupsource1/hw_assign/'+dir+c);
+                    //var param = {Bucket:BUCKET_NAME, Key : 'hw_assign/'+dir+c};
+                    //var file = require('fs').createWriteStream(c);
+                    //S3.getObject(param).createReadStream().pipe(file); //json 파일 저장
                 }
             }
             resolve([num, json_arr]);

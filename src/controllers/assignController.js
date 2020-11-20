@@ -228,7 +228,7 @@ function getJSONnum(params, dir){
                         var sta_json = model_result["통계결과"];
             
                         sta_arr[0]+=parseInt(sta_json["음"]); sta_arr[1]+=parseInt(sta_json["그"]); sta_arr[2]+=parseInt(sta_json["어"]); sta_arr[3]+=parseInt(sta_json["총 개수"]);
-                        sta_arr[4]+=parseInt(sta_json["발화시간"]); sta_arr[5]+=parseInt(sta_json["침묵시간"]); sta_arr[6]+=parseInt(sta_json["통역개시지연시간"]); 
+                        sta_arr[4]+=parseFloat(sta_json["발화시간"]); sta_arr[5]+=parseFloat(sta_json["침묵시간"]); sta_arr[6]+=parseFloat(sta_json["통역개시지연시간"]); 
                         for(var j=0; j<item.length; j++){
                             if (item[j]["tag"]=="0000") {result+="<font size=1 color=blue>"; result+=item[j]["result"]; result+=" </font>";}
                             else if (item[j]["tag"]=="1000") {result+="<font size=3 color=black>"; result+=item[j]["result"]; result+=" </font>";}

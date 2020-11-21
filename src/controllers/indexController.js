@@ -10,6 +10,7 @@ const jwtsecret = require('../../config/secret_config').jwtsecret;
 //output: 해당 Class에 포함된 과제ID, 과제 이름, due_date
 
 exports.assignList = async function (req, res){
+    console.log("API execution: aasignList");
     const connection = await pool.getConnection(function(err, conn){
         if (err) {
             console.log(err);
@@ -83,6 +84,7 @@ exports.assignList = async function (req, res){
 //output: 해당 stID가 수강하는 과목 목록, 정보
 
 exports.courseList = async function(req,res){
+    console.log("API execution: courseList");
     const connection = await pool.getConnection(function(err, conn){
     if (err) {
         return res.json({

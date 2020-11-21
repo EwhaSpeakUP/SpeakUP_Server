@@ -1332,3 +1332,234 @@ Error: Route.get() requires a callback function but got a [object Undefined]
 (node:4638) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 1)
 (node:4638) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
 2020-11-20 14:34:28 info undefined - API Server Start At Port 5000
+2020-11-20 14:37:05 info undefined - API Server Start At Port 5000
+node:events:306
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EADDRINUSE: address already in use :::5000
+    at Server.setupListenHandle [as _listen2] (node:net:1285:16)
+    at listenInCluster (node:net:1333:12)
+    at Server.listen (node:net:1419:7)
+    at Function.listen (/home/ubuntu/SpeakUP_Server/node_modules/express/lib/application.js:618:24)
+    at Object.<anonymous> (/home/ubuntu/SpeakUP_Server/app.js:5:11)
+    at Module._compile (node:internal/modules/cjs/loader:1102:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1131:10)
+    at Module.load (node:internal/modules/cjs/loader:967:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:807:14)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1312:8)
+    at processTicksAndRejections (node:internal/process/task_queues:80:21) {
+  code: 'EADDRINUSE',
+  errno: -98,
+  syscall: 'listen',
+  address: '::',
+  port: 5000
+}
+2020-11-20 14:37:32 info undefined - API Server Start At Port 5000
+로그인 API
+2020-11-21 01:04:16 info undefined - API Server Start At Port 5000
+node:events:306
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EADDRINUSE: address already in use :::5000
+    at Server.setupListenHandle [as _listen2] (node:net:1285:16)
+    at listenInCluster (node:net:1333:12)
+    at Server.listen (node:net:1419:7)
+    at Function.listen (/home/ubuntu/SpeakUP_Server/node_modules/express/lib/application.js:618:24)
+    at Object.<anonymous> (/home/ubuntu/SpeakUP_Server/app.js:5:11)
+    at Module._compile (node:internal/modules/cjs/loader:1102:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1131:10)
+    at Module.load (node:internal/modules/cjs/loader:967:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:807:14)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1312:8)
+    at processTicksAndRejections (node:internal/process/task_queues:80:21) {
+  code: 'EADDRINUSE',
+  errno: -98,
+  syscall: 'listen',
+  address: '::',
+  port: 5000
+}
+로그인 API
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDU5MjA2NjEsImV4cCI6MTYwNjc4NDY2MSwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.7OWeqSxJfRHvJtm16be8m90jOpIQ-6oeW8_u6dnhN_w
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDU5MjA2NjEsImV4cCI6MTYwNjc4NDY2MSwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.7OWeqSxJfRHvJtm16be8m90jOpIQ-6oeW8_u6dnhN_w
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDU5MjA2NjEsImV4cCI6MTYwNjc4NDY2MSwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.7OWeqSxJfRHvJtm16be8m90jOpIQ-6oeW8_u6dnhN_w
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDU5MjA2NjEsImV4cCI6MTYwNjc4NDY2MSwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.7OWeqSxJfRHvJtm16be8m90jOpIQ-6oeW8_u6dnhN_w
+로그인 API
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDU5MjEwNjMsImV4cCI6MTYwNjc4NTA2MywiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.CmSK5wn8z5_ZXuV3zRQKenLKxx-cswgnREKdoaln_BU
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDU5MjEwNjMsImV4cCI6MTYwNjc4NTA2MywiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.CmSK5wn8z5_ZXuV3zRQKenLKxx-cswgnREKdoaln_BU
+로그인 API
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDU5MjEzNzAsImV4cCI6MTYwNjc4NTM3MCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.umcrORhfJ6kPieZtTT66rkGQA1zQVqY6S8QkigT7AcU
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDU5MjEzNzAsImV4cCI6MTYwNjc4NTM3MCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.umcrORhfJ6kPieZtTT66rkGQA1zQVqY6S8QkigT7AcU
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDU5MjEzNzAsImV4cCI6MTYwNjc4NTM3MCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.umcrORhfJ6kPieZtTT66rkGQA1zQVqY6S8QkigT7AcU
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDU5MjEzNzAsImV4cCI6MTYwNjc4NTM3MCwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.umcrORhfJ6kPieZtTT66rkGQA1zQVqY6S8QkigT7AcU
+로그인 API
+2020-11-21 01:21:54 info undefined - API Server Start At Port 5000
+node:events:306
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EADDRINUSE: address already in use :::5000
+    at Server.setupListenHandle [as _listen2] (node:net:1285:16)
+    at listenInCluster (node:net:1333:12)
+    at Server.listen (node:net:1419:7)
+    at Function.listen (/home/ubuntu/SpeakUP_Server/node_modules/express/lib/application.js:618:24)
+    at Object.<anonymous> (/home/ubuntu/SpeakUP_Server/app.js:5:11)
+    at Module._compile (node:internal/modules/cjs/loader:1102:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1131:10)
+    at Module.load (node:internal/modules/cjs/loader:967:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:807:14)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1312:8)
+    at processTicksAndRejections (node:internal/process/task_queues:80:21) {
+  code: 'EADDRINUSE',
+  errno: -98,
+  syscall: 'listen',
+  address: '::',
+  port: 5000
+}
+2020-11-21 01:22:32 info undefined - API Server Start At Port 5000
+API execution: viewResult
+API execution: SignIN
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDU5MjE5NDEsImV4cCI6MTYwNjc4NTk0MSwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.7Z315Q7mpsl7ALwEcwVru5464UM-eOBz0kxoRf1ZI48
+API execution: courseList
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDU5MjE5NDEsImV4cCI6MTYwNjc4NTk0MSwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.7Z315Q7mpsl7ALwEcwVru5464UM-eOBz0kxoRf1ZI48
+API execution: aasignList
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDU5MjE5NDEsImV4cCI6MTYwNjc4NTk0MSwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.7Z315Q7mpsl7ALwEcwVru5464UM-eOBz0kxoRf1ZI48
+API execution: aasignList
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDU5MjE5NDEsImV4cCI6MTYwNjc4NTk0MSwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.7Z315Q7mpsl7ALwEcwVru5464UM-eOBz0kxoRf1ZI48
+API execution: aasignList
+API execution: SignIN
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDU5MjIwMDIsImV4cCI6MTYwNjc4NjAwMiwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.oKyjENs3uFZCy36yZGCerv77sAg4rSyN1rJYoJ4pSnc
+API execution: courseList
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDU5MjIwMDIsImV4cCI6MTYwNjc4NjAwMiwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.oKyjENs3uFZCy36yZGCerv77sAg4rSyN1rJYoJ4pSnc
+API execution: aasignList
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDU5MjIwMDIsImV4cCI6MTYwNjc4NjAwMiwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.oKyjENs3uFZCy36yZGCerv77sAg4rSyN1rJYoJ4pSnc
+API execution: aasignList
+API execution: viewResult
+/home/ubuntu/SpeakUP_Server/src/controllers/assignController.js:180
+    var student_id = jwt.decode(jwt_token, jwtsecret).STD_NUM;
+                                                     ^
+
+TypeError: Cannot read property 'STD_NUM' of null
+    at exports.viewResult (/home/ubuntu/SpeakUP_Server/src/controllers/assignController.js:180:54)
+    at Layer.handle [as handle_request] (/home/ubuntu/SpeakUP_Server/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ubuntu/SpeakUP_Server/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/ubuntu/SpeakUP_Server/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/ubuntu/SpeakUP_Server/node_modules/express/lib/router/layer.js:95:5)
+    at /home/ubuntu/SpeakUP_Server/node_modules/express/lib/router/index.js:281:22
+    at param (/home/ubuntu/SpeakUP_Server/node_modules/express/lib/router/index.js:354:14)
+    at param (/home/ubuntu/SpeakUP_Server/node_modules/express/lib/router/index.js:365:14)
+    at Function.process_params (/home/ubuntu/SpeakUP_Server/node_modules/express/lib/router/index.js:410:3)
+    at next (/home/ubuntu/SpeakUP_Server/node_modules/express/lib/router/index.js:275:10)
+2020-11-21 02:14:40 info undefined - API Server Start At Port 5000
+API execution: viewResult
+2020-11-21 02:14:47 info undefined - API Server Start At Port 5000
+node:events:306
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EADDRINUSE: address already in use :::5000
+    at Server.setupListenHandle [as _listen2] (node:net:1285:16)
+    at listenInCluster (node:net:1333:12)
+    at Server.listen (node:net:1419:7)
+    at Function.listen (/home/ubuntu/SpeakUP_Server/node_modules/express/lib/application.js:618:24)
+    at Object.<anonymous> (/home/ubuntu/SpeakUP_Server/app.js:5:11)
+    at Module._compile (node:internal/modules/cjs/loader:1102:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1131:10)
+    at Module.load (node:internal/modules/cjs/loader:967:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:807:14)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1312:8)
+    at processTicksAndRejections (node:internal/process/task_queues:80:21) {
+  code: 'EADDRINUSE',
+  errno: -98,
+  syscall: 'listen',
+  address: '::',
+  port: 5000
+}
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDU5MjIwMDIsImV4cCI6MTYwNjc4NjAwMiwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.oKyjENs3uFZCy36yZGCerv77sAg4rSyN1rJYoJ4pSnc
+API execution: aasignList
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDU5MjIwMDIsImV4cCI6MTYwNjc4NjAwMiwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.oKyjENs3uFZCy36yZGCerv77sAg4rSyN1rJYoJ4pSnc
+API execution: aasignList
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDU5MjIwMDIsImV4cCI6MTYwNjc4NjAwMiwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.oKyjENs3uFZCy36yZGCerv77sAg4rSyN1rJYoJ4pSnc
+API execution: aasignList
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDU5MjIwMDIsImV4cCI6MTYwNjc4NjAwMiwiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.oKyjENs3uFZCy36yZGCerv77sAg4rSyN1rJYoJ4pSnc
+API execution: aasignList
+API execution: viewResult
+API execution: SignIN
+사용자가 전송한 토큰: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTVERfTlVNIjoxNzcxMDE4LCJpYXQiOjE2MDU5MjUwNTMsImV4cCI6MTYwNjc4OTA1MywiaXNzIjoic3BlYWt1cF9zZXJ2ZXIuYWRtaW4iLCJzdWIiOiJ1c2VyLmxvZ2luLmluZm8ifQ.Lq6ZbPQ7cMqDJWKOvCyqcfG7R-M97vdjBCOZk2lO5TQ
+API execution: courseList
+API execution: viewResult
+API execution: viewResult
+2020-11-21 04:34:45 info undefined - API Server Start At Port 5000
+API execution: viewResult
+API execution: viewResult
+API execution: viewResult
+API execution: viewResult
+API execution: viewResult
+/home/ubuntu/SpeakUP_Server/node_modules/aws-sdk/lib/request.js:31
+            throw err;
+            ^
+
+Error [TypeError]: Cannot read property 'Contents' of null
+    at Response.<anonymous> (/home/ubuntu/SpeakUP_Server/src/controllers/assignController.js:193:28)
+    at Request.<anonymous> (/home/ubuntu/SpeakUP_Server/node_modules/aws-sdk/lib/request.js:369:18)
+    at Request.callListeners (/home/ubuntu/SpeakUP_Server/node_modules/aws-sdk/lib/sequential_executor.js:106:20)
+    at Request.emit (/home/ubuntu/SpeakUP_Server/node_modules/aws-sdk/lib/sequential_executor.js:78:10)
+    at Request.emit (/home/ubuntu/SpeakUP_Server/node_modules/aws-sdk/lib/request.js:688:14)
+    at Request.transition (/home/ubuntu/SpeakUP_Server/node_modules/aws-sdk/lib/request.js:22:10)
+    at AcceptorStateMachine.runTo (/home/ubuntu/SpeakUP_Server/node_modules/aws-sdk/lib/state_machine.js:14:12)
+    at /home/ubuntu/SpeakUP_Server/node_modules/aws-sdk/lib/state_machine.js:26:10
+    at Request.<anonymous> (/home/ubuntu/SpeakUP_Server/node_modules/aws-sdk/lib/request.js:38:9)
+    at Request.<anonymous> (/home/ubuntu/SpeakUP_Server/node_modules/aws-sdk/lib/request.js:690:12) {
+  code: 'TypeError',
+  time: 2020-11-21T04:38:42.165Z
+}
+2020-11-21 04:40:29 info undefined - API Server Start At Port 5000
+API execution: viewResult
+/home/ubuntu/SpeakUP_Server/node_modules/aws-sdk/lib/request.js:31
+            throw err;
+            ^
+
+Error [TypeError]: Cannot read property 'Contents' of null
+    at Response.<anonymous> (/home/ubuntu/SpeakUP_Server/src/controllers/assignController.js:193:30)
+    at Request.<anonymous> (/home/ubuntu/SpeakUP_Server/node_modules/aws-sdk/lib/request.js:369:18)
+    at Request.callListeners (/home/ubuntu/SpeakUP_Server/node_modules/aws-sdk/lib/sequential_executor.js:106:20)
+    at Request.emit (/home/ubuntu/SpeakUP_Server/node_modules/aws-sdk/lib/sequential_executor.js:78:10)
+    at Request.emit (/home/ubuntu/SpeakUP_Server/node_modules/aws-sdk/lib/request.js:688:14)
+    at Request.transition (/home/ubuntu/SpeakUP_Server/node_modules/aws-sdk/lib/request.js:22:10)
+    at AcceptorStateMachine.runTo (/home/ubuntu/SpeakUP_Server/node_modules/aws-sdk/lib/state_machine.js:14:12)
+    at /home/ubuntu/SpeakUP_Server/node_modules/aws-sdk/lib/state_machine.js:26:10
+    at Request.<anonymous> (/home/ubuntu/SpeakUP_Server/node_modules/aws-sdk/lib/request.js:38:9)
+    at Request.<anonymous> (/home/ubuntu/SpeakUP_Server/node_modules/aws-sdk/lib/request.js:690:12) {
+  code: 'TypeError',
+  time: 2020-11-21T04:40:32.512Z
+}
+2020-11-21 04:41:18 info undefined - API Server Start At Port 5000
+API execution: viewResult
+null
+/home/ubuntu/SpeakUP_Server/node_modules/aws-sdk/lib/request.js:31
+            throw err;
+            ^
+
+Error [TypeError]: Cannot read property 'Contents' of null
+    at Response.<anonymous> (/home/ubuntu/SpeakUP_Server/src/controllers/assignController.js:194:28)
+    at Request.<anonymous> (/home/ubuntu/SpeakUP_Server/node_modules/aws-sdk/lib/request.js:369:18)
+    at Request.callListeners (/home/ubuntu/SpeakUP_Server/node_modules/aws-sdk/lib/sequential_executor.js:106:20)
+    at Request.emit (/home/ubuntu/SpeakUP_Server/node_modules/aws-sdk/lib/sequential_executor.js:78:10)
+    at Request.emit (/home/ubuntu/SpeakUP_Server/node_modules/aws-sdk/lib/request.js:688:14)
+    at Request.transition (/home/ubuntu/SpeakUP_Server/node_modules/aws-sdk/lib/request.js:22:10)
+    at AcceptorStateMachine.runTo (/home/ubuntu/SpeakUP_Server/node_modules/aws-sdk/lib/state_machine.js:14:12)
+    at /home/ubuntu/SpeakUP_Server/node_modules/aws-sdk/lib/state_machine.js:26:10
+    at Request.<anonymous> (/home/ubuntu/SpeakUP_Server/node_modules/aws-sdk/lib/request.js:38:9)
+    at Request.<anonymous> (/home/ubuntu/SpeakUP_Server/node_modules/aws-sdk/lib/request.js:690:12) {
+  code: 'TypeError',
+  time: 2020-11-21T04:41:39.094Z
+}

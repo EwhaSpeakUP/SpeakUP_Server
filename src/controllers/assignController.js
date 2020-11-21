@@ -34,7 +34,7 @@ function uploadS3(S3params, addVoiceUrlQueryParams,conn, res){
                 });   
             }     
         });
-        addVoiceUrlQuery = 'UPDATE SUBMIT_ASSIGNMENT SET SUBMIT_VOICE = CONCAT(SUBMIT_VOICE,"|?") WHERE ST_ID=? AND ASSIGNMENT_ID = ?';
+        addVoiceUrlQuery = 'UPDATE SUBMIT_ASSIGNMENT SET SUBMIT_VOICE = CONCAT(ifnull(SUBMIT_VOICE,""),"|?"), SUBMIT_CHECK = 1 WHERE ST_ID=? AND ASSIGNMENT_ID = ?';
         
         conn.query(addVoiceUrlQuery, addVoiceUrlQueryParams, (err, result)=>{
             if(err){
@@ -54,6 +54,7 @@ function uploadS3(S3params, addVoiceUrlQueryParams,conn, res){
 
 //after middleware function
 exports.uploadAssign = async function (req, res){ 
+    console.log("API execution: uploadAssign");
     //학생정보 저장
     var jwt_token = req.headers.access_token; //헤더에 입력된 토큰
     var student_ID = jwt.decode(jwt_token, jwtsecret).STD_NUM;
@@ -116,8 +117,8 @@ exports.uploadAssign = async function (req, res){
 
 /**---------- 파일 다운로드 ------------ */
 
-
 exports.transmitFile = async function(req,res){
+    console.log("API execution: downloadFile");
     const connection = await pool.getConnection(function(err, conn){
         if(err) {
             console.log(err);
@@ -164,47 +165,46 @@ exports.transmitFile = async function(req,res){
 };
 
 
-
-
 /**---------- 전사 및 통계 결과 확인 ------------ */
 
 
 exports.viewResult = async function(req,res){
+    console.log("API execution: viewResult");
     var chk_num=0;
 
     var assign_id=req.params.assignID;
     var jwt_token = req.headers.access_token; 
     var student_id = jwt.decode(jwt_token, jwtsecret).STD_NUM;
     var BUCKET_NAME = 'ewhaspeakupsource1';
-    var sql = "SELECT TRANSCRIPT, STATISTICS FROM SUBMIT_ASSIGNMENT WHERE ASSIGNMENT_ID=? AND ST_ID = ?";
+    var sql = "SELECT TRANSCRIPT, STATISTICS, RATIO FROM SUBMIT_ASSIGNMENT WHERE ASSIGNMENT_ID=? AND ST_ID = ?";
 
     /**전사 파일 API */
-//S3에서 파일 목록 읽어오기
-function getJSONnum(params, dir){
-    const promise = new Promise((resolve, reject)=>{
-        S3.listObjects(params, function (err, data) {
-            
-            if(err) reject(err);
-            var num = 0;
-            var json_arr=[];
-            var len = data.Contents.length;
-            for(var i=0; i<len; i++){
-                var str=data.Contents[i].Key;
-                var c = str.replace('hw_assign/'+dir , '');
-                if(c.startsWith('JSON')){
-                    json_arr.push(c);
-                    num=num+1;
-                    //console.log('s3://ewhaspeakupsource1/hw_assign/'+dir+c);
-                    //var param = {Bucket:BUCKET_NAME, Key : 'hw_assign/'+dir+c};
-                    //var file = require('fs').createWriteStream(c);
-                    //S3.getObject(param).createReadStream().pipe(file); //json 파일 저장
+    //S3에서 파일 목록 읽어오기
+    function getJSONnum(params, dir){
+        const promise = new Promise((resolve, reject)=>{
+            S3.listObjects(params, function (err, data) {
+                
+                if(err) reject(err);
+                var num = 0;
+                var json_arr=[];
+                var len = data.Contents.length;
+                for(var i=0; i<len; i++){
+                    var str=data.Contents[i].Key;
+                    var c = str.replace('hw_assign/'+dir , '');
+                    if(c.startsWith('JSON')){
+                        json_arr.push(c);
+                        num=num+1;
+                        //console.log('s3://ewhaspeakupsource1/hw_assign/'+dir+c);
+                        //var param = {Bucket:BUCKET_NAME, Key : 'hw_assign/'+dir+c};
+                        //var file = require('fs').createWriteStream(c);
+                        //S3.getObject(param).createReadStream().pipe(file); //json 파일 저장
+                    }
                 }
-            }
-            resolve([num, json_arr]);
-        });
-    })
-    return promise;
-}
+                resolve([num, json_arr]);
+            });
+        })
+        return promise;
+    }
 
     const connection = await pool.getConnection(function(err, conn){
         conn.query(sql, [assign_id, student_id], function(err, result){       
@@ -220,7 +220,9 @@ function getJSONnum(params, dir){
             //전사파일이 없을 경우에는 전사파일 생성
             if(JSON.stringify(result[0].TRANSCRIPT)=='null' | result[0].TRANSCRIPTION ==''){ 
                 var html_arr=[]; 
-                var sta_arr=[0,0,0,0,0,0,0];
+                var sta_arr=[0,0,0,0];
+                var rat_arr=[0,0,0];
+
 
                 //동기를 위한 readJSON 함수 정의
                 function readJSON(json, callback){
@@ -231,7 +233,7 @@ function getJSONnum(params, dir){
                         var sta_json = model_result["통계결과"];
             
                         sta_arr[0]+=parseInt(sta_json["음"]); sta_arr[1]+=parseInt(sta_json["그"]); sta_arr[2]+=parseInt(sta_json["어"]); sta_arr[3]+=parseInt(sta_json["총 개수"]);
-                        sta_arr[4]+=parseFloat(sta_json["발화시간"]); sta_arr[5]+=parseFloat(sta_json["침묵시간"]); sta_arr[6]+=parseFloat(sta_json["통역개시지연시간"]); 
+                        rat_arr[0]+=parseFloat(sta_json["발화시간"]); rat_arr[1]+=parseFloat(sta_json["침묵시간"]); rat_arr[2]+=parseFloat(sta_json["통역개시지연시간"]); 
                         for(var j=0; j<item.length; j++){
                             if (item[j]["tag"]=="0000") {result+="<font size=1 color=blue>"; result+=item[j]["result"]; result+=" </font>";}
                             else if (item[j]["tag"]=="1000") {result+="<font size=3 color=black>"; result+=item[j]["result"]; result+=" </font>";}
@@ -248,7 +250,7 @@ function getJSONnum(params, dir){
                     for (var i=0; i<num; i++){   //num:JSON 파일 갯수 -->JOSN 파일 돌때마다
                         readJSON(json_arr[i], function(err, result){
                             html_arr.push(result); 
-                            callback(null, html_arr, sta_arr);
+                            callback(null, html_arr, sta_arr, rat_arr);
                         })
                     }
                 }   
@@ -265,11 +267,11 @@ function getJSONnum(params, dir){
                 // S3에서 JSON파일의 개수를 알아낸다
                 getJSONnum(params,dir)
                 .then(([num, json_arr])=>{
-                    mk_html(num,json_arr, function (err, html_arr, sta_arr){
+                    mk_html(num,json_arr, function (err, html_arr, sta_arr, rat_arr){
                         chk_num++;
                         /** DB에 전사파일 정보 저장 */
                         var sql = "UPDATE SUBMIT_ASSIGNMENT SET TRANSCRIPT = ? WHERE ASSIGNMENT_ID = ? AND ST_ID = ?";
-                        conn.query(sql, [html_arr.join('$$$$'), assign_id,student_id], function(err, rows){
+                        conn.query(sql, [html_arr.join('$$$'), assign_id,student_id], function(err, rows){
                             if(err){
                                 console.log(err);
                                 return res.json({
@@ -281,9 +283,8 @@ function getJSONnum(params, dir){
                         });
                         
                         /** DB에 통계 정보 저장 */
-                        var sql = "UPDATE SUBMIT_ASSIGNMENT SET STATISTICS = ? WHERE ASSIGNMENT_ID = ? AND ST_ID = ?";
-                        console.log(sta_arr);
-                        conn.query(sql, [sta_arr.join(','),assign_id, student_id], function(err, rows){
+                        var sql = "UPDATE SUBMIT_ASSIGNMENT SET STATISTICS = ?, RATIO=? WHERE ASSIGNMENT_ID = ? AND ST_ID = ?";
+                        conn.query(sql, [sta_arr.join(','), rat_arr.join(','), assign_id, student_id], function(err, rows){
                             if(err){
                                 console.log(err);
                                 conn.release();
@@ -296,11 +297,12 @@ function getJSONnum(params, dir){
                         });
 
                         if(chk_num==num){
+                            var sum=rat_arr[0]+rat_arr[2]+rat_arr[1];
                             var result={
                                 isSuccess : true,
                                 code : 100,
                                 message : "파일 수신에 성공했습니다.",
-                                result : {html : "["+html_arr.join(',')+"]", statistics : "["+sta_arr.join(',')+"]" }
+                                result : {html : html_arr.join(','), statistics : sta_arr, ratio:[rat_arr[0]/sum, rat_arr[1]/sum,rat_arr[2]/sum]  }
                             };
                             res.writeHead(200, {'Content-Type':'application/json/json'});
                             res.end(JSON.stringify(result));
@@ -310,11 +312,25 @@ function getJSONnum(params, dir){
             }
             /** DB에 전사파일이 있는 경우에는 바로 송신*/
             else{
+                var a=[];
+                var b=[];
+                var tmpFiller = result[0]["STATISTICS"].split(',');
+                for (var i=0;i<4;i++) {
+                    a[i] = parseInt(tmpFiller[i]);
+                }
+                var tmpSilence = result[0]["RATIO"].split(',');
+                for (var i=0;i<3;i++) {
+                    b[i] = parseInt(tmpSilence[i]);
+                }
+                var sum = b[0]+b[1]+b[2];
+                
+
+
                 var result={
                     isSuccess : true,
                     code : 100,
                     message : "파일 수신에 성공했습니다.",
-                    result : {html : "["+result[0]["TRANSCRIPT"].split('$$$')+"]", statistics : "["+result[0]["STATISTICS"]+"]" }
+                    result : {html : result[0]["TRANSCRIPT"].split('$$$'), statistics : a, ratio:[b[0]/sum, b[1]/sum, b[2]/sum] }
                 };
                 res.writeHead(200, {'Content-Type':'application/json/json'});
                 res.end(JSON.stringify(result));

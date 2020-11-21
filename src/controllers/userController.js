@@ -8,7 +8,7 @@ const jwtsecret = require('../../config/secret_config').jwtsecret;
 
 /**---------- 회원가입 API ------------ */ 
 exports.signUp = async function(req, res){
-    console.log("회원가입API");
+    console.log("API execution: SignUP");
     const {id, password, st_id} = req.body;
     encoded_password = crypto.createHash('sha512').update(password).digest('base64');
 
@@ -135,7 +135,7 @@ exports.signUp = async function(req, res){
 
 /**---------- 로그인 API ------------ */ 
 exports.signIn = async function(req, res){
-    console.log("로그인 API");
+    console.log("API execution: SignIN");
     const {id, password} = req.body;
     encoded_password = crypto.createHash('sha512').update(password).digest('base64');
     if (!id){

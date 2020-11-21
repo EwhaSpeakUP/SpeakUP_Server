@@ -221,9 +221,9 @@ def STT_with_json(audio_file, jsons):
   statistics_json['어'] = filler_1
   statistics_json['음'] = filler_2
   statistics_json['그'] = filler_3
-  statistics_json['통역개시지연시간'] = 100 * first_silence_interval/audio_total_length
-  statistics_json['침묵시간'] = 100 * silence_interval/audio_total_length
-  statistics_json['발화시간'] = 100 * (audio_total_length - first_silence - silence_interval)/audio_total_length
+  statistics_json['통역개시지연시간'] = first_silence_interval /1000
+  statistics_json['침묵시간'] = silence_interval /1000
+  statistics_json['발화시간'] = (audio_total_length - first_silence - silence_interval)/1000
   return {"결과":transcript_json, "통계결과":statistics_json}
 
 
@@ -239,7 +239,7 @@ def make_transcript(audio_file_path):
 # 주어진 파일에 대해서 전사 실행후 S3에 저장
 with open("./config/secret_config.json") as json_file: # app.js를 실행하는 위치에서의 상대경로
     audio_file_path = "./src/Transcription/audio_file"+sys.argv[3]+".mp3" # app.js를 실행하는 위치에서의 상대경로
-    result_json = str(make_transcript(audio_file_path))
+    result_json = json.dumps(make_transcript(audio_file_path))
     
     #S3에 업로드
     S3_config_json = dict((json.load(json_file))["S3"])
@@ -255,7 +255,7 @@ with open("./config/secret_config.json") as json_file: # app.js를 실행하는 
     S3.put_object(
       Bucket=bucket_name, # S3 bucket name
       Key=file_key, # file path + file name
-      Body=result_json, # file data
+      Body= result_json, # file data
       ACL = 'public-read') # public하게 read할 수 있다
     os.remove(audio_file_path)
-    print("it is end" + file_key)
+    print("it is end " + file_key)

@@ -5,9 +5,9 @@ const crypto = require('crypto');
 const { type } = require('os');
 /**
  * 회원가입 API
- * @param {string} id 
- * @param {string} password 
- * @param {Number} studentId 
+ * @Body {string} id 
+ * @Body {string} password 
+ * @Body {Number} studentId 
  * @returns 
  */
 const validateSignUpInput = (id, password, studentId) => {
@@ -81,8 +81,12 @@ exports.signUp = async function(req, res) {
     }
 }
     
-
-/**---------- 로그인 API ------------ */ 
+/**
+ * 로그인 API
+ * @Body {*} id
+ * @Body {*} password
+ * @returns 
+ */
 const getToken = (payload, secret, option) => {
     return new Promise((resolve, reject) => {
         jwt.sign(
@@ -101,6 +105,7 @@ const validateSignInInput = (id, password) => {
     if(!id || !password) return false;
     else return true;
 }
+
 exports.signIn = async function(req, res){
     const { id, password } = req.body;
     
@@ -136,7 +141,7 @@ exports.signIn = async function(req, res){
         }
         const token = await getToken(
             {
-                STD_NUM: userInfoRows[0].STD_NUM,
+                studentId: userInfoRows[0].STD_NUM,
             },
             process.env.JWT_SECRET,
             {

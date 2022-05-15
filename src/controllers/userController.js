@@ -1,223 +1,160 @@
-const {pool} = require('../../config/database');
+const { pool } = require('../../config/database');
 const jwt = require('jsonwebtoken');
 const auth = require("../../auth");
 const crypto = require('crypto');
 const { type } = require('os');
-const jwtsecret = require('../../config/secret_config').jwtsecret;
-
-
-/**---------- 회원가입 API ------------ */ 
-exports.signUp = async function(req, res){
-    console.log("API execution: SignUP");
-    const {id, password, st_id} = req.body;
-    encoded_password = crypto.createHash('sha512').update(password).digest('base64');
-
-    if (!id){
-        return res.json({
-            isSuccess: false,
-            code: 300,
-            message: "아이디를 입력해주세요."
-        });
+/**
+ * 회원가입 API
+ * @param {string} id 
+ * @param {string} password 
+ * @param {Number} studentId 
+ * @returns 
+ */
+const validateSignUpInput = (id, password, studentId) => {
+    if (!id || !password || !studentId || studentId.length != 7){
+        return false;
+    } else  {
+        return true;
     }
-    if (!password){
-        return res.json({
+}
+
+exports.signUp = async function(req, res) {
+    const {id, password, studentId} = req.body;
+
+    // 입력 확인
+    if (!validateSignUpInput(id, password, studentId)) {
+        return res.status(400).json({
             isSuccess: false,
-            code: 301,
-            message: "비밀번호를 입력해주세요."
-        });
-    }
-    if (!st_id){
-        return res.json({
-            isSuccess: false,
-            code: 302,
-            message: "학번을 입력해주세요."
-        });
-    }
-    else if (st_id.length != 7){
-        return res.json({
-            isSuccess: false,
-            code: 303,
-            message: "학번을 올바르게 입력해주세요(7자)."
+            message: "아이디, 패스워드, 혹은 학번 형식이 알맞지 않습니다.",
         });
     }
 
-    const connection = await pool.getConnection(function(err, conn){
-        if(err){
-            //conn.release();
-            console.log(err);
-            return res.json({
+    try {
+        const conn = await pool.getConnection(async conn => conn);
+
+        // 해당 학번이 존재하는지 확인
+        const checkStudentIdQuery = 'select * from STUDENT where ST_ID = ?';
+        let checkStudentIdRows = await conn.query(checkSTIDquery, [studentId]);
+        if (checkStudentIdRows.length <= 0){
+            conn.release();
+            return res.status(400).json({
                 isSuccess: false,
-                code: 200,
-                message: "DB 서버 연결에 실패했습니다."
+                message: "존재하지 않는 학번입니다.",
             });
         }
-        const checkSTIDquery = 'select * from STUDENT where ST_ID = ?';
-        var checkSTID = conn.query(checkSTIDquery, [st_id], function(err,rows){
-            if(err){
-                console.log(err);
-                return res.json({
-                    isSuccess: false,
-                    code: 200,
-                    message: "DB 서버 연결에 실패했습니다."
-                });
-            }
-            if (rows.length <= 0){
-                conn.release();
-                return res.json({
-                    isSuccess: false,
-                    code: 304,
-                    message: "존재하지 않는 학번입니다."
-                });
-            }
-            const checkSTquery = 'select * from USERS where STD_NUM = ?';
-            conn.query(checkSTquery, [st_id], function(err,rows){
-                if(err){
-                    console.log(err);
-                    return res.json({
-                        isSuccess: false,
-                        code: 200,
-                        message: "DB 서버 연결에 실패했습니다."
-                    });
-                }
-                if (rows.length > 0){
-                    return res.json({
-                        isSuccess: false,
-                        code: 305,
-                        message: "해당 학번에 계정이 이미 존재합니다."
-                    });
-                }
-    
-                const checkIDquery = 'select * from USERS where USER_ID = ?';
-                conn.query(checkIDquery, [id], function(err, rows){
-                    if(err){
-                        console.log(err);
-                        return res.json({
-                            isSuccess: false,
-                            code: 200,
-                            message: "DB 서버 연결에 실패했습니다."
-                        });
-                    }
-                    if(rows.length > 0){
-                        return res.json({
-                            isSuccess: false,
-                            code: 306,
-                            message: "중복되는 ID입니다."
-                        });
-                    }
-                    
-                    const addIDquery = 'insert into USERS(USER_ID, USER_PW, STD_NUM) values (?, ?, ?)';
-                    conn.query(addIDquery, [id, encoded_password, st_id], function(err, rows){
-                        if(err){
-                            console.log(err);
-                            return res.json({
-                                isSuccess: false,
-                                code: 200,
-                                message: "DB 서버 연결에 실패했습니다."
-                            });
-                        }
-                        
-                        return res.json({
-                            isSuccess: true,
-                            code: 100,
-                            message: "회원가입에 성공했습니다."
-                        });
-    
-                    })
-                    
-                })
+
+        // 해당 학번으로 가입된 계정이 존재하는지 확인
+        const checkStudentAccountQuery = 'select * from USERS where STD_NUM = ?';
+        const checkStudentAccountRows = await conn.query(checkStudentAccountQuery, [studentId]);
+        if (checkStudentAccountRows > 0) {
+            conn.release();
+            return res.status(400).json({
+                isSuccess: false,
+                message: "해당 학번으로 가입된 계정이 있습니다.",
             });
+        }
+
+        // 입력한 아이디가 중복되는 아이디인지 확인
+        const checkIdQuery = 'select * from USERS where USER_ID = ?';
+        const checkIdRows = await conn.query(checkIdQuery, [id]);
+        if(checkIdRows > 0) {
+            conn.release();
+            return res.status(400).json({
+                isSuccess: false,
+                message: "중복되는 ID입니다.",
+            });
+        }
+
+        // 회원 가입
+        const encoded_password = crypto.createHash('sha512').update(password).digest('base64');
+        const createAccountQuery = 'insert into USERS(USER_ID, USER_PW, STD_NUM) values (?, ?, ?)';
+        await conn.query(createAccountQuery, [id, encoded_password, st_id]);
+        return res.status(202).json({
+            isSuccess: true,
+            message: "회원가입에 성공했습니다.",
+        })
+    } catch (e) {
+        return res.status(500).json({
+            isSuccess: false,
+            message: "서버에 문제가 발생하였습니다.",
         });
-        
-        
-    });
+    }
 }
     
 
 /**---------- 로그인 API ------------ */ 
+const getToken = (payload, secret, option) => {
+    return new Promise((resolve, reject) => {
+        jwt.sign(
+            payload,
+            secret,
+            option,
+            function (err, token) {
+                if (err) reject(err);
+                else resolve(token);
+            }
+        )
+    })
+}
+
+const validateSignInInput = (id, password) => {
+    if(!id || !password) return false;
+    else return true;
+}
 exports.signIn = async function(req, res){
-    console.log("API execution: SignIN");
-    const {id, password} = req.body;
-    encoded_password = crypto.createHash('sha512').update(password).digest('base64');
-    if (!id){
-        return res.json({
+    const { id, password } = req.body;
+    
+
+    if(!validateSignInInput(id, password)) {
+        return res.status(400).json({
             isSuccess: false,
-            code: 300,
-            message: "아이디를 입력해주세요."
+            message: "아이디, 패스워드 형식이 올바르지 않습니다.",
         });
     }
-    if (!password){
-        return res.json({
-            isSuccess: false,
-            code: 301,
-            message: "비밀번호를 입력해주세요."
-        });
-    }
-    const connection = await pool.getConnection(function(err, conn){
-        if (err){
-            console.log(err);//TransportOptions.//conn.release();
-            return res.json({
+    
+    try {
+        const conn = await pool.getConnection(async conn => conn);
+
+        // 사용자 정보 조회 후
+        const userInfoQuery = 'select USER_INDEX,USER_ID, USER_PW, STD_NUM from USERS where USER_ID =?';
+        const userInfoRows = await conn.query(userInfoQuery, [id]);
+        if(userInfoRows.length < 1){
+            conn.release();
+            return res.status(409).json({
                 isSuccess: false,
-                code: 200,
-                message: "DB 서버 연결에 실패했습니다."
-            });
-            
+                message: "존재하지 않는 아이디입니다.",
+            })
         }
 
-        const userinfoquery = 'select USER_INDEX,USER_ID, USER_PW, STD_NUM from USERS where USER_ID =?'
-        const userinfoparams = [id];
-        conn.query(userinfoquery, userinfoparams, function(err, rows){
-            if(err){
-                console.log(err);
-                conn.release();
-                return res.json({
-                    isSuccess: false,
-                    code: 200,
-                    message: "DB 서버 연결에 실패했습니다."
-                });
-            }
-            
-            if(rows.length < 1){
-                conn.release();
-                return res.json({
-                    isSuccess: false,
-                    code: 302,
-                    message: "아이디가 존재하지 않습니다."
-                });
-            }
-
-            if(rows[0].USER_PW != encoded_password){
-                console.log(rows[0].USER_PW + '  '+ encoded_password);
-                conn.release();
-                return res.json({
-                    isSuccess: false,
-                    code: 303,
-                    message: "비밀번호가 올바르지 않습니다."
-                });
-            }
-
-                    jwt.sign(
-                      {
-                        STD_NUM: rows[0].STD_NUM,
-                      },
-                      jwtsecret,
-                      {
-                        expiresIn: "10d",
-                        issuer: "speakup_server.admin",
-                        subject: "user.login.info",
-                      },
-                      function (err, token) {
-                        if(err){
-                            console.log(err);
-                        }
-                        res.json({
-                            isSuccess: true,
-                            code: 100,
-                            message: "로그인에 성공했습니다.",
-                            result: { access_token: token }
-                        });
-                    }
-                );
+        const encoded_password = crypto.createHash('sha512').update(password).digest('base64');
+        if(userInfoRows[0].USER_PW != encoded_password){
             conn.release();
+            return res.status(409).json({
+                isSuccess: false,
+                message: "패스워드가 일치하지 않습니다."
+            });
+        }
+        const token = await getToken(
+            {
+                STD_NUM: userInfoRows[0].STD_NUM,
+            },
+            process.env.JWT_SECRET,
+            {
+                expiresIn: "10d",
+                issuer: "speakup_server.admin",
+                subject: "user.login.info",
+            }
+        );
+        return res.status(202).json({
+            isSuccess: true,
+            message: "로그인에 성공했습니다.",
+            result: { access_token: token }
+        })
+
+    } catch(e) {
+        return res.status(500).json({
+            isSuccess: false,
+            message: "서버에 문제가 발생하였습니다.",
         });
-    })   
-;}
+    };
+}

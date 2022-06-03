@@ -1,35 +1,33 @@
 const express = require("express");
-const compression = require("compression");
-const methodOverride = require("method-override");
-var cors = require("cors");
-//const bodyParser = require('body-parser');  // 5MB app.use(bodyParser.urlencoded({limit: 5000000, extended: true, parameterLimit:50000})); // limit: 5MB
+const dotenv = require('dotenv');
+const morgan = require('morgan');
+const CookieParser = require('cookie-parser');
+const session = require('express-session');
 
 module.exports = function() {
+  dotenv.config();
   const app = express();
-
-  app.use(compression());
-
-
-  app.use(express.urlencoded({ limit:"5mb",extended: true }));
   
+  app.set('port', process.env.PORT || 3000);
+  
+  app.use(morgan('dev'));
   app.use(express.json({limit: "5mb"})); // 5MB
-
-  app.use(methodOverride());
-
-  app.use(cors());
-  // app.use(express.static(process.cwd() + '/public'));
+  app.use(express.urlencoded({ limit:"5mb",extended: false }));
+  app.use(CookieParser(process.env.COOKIE_SECRET));
+  app.use(session({
+    resave: false,
+    saveUninitialized : false,
+    secret: process.env.COOKIE_SECRET,
+    cookie : {
+      httpOnly : true,
+      secure: false,
+    }
+  }));
 
   /* App (Android, iOS) */
-  //require("../src/app/routes/indexRoute")(app);
-  //require("../src/app/routes/userRoute")(app);
-  //require("../src/app/routes/musicRoute")(app);
-  require("../src/routes/assignRoute")(app);
-  require("../src/routes/indexRoute")(app);
-  require("../src/routes/userRoute")(app);
-  /* Web */
-  // require('../src/web/routes/indexRoute')(app);
+  //require("../src/routes/assignRoute")(app);
+  //require("../src/routes/indexRoute")(app);
+  //require("../src/routes/userRoute")(app);
 
-  /* Web Admin*/
-  // require('../src/web-admin/routes/indexRoute')(app);
   return app;
 };

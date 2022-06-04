@@ -27,7 +27,7 @@ module.exports = function() {
   /* App (Android, iOS) */
   //require("../src/routes/assignRoute")(app);
   //require("../src/routes/indexRoute")(app);
-  //require("../src/routes/userRoute")(app);
+  app.use(require("../src/routes/userRoute"));
 
   return app;
 };

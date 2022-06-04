@@ -3,12 +3,6 @@ const Sequelize = require('sequelize');
 module.exports = class User extends Sequelize.Model {
     static init(sequelize) {
         return super.init({
-            // 학번이자 아이디
-            userId : {
-               type: Sequelize.BIGINT,
-               allowNull : false,
-               unique: true,
-            },
             isStudent : {
                 type: Sequelize.BOOLEAN,
                 allowNull: false,

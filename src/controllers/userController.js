@@ -1,139 +1,73 @@
-const {pool} = require('../../config/database');
 const jwt = require('jsonwebtoken');
-const auth = require("../../auth");
+//const auth = require("../../auth");
 const crypto = require('crypto');
-const { type } = require('os');
-const jwtsecret = require('../../config/secret_config').jwtsecret;
-
+//const { type } = require('os');
+//const jwtsecret = require('../../config/secret_config').jwtsecret;
+const User = require('../../models/user');
+const Student = require('../../models/student');
+const Professor = require('../../models/professor');
 
 /**---------- 회원가입 API ------------ */ 
-exports.signUp = async function(req, res){
-    console.log("API execution: SignUP");
-    const {id, password, st_id} = req.body;
-    encoded_password = crypto.createHash('sha512').update(password).digest('base64');
-
-    if (!id){
-        return res.json({
-            isSuccess: false,
-            code: 300,
-            message: "아이디를 입력해주세요."
-        });
+exports.signUp = async function(req){
+    const {id, role, password, name,} = req.body;
+    
+    /** 입력 확인 */
+    if (id.toString().length != 7) {
+        throw new Error('Invalid Id');
     }
-    if (!password){
-        return res.json({
-            isSuccess: false,
-            code: 301,
-            message: "비밀번호를 입력해주세요."
-        });
-    }
-    if (!st_id){
-        return res.json({
-            isSuccess: false,
-            code: 302,
-            message: "학번을 입력해주세요."
-        });
-    }
-    else if (st_id.length != 7){
-        return res.json({
-            isSuccess: false,
-            code: 303,
-            message: "학번을 올바르게 입력해주세요(7자)."
-        });
+    if (role !== 'professor' && role !== 'student'){
+        throw new Error('Invalid Role');
     }
 
-    const connection = await pool.getConnection(function(err, conn){
-        if(err){
-            //conn.release();
-            console.log(err);
-            return res.json({
-                isSuccess: false,
-                code: 200,
-                message: "DB 서버 연결에 실패했습니다."
-            });
+    const encoded_password = crypto.createHash('sha512').update(password).digest('base64');
+    try {
+        /** 해당 학번, 교번에 해당하는 사용자가 있다면, 회원가입이 되지 않는다. */
+        const exuser = await User.findOne({ where : {id}});
+        if (exuser) {
+            throw new Error('UserAlreadyExist Error');
+        };
+
+        /** 회원 가입 */
+        let is_student_val;
+        let is_professor_val;
+
+        if (role === 'student') {
+            is_student_val = true;
+            is_professor_val = false;
+        } else if ( role === 'professor' ){
+            is_student_val = false;
+            is_professor_val = true;
         }
-        const checkSTIDquery = 'select * from STUDENT where ST_ID = ?';
-        var checkSTID = conn.query(checkSTIDquery, [st_id], function(err,rows){
-            if(err){
-                console.log(err);
-                return res.json({
-                    isSuccess: false,
-                    code: 200,
-                    message: "DB 서버 연결에 실패했습니다."
-                });
-            }
-            if (rows.length <= 0){
-                conn.release();
-                return res.json({
-                    isSuccess: false,
-                    code: 304,
-                    message: "존재하지 않는 학번입니다."
-                });
-            }
-            const checkSTquery = 'select * from USERS where STD_NUM = ?';
-            conn.query(checkSTquery, [st_id], function(err,rows){
-                if(err){
-                    console.log(err);
-                    return res.json({
-                        isSuccess: false,
-                        code: 200,
-                        message: "DB 서버 연결에 실패했습니다."
-                    });
-                }
-                if (rows.length > 0){
-                    return res.json({
-                        isSuccess: false,
-                        code: 305,
-                        message: "해당 학번에 계정이 이미 존재합니다."
-                    });
-                }
-    
-                const checkIDquery = 'select * from USERS where USER_ID = ?';
-                conn.query(checkIDquery, [id], function(err, rows){
-                    if(err){
-                        console.log(err);
-                        return res.json({
-                            isSuccess: false,
-                            code: 200,
-                            message: "DB 서버 연결에 실패했습니다."
-                        });
-                    }
-                    if(rows.length > 0){
-                        return res.json({
-                            isSuccess: false,
-                            code: 306,
-                            message: "중복되는 ID입니다."
-                        });
-                    }
-                    
-                    const addIDquery = 'insert into USERS(USER_ID, USER_PW, STD_NUM) values (?, ?, ?)';
-                    conn.query(addIDquery, [id, encoded_password, st_id], function(err, rows){
-                        if(err){
-                            console.log(err);
-                            return res.json({
-                                isSuccess: false,
-                                code: 200,
-                                message: "DB 서버 연결에 실패했습니다."
-                            });
-                        }
-                        
-                        return res.json({
-                            isSuccess: true,
-                            code: 100,
-                            message: "회원가입에 성공했습니다."
-                        });
-    
-                    })
-                    
-                })
-            });
+        const user = await User.create({
+            id :id,
+            isStudent: is_student_val,
+            isProfessor: is_professor_val,
+            password: encoded_password,
+            info : ''
         });
-        
-        
-    });
+
+        if (role === 'student') {
+            const student = await Student.create({
+                studentId : id,
+                name : name,
+                year : '1',
+            });
+            return student;
+        } else if ( role === 'professor' ){
+            const professor = await Professor.create({
+                professorId : id,
+                name : name,
+            });
+            return professor;
+        }
+    } catch(error) {
+        throw error;
+    } 
+
 }
     
 
-/**---------- 로그인 API ------------ */ 
+/**---------- 로그인 API ------------ 
 exports.signIn = async function(req, res){
     console.log("API execution: SignIN");
     const {id, password} = req.body;
@@ -220,4 +154,4 @@ exports.signIn = async function(req, res){
             conn.release();
         });
     })   
-;}
+;}*/ 

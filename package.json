@@ -4,22 +4,36 @@
     "aws-sdk": "^2.761.0",
     "body-parser": "^1.19.0",
     "compression": "^1.7.4",
+    "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "crypto": "^1.0.1",
+    "dotenv": "^16.0.1",
     "express": "^4.17.1",
+    "express-session": "^1.17.3",
     "ffprobe": "^1.1.2",
     "fs": "0.0.1-security",
     "jquery": "^3.5.1",
     "jsonwebtoken": "^8.5.1",
     "method-override": "^3.0.0",
+    "morgan": "^1.10.0",
     "multer": "^1.4.2",
     "multer-s3": "^2.9.0",
     "mysql": "^2.18.1",
+    "mysql2": "^2.3.3",
     "package.json": "^2.0.1",
+    "passport": "^0.6.0",
     "pkg.json": "^2.0.8",
     "python-shell": "^2.0.2",
+    "sequelize": "^6.20.1",
+    "sequelize-cli": "^6.4.1",
     "winston": "^3.3.3",
     "winston-daily-rotate-file": "^4.5.0"
   },
-  "name": "SpeakUP_Server"
+  "name": "SpeakUP_Server",
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  },
+  "scripts": {
+    "start": "nodemon app"
+  }
 }

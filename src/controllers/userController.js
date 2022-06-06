@@ -1,4 +1,4 @@
-const jwt = require('jsonwebtoken');
+const jwt = require('../../config/jwt');
 //const auth = require("../../auth");
 const crypto = require('crypto');
 //const { type } = require('os');
@@ -6,10 +6,10 @@ const crypto = require('crypto');
 const User = require('../../models/user');
 const Student = require('../../models/student');
 const Professor = require('../../models/professor');
+const passport = require('passport');
 
 /**---------- 회원가입 API ------------ */ 
-exports.signUp = async function(req){
-    const {id, role, password, name,} = req.body;
+exports.signUp = async function(id, role, password, name){
     
     /** 입력 확인 */
     if (id.toString().length != 7) {
@@ -67,91 +67,50 @@ exports.signUp = async function(req){
 }
     
 
-/**---------- 로그인 API ------------ 
-exports.signIn = async function(req, res){
+/**---------- 로그인 API ------------ **/
+exports.signIn = async function(id, password){
     console.log("API execution: SignIN");
-    const {id, password} = req.body;
-    encoded_password = crypto.createHash('sha512').update(password).digest('base64');
-    if (!id){
-        return res.json({
-            isSuccess: false,
-            code: 300,
-            message: "아이디를 입력해주세요."
-        });
+
+    const encoded_password = crypto.createHash('sha512').update(password).digest('base64');
+    
+    if (!id || !password){
+        throw new Error('Empty Input');
     }
-    if (!password){
-        return res.json({
-            isSuccess: false,
-            code: 301,
-            message: "비밀번호를 입력해주세요."
-        });
+    if (id.toString().length != 7) {
+        throw new Error('Invalid Input');
     }
-    const connection = await pool.getConnection(function(err, conn){
-        if (err){
-            console.log(err);//TransportOptions.//conn.release();
-            return res.json({
-                isSuccess: false,
-                code: 200,
-                message: "DB 서버 연결에 실패했습니다."
-            });
-            
+    
+    try {
+        const user = await User.findOne({where: {id}});
+        if(!user) {
+            throw new Error('Not Registered Id');
+        }
+        if (user.password !== encoded_password) {
+            throw new Error('Incorrect Password');
         }
 
-        const userinfoquery = 'select USER_INDEX,USER_ID, USER_PW, STD_NUM from USERS where USER_ID =?'
-        const userinfoparams = [id];
-        conn.query(userinfoquery, userinfoparams, function(err, rows){
-            if(err){
-                console.log(err);
-                conn.release();
-                return res.json({
-                    isSuccess: false,
-                    code: 200,
-                    message: "DB 서버 연결에 실패했습니다."
-                });
-            }
-            
-            if(rows.length < 1){
-                conn.release();
-                return res.json({
-                    isSuccess: false,
-                    code: 302,
-                    message: "아이디가 존재하지 않습니다."
-                });
-            }
+        let jwtObject = {};
+        const jwtOption = {
+            expiredIn : "10d",
+            issuer: "speakup_server.admin",
+            subject : "user.login.info",
+        }
+        
+        if (user.isStudent) {
+            const student = await Student.findOne({where:{studentId:id}});
+            jwtObject.role = "student";
+            jwtObject.studentId = id;
+            jwtObject.name = student.name;
+        }
+        else if(user.isProfessor) {
+            const professor = await Professor.findOne({where:{professorId: id}});
+            jwtObject.role = 'professor';
+            jwtObject.professorId = id;
+            jwtObject.name = professor.name;
+        }
+        return token = jwt.sign(jwtObject, jwtOption);
 
-            if(rows[0].USER_PW != encoded_password){
-                console.log(rows[0].USER_PW + '  '+ encoded_password);
-                conn.release();
-                return res.json({
-                    isSuccess: false,
-                    code: 303,
-                    message: "비밀번호가 올바르지 않습니다."
-                });
-            }
-
-                    jwt.sign(
-                      {
-                        STD_NUM: rows[0].STD_NUM,
-                      },
-                      jwtsecret,
-                      {
-                        expiresIn: "10d",
-                        issuer: "speakup_server.admin",
-                        subject: "user.login.info",
-                      },
-                      function (err, token) {
-                        if(err){
-                            console.log(err);
-                        }
-                        res.json({
-                            isSuccess: true,
-                            code: 100,
-                            message: "로그인에 성공했습니다.",
-                            result: { access_token: token }
-                        });
-                    }
-                );
-            conn.release();
-        });
-    })   
-;}*/ 
+    } catch (error) {
+        throw error;
+    }
+}
